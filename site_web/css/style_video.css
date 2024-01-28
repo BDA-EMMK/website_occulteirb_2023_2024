@@ -1,0 +1,147 @@
+/* Policy, etc */
+body {
+  font-family: "Lobster", cursive;
+  margin: 0;
+  padding: 0;
+}
+
+.text-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+/* For the title */
+title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* For a paragraph */
+p {
+  font-size: 18px;
+}
+
+/* For the logo */
+.logo {
+  margin: 1px 2px;
+  width: 80px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 10px 20px;
+}
+
+/* Navbar links style */
+.navbar-links a {
+  font-size: 19px;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.3s, background-color 0.3s, border 0.3s;
+  padding: 5px 10px;
+  border: 20px solid transparent;
+  border-radius: 100000px;
+}
+
+/* Nice effect when clicking on a link */
+.navbar-links a:hover {
+  color: rgba(255, 73, 1, 1);
+  background-color: rgba(255, 255, 255, 0);
+  border: 3px solid rgba(255, 73, 1, 1);
+}
+
+/* To let the border on the link */
+.special-link {
+  border: 2px solid rgba(255, 255, 255, 1);
+}
+.special-link.active {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(255, 255, 255, 1); 
+}
+
+/* Background image */
+body {
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 1);
+  background-image: url('../pics/forest.png');
+  /* To repeat the image on the whole page */
+  background-repeat: no-repeat;
+  /* 1 : Horizontally; 2 : Vertically */
+  background-position: center center;
+  /* To adapt the size of the background image */
+  background-size: cover; /* contain, cover */
+  
+  /* Better displayal */
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* For the Social links */
+.social-links {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  transform: translateX(0);
+  z-index: 1000;
+}
+
+/* To give a style when clicking on the button */
+.social-links a {
+  margin: 0 10px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+  background-color: rgba(255, 73, 1, 0); /* Couleur de fond différente au survol */
+  border: 3px solid rgba(255, 73, 1, 1);
+}
+
+/* For the size of the social link logos */
+.social-links img {
+  width: 40px;
+  height: 40px;
+}
+
+/* For the video */
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* To center vertically */
+}
+
+.video-container iframe {
+  width: 80%;
+  height: 80%;
+}
+
+/* For the button */
+.button-container {
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+}
+
+/* Style du bouton */
+.button-container button {
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  padding: 10px 20px; 
+  font-size: 56px;
+}

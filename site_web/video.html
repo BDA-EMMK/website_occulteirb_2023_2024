@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Occult'eirb</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- External css style -->
+  <link rel="stylesheet" href="css/style_video.css">
+</head>
+<body>
+
+<div class="navbar">
+  <!-- Left side logo -->
+  <a href="./index.html" class="logo-link">
+    <img class="logo" src="pics/logos/eye_logo.png" alt="Logo">
+  </a>
+
+  <!-- Navbar to the right -->
+  <div class="navbar-links">
+    <a href="./index.html" class="nav-link">Accueil</a>
+    <a href="./equipe.html" class="nav-link">Equipe</a>
+    <a href="./allo.html" class="nav-link">Allo</a>
+    <a href="./partenaires.html" class="nav-link">Partenaires</a>
+    <a href="./video.html" class="nav-link special-link active">Video</a>    
+    <a href="./jeu.html" class="nav-link">Jeux</a>
+  </div>
+</div>
+
+<!-- Image de fond -->
+<div class="background-image"></div>
+
+<!-- For the video -->
+<div class="video-container" id="videoContainer" style="display: none;">
+  <!-- Youtube video -->
+  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=TrlKWtkce5I" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<!-- The button that permits to display the video -->
+<div class="button-container" >
+  <button onclick="toggleVideo()">Afficher la vidéo</button>
+</div>
+
+<!-- The social links -->
+<div class="social-links">
+  <a href="lien-vers-facebook" target="_blank"><img src="pics/logos/facebook_logo_white.png" alt="Facebook"></a>
+  <a href="lien-vers-instagram" target="_blank"><img src="pics/logos/instagram_logo_white.png" alt="Instagram"></a>
+  <a href="lien-vers-telegram" target="_blank"><img src="pics/logos/telegram_logo_white.png" alt="Telegram"></a>
+</div>
+
+</body>
+
+<script>
+
+<!-- To display the video -->
+function toggleVideo() {
+  var videoContainer = document.getElementById("videoContainer");
+  var iframe = videoContainer.querySelector("iframe");
+
+  if (videoContainer.style.display === "none") {
+    videoContainer.style.display = "block";
+    iframe.src = iframe.src; // Réactive la vidéo pour la recharger
+  } else {
+    videoContainer.style.display = "none";
+  }
+}
+
+</script>
+
+</html>
