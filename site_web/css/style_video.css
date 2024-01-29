@@ -73,7 +73,7 @@ p {
 body {
   overflow: auto;
   background-color: rgba(0, 0, 0, 1);
-  background-image: url('../pics/forest.png');
+  background-image: url('../pics/moon_forest.png');
   /* To repeat the image on the whole page */
   background-repeat: no-repeat;
   /* 1 : Horizontally; 2 : Vertically */

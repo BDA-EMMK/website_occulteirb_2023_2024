@@ -24,11 +24,12 @@ title {
 
 /* For a mini title */
 h2 {
-  text-align: right;
-  margin-right: 80px;
+  text-align: left;
+  margin-left: 80px;
   font-size: 56px;
   font-family: "Lobster", cursive;
   margin-bottom: 100px;
+  margin-top: 50px;
 }
 
 /* For a paragraph */
@@ -127,13 +128,18 @@ body {
 
 /* For the team members */
 .pole-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 20px; /* Spacing between members */
+}
+
+.team-members {
   display: flex;
-  justify-content: flex-end;
-  grid-gap: 10px; /* Spacing between members */
+  flex-wrap: wrap;
 }
 
 .team-member {
-  flex: 1 1 0;
+  flex: 1 1 calc(33.33% - 20px);
   margin: auto;
   text-align: center;
   object-fit: cover;
