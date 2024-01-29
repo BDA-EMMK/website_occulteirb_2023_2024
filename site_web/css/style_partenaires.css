@@ -84,7 +84,6 @@ p {
 
 /* Background image */
 body {
-  background-image: url("../pics/branches_left.png");
   background-size: cover;
   background-position: -1000px calc(50% + 732px);
   background-repeat: no-repeat;
