@@ -121,7 +121,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* To center vertically */
+  height: 100vh;
+  width: 250vh;
 }
 
 .video-container iframe {
@@ -143,5 +144,5 @@ body {
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
   padding: 10px 20px; 
-  font-size: 56px;
+  font-size: 36px;
 }
