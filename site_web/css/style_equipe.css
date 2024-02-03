@@ -9,9 +9,7 @@ body {
 
 /* Background image */
 body {
-  background-size: cover;
-  background-position: calc(50% + 700px) calc(50% + 343px);
-  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 1):
 }
 
 .text-content {
