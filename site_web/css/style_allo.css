@@ -81,7 +81,6 @@ p {
 
 /* Background image */
 body {
-  background-image: url("../pics/end_page.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
