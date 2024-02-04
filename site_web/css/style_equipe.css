@@ -9,7 +9,7 @@ body {
 
 /* Background image */
 body {
-  background-color: rgba(0, 0, 0, 1):
+  background-color: rgba(253, 241, 184, 1):
 }
 
 .text-content {
@@ -109,7 +109,7 @@ p {
 }
 
 .social-links a:hover {
-  background-color: rgba(255, 73, 1, 0); /* Couleur de fond différente au survol */
+  background-color: rgba(255, 73, 1, 0);
   border: 3px solid rgba(255, 73, 1, 1);
 }
 
@@ -119,40 +119,67 @@ p {
   height: 40px;
 }
 
-/* For the team members */
-.pole-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  grid-gap: 20px; /* Spacing between members */
-}
-
-.team-members {
+/* For the team */
+.team-section {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .team-member {
-  position: relative;
+  width: 250px;
+  height: 400px;
+  background-color: #f8f5f2;
   margin: auto;
   text-align: center;
   object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
 .team-member img {
-  width: 60%;
-  height: auto;
-  border-radius: 20%;
+  width: 100%;
+  height: 79%;
+  object-fit: cover;
 }
 
-.team-member:hover .member-name {
-  opacity: 1;
+.member-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #333;
 }
 
 .member-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.member-program {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+.member-details {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(-300%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  opacity: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+
+.member-details p {
+  margin: 0; 
+}
+
+.member-details .course {
+  font-size: 14px;
 }
