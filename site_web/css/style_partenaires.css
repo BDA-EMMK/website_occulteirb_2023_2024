@@ -145,10 +145,42 @@ p {
   transition: transform 0.3s ease-in-out;
 }
 
+.team-member::before {
+	position: absolute;
+	content: '';
+	width: 50%;
+	height: 180%;
+	background: rgba(0, 0, 0, 1);
+	transform: rotate(45deg);
+}
+
+.team-member:hover::before {
+	animation: animate2 2s linear infinite;
+}
+
+@keyframes animate2{
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+
+		transform: rotate(360deg);
+	}
+}
+
+.team-member::after {
+	position: absolute;
+	content: '';
+	inset: 5px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 8px;
+}
+
 .team-member img {
   width: 100%;
   height: 70%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .member-info {
