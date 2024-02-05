@@ -148,17 +148,17 @@ p {
 .team-member::before {
 	position: absolute;
 	content: '';
-	width: 50%;
-	height: 180%;
+	width: 80%;
+	height: 200%;
 	background: rgba(0, 0, 0, 1);
 	transform: rotate(45deg);
 }
 
 .team-member:hover::before {
-	animation: animate2 2s linear infinite;
+	animation: animate 2s linear infinite;
 }
 
-@keyframes animate2{
+@keyframes animate{
 	from {
 		transform: rotate(0deg);
 	}
@@ -171,7 +171,7 @@ p {
 .team-member::after {
 	position: absolute;
 	content: '';
-	inset: 5px;
+	inset: 4px;
 	background: rgba(255, 255, 255, 1);
 	border-radius: 8px;
 }
