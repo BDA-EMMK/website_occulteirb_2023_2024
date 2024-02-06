@@ -165,7 +165,7 @@ p {
 	}
 	to {
 
-		transform: rotate(360deg);
+		transform: rotate(362deg);
 	}
 }
 
@@ -182,7 +182,7 @@ p {
   height: 96%;
   object-fit: cover;
   border-radius: 6px;
-  transform: translateY(10px);
+  transform: translateY(9px);
 }
 
 .member-program {
