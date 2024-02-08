@@ -73,7 +73,7 @@ p {
 body {
   overflow: auto;
   background-color: rgba(0, 0, 0, 1);
-  background-image: url('../pics/landscape.png');
+  background-image: url('temp');
   /* To repeat the image on the whole page */
   background-repeat: no-repeat;
   /* 1 : Horizontally; 2 : Vertically */
