@@ -1,7 +1,7 @@
 
 <script>
 import Header from "./header.svelte";
-// import Footer from './footer.svelte';
+import Footer from './footer.svelte';
 
 export const prerender = true;
 </script>
@@ -12,7 +12,7 @@ export const prerender = true;
   <slot />
 </main>
 
-<!-- <Footer /> -->
+<Footer />
 
 <style lang="scss">
 </style>
