@@ -1,17 +1,17 @@
 
 <script lang="ts">
-import HeaderLink from "./headerLink.svelte";
+import HeaderNavLink from "./headerNavLink.svelte";
 import { onMount } from "svelte";
-import { page } from '$app/stores';  
+import { page } from '$app/stores';
 
-let path = "";
+let pathname = "";
 let isLoaded: boolean = false;
 
 onMount(() => {
   isLoaded = true
 });
 
-$: if (isLoaded) { path = $page.url.pathname };
+$: if (isLoaded) { pathname = $page.url.pathname };
 
 const links = [
   {
@@ -52,8 +52,8 @@ const links = [
     <!-- Navbar to the right -->
     <ul class="navbar">
     {#each links as link}
-      <li>
-        <HeaderLink url="{link.url}" text="{link.text}" active={ path === link.url }/>
+      <li class="navbar-item">
+        <HeaderNavLink url="{link.url}" text="{link.text}" active={ pathname === link.url }/>
       </li>
     {/each}
     </ul>
@@ -102,7 +102,7 @@ nav {
   background-color: var(--header-background-color);
 
   /* remove items list icon */
-  li {
+  li.navbar-item {
     list-style: none;
   }
 }
