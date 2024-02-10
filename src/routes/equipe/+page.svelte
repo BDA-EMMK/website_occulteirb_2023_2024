@@ -1,7 +1,7 @@
 
-<script lang="ts">
+<script lang="ts" context="module">
 
-type Member = {
+export type Member = {
   name: string;
   major: string;
   img1URL?: string;
@@ -9,6 +9,7 @@ type Member = {
   role: string;
 };
 
+import Team from "./team.svelte";
 
 const deskMembers: Member[] = [
   {
@@ -187,15 +188,15 @@ const webMembers: Member[] = [
   Notre Équipe de fou !
 </h1>
 
-<!-- <Team members="{deskMembers}" desc="Bureau" /> -->
-<!-- <Team members="{trezMembers}" desc="Trésorerie" /> -->
-<!-- <Team members="{eventMembers}" desc="Event" /> -->
-<!-- <Team members="{logMembers}" desc="Logistique" /> -->
-<!-- <Team members="{comMembers}" desc="Communication" /> -->
-<!-- <Team members="{partMembers}" desc="Part" /> -->
-<!-- <Team members="{videoMembers}" desc="Vidéo" /> -->
-<!-- <Team members="{barMembers}" desc="Bar" /> -->
-<!-- <Team members="{webMembers}" desc="Web" /> -->
+<Team members="{deskMembers}" desc="Bureau" />
+<Team members="{trezMembers}" desc="Trésorerie" />
+<Team members="{eventMembers}" desc="Event" />
+<Team members="{logMembers}" desc="Logistique" />
+<Team members="{comMembers}" desc="Communication" />
+<Team members="{partMembers}" desc="Part" />
+<Team members="{videoMembers}" desc="Vidéo" />
+<Team members="{barMembers}" desc="Bar" />
+<Team members="{webMembers}" desc="Web" />
 
 
 <style lang="scss">
