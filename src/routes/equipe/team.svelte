@@ -12,9 +12,9 @@ export let desc: string = "Unset desc";
   <h3>{ desc }</h3>
 
   <ul>
-    {#each members as _member}
+    {#each members as member}
       <li>
-        <MemberCard />
+        <MemberCard member="{member}" />
       </li>
     {/each}
   </ul>
