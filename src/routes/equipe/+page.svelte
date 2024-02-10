@@ -1,6 +1,5 @@
 
 <script lang="ts" context="module">
-
 export type Member = {
   name: string;
   major: string;
@@ -10,6 +9,10 @@ export type Member = {
 };
 
 import Team from "./team.svelte";
+
+/*
+ * It's teams declaration time !
+*/
 
 const deskMembers: Member[] = [
   {
@@ -185,7 +188,7 @@ const webMembers: Member[] = [
 </script>
 
 <h1>
-  Notre Équipe de fou !
+  Notre Équipe de fous !
 </h1>
 
 <Team members="{deskMembers}" desc="Bureau" />

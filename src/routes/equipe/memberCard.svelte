@@ -1,6 +1,5 @@
 
 <script lang="ts">
-
 import type { Member } from "./+page.svelte";
 
 export let member: Member = {
@@ -10,7 +9,6 @@ export let member: Member = {
   aka: "unset",
   role: "unset",
 };
-
 </script>
 
 <div class="team-member">
@@ -35,7 +33,6 @@ export let member: Member = {
 
 
 <style lang="scss">
-
 .team-member {
   width: 200px;
   height: 350px;
@@ -54,20 +51,6 @@ export let member: Member = {
   width: 100%;
   height: 75%;
   object-fit: cover;
-}
-
-.member-info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #333;
-}
-
-.member-name {
-  font-weight: bold;
-  margin: 0;
 }
 
 
@@ -99,6 +82,10 @@ export let member: Member = {
     margin: 0;
     font-size: 1.3em;
     text-align: center;
+
+    &.name {
+      font-weight: bold;
+    }
   }
 
   &.face1 {

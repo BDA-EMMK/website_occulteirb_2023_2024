@@ -1,7 +1,7 @@
 
 <script lang="ts">
-
 import type { Member } from './+page.svelte';
+
 import MemberCard from './memberCard.svelte';
 
 export let members: Member[] = [];
