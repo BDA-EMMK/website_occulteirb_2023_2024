@@ -46,7 +46,7 @@ const links = [
   <nav>
     <!-- Left side logo -->
     <a href="/" class="logo-link">
-      <img class="logo" src="pics/logos/eye_logo.png" alt="Logo">
+      <img class="logo" src="/img/logos/eye_logo.png" alt="Logo">
     </a>
 
     <!-- Navbar to the right -->
