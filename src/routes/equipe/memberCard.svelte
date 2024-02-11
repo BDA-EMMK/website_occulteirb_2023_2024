@@ -13,7 +13,7 @@ export let member: Member = {
 
 <div class="team-member">
   <div class="face face1">
-    <img src="/img/team/the_rock.jpg" alt="membre" id="image">
+    <img src="/img/team/the_rock.jpg" alt="photo - { member.name }" title="{ member.name }" id="image">
 
     <div class="member-details">
       <p class="name" >{ member.name }</p>
@@ -22,7 +22,7 @@ export let member: Member = {
   </div>
 
   <div class="face face2">
-    <img src="/img/team/william_sauvage.png" alt="membre" id="image">
+    <img src="/img/team/william_sauvage.png" alt="photo - { member.aka }" title="{ member.name }" id="image">
 
     <div class="member-details">
       <p class="name" >{ member.aka }</p>
