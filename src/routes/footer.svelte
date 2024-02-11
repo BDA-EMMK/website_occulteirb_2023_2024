@@ -12,6 +12,7 @@ footer {
   position: relative;
 
   img {
+    z-index: -1;
     position: relative;
     width: 100%;
   }
