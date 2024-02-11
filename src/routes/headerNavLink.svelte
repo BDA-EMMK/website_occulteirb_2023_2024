@@ -4,9 +4,17 @@ export let url: string = "/error_url_not_set";
 export let text: string = "NOT SET !";
 export let active: boolean;
 
+import { createEventDispatcher } from "svelte";
+
+const dispatch = createEventDispatcher();
+
+function forwardClick() {
+  dispatch('click');
+}
+
 </script>
 
-<a href="{url}">
+<a href="{url}" on:click={forwardClick}>
   <div class="hover_effect" class:active/>
   <p>{text}</p>
 </a>
