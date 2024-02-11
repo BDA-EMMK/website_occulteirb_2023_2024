@@ -1,43 +1,16 @@
 
 <script lang="ts">
-import { onMount } from "svelte";
-
 const videoURL: string = "https://www.youtube-nocookie.com/embed/sscYIVx4CgY?si=lgTuHIWq101MIrxt";
 
-let isLoaded: boolean = false;
 let isVideoShowed: boolean = false;
-let iframe: HTMLIFrameElement | null = null;
-let videoContainer: HTMLElement | null = null;
 
-onMount(() => {
-  isLoaded = true;
-
-  iframe = document.querySelector("iframe")
-  videoContainer = document.getElementById("videoContainer")
-});
-
-function toggleVideo() {
-  if (!iframe || !videoContainer)
-    return;
-
-  if (isVideoShowed) {
-    iframe.style.display = "none";
-  }
-
-  else {
-    iframe.style.display = "block";
-    iframe.src = iframe.src; // Réactive la vidéo pour la recharger
-  }
-
-  isVideoShowed = !isVideoShowed;
-}
-
+function toggleVideo() { isVideoShowed = !isVideoShowed; }
 </script>
 
 <!-- For the video -->
 <div class="video-container" id="videoContainer" >
   <!-- Youtube video -->
-  <iframe width="560" height="315" src="{ videoURL }" style="display: none;" title="YouTube video player" allowfullscreen></iframe>
+  <iframe class={isVideoShowed ? '': 'hidden'} width="560" height="315" src="{ videoURL }" title="YouTube video player" allowfullscreen></iframe>
 </div>
 
 <!-- The button that permits to display the video -->
@@ -60,11 +33,17 @@ function toggleVideo() {
   align-items: center;
   height: 100svh;
   width: 100vw;
+
 }
 
 .video-container iframe {
   width: 100%;
   height: 100%;
+  display: block;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 /* For the button */
