@@ -14,5 +14,10 @@ import Footer from './footer.svelte';
 <Footer />
 
 <style lang="scss">
+
+main {
+  overflow-y: hidden;
+}
+
 </style>
 
