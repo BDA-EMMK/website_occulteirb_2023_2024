@@ -22,7 +22,7 @@ a {
   display: block;
 
   p {
-    font-size: 1.5em;
+    font-size: 1.5rem;
 
     color: rgba(255, 255, 255, 1);
     text-decoration: none;

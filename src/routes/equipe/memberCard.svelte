@@ -80,7 +80,7 @@ export let member: Member = {
 
   p {
     margin: 0;
-    font-size: 1.3em;
+    font-size: 1.3rem;
     text-align: center;
 
     &.name {

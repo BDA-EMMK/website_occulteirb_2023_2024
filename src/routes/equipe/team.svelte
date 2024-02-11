@@ -31,7 +31,7 @@ export let desc: string = "Unset desc";
   padding: 10em 10em;
 
   h3 {
-    font-size: 2em;
+    font-size: 2rem;
     text-align: center;
   }
 
