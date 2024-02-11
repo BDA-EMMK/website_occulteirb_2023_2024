@@ -4,15 +4,9 @@ import HeaderNavLink from "./headerNavLink.svelte";
 import { onMount } from "svelte";
 import { page } from '$app/stores';
 
-let pathname = "";
-let isLoaded: boolean = false;
-
-onMount(() => {
-  isLoaded = true
-});
-
-$: if (isLoaded) { pathname = $page.url.pathname };
-
+/*
+    All
+*/
 const links = [
   {
     url: '/',
@@ -40,12 +34,33 @@ const links = [
   },
 ];
 
+let pathname = "";
+let isLoaded: boolean = false;
+
+onMount(() => {
+  isLoaded = true
+});
+
+
+$: if (isLoaded) { pathname = $page.url.pathname };
+
+/*
+  Mobile
+*/
+export let isNavOpened: boolean = true
+
+function toggleNav() { isNavOpened = !isNavOpened; }
+
 </script>
 
-<header class="header">
+<div class="mobile">
+  <button class="toggleHeader" on:click={toggleNav}>Toggle</button>
+</div>
+
+<header class="header {isNavOpened ? 'opened': ''}"  >
   <nav>
     <!-- Left side logo -->
-    <a href="/" class="logo-link">
+    <a href="/" class="logo-link" on:click={toggleNav}>
       <img class="logo" src="/img/logos/eye_logo.png" alt="Logo">
     </a>
 
@@ -53,7 +68,7 @@ const links = [
     <ul class="navbar">
     {#each links as link}
       <li class="navbar-item">
-        <HeaderNavLink url="{link.url}" text="{link.text}" active={ pathname === link.url }/>
+        <HeaderNavLink url="{link.url}" text="{link.text}" active={ pathname === link.url }  on:click="{toggleNav}"/>
       </li>
     {/each}
     </ul>
@@ -64,6 +79,108 @@ const links = [
 <style lang="scss">
 :root {
   --header-background-color: rgba(50, 50, 50, 255);
+}
+
+@media screen and (max-width: 899px) {
+.mobile {
+  position: sticky;
+  background: blue;
+
+  top: 0;
+
+  display: flex;
+  flex-direction: row-reverse;
+
+  width: 100vw;
+  min-height: 4em;
+  height: 5svh;
+
+  z-index: 999;
+
+  .toggleHeader {
+    position: relative;
+    top: 0;
+    right: 5vw;
+
+
+    font-family: 'Protest Revolution', cursive;
+    font-size: 2rem;
+
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    background: transparent;
+
+  }
+}
+
+.header {
+  width: 100vw;
+  height: 100dvh;
+  position: fixed;
+
+  overflow: scroll;
+
+  left: 0;
+  top: 0;
+
+  background: red;
+
+  nav {
+    width: 100%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10svh;
+  }
+
+
+  z-index: 2;
+  transform: translate(100%, -20%);
+
+  transition: transform .5s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &.opened {
+    transform: translate(0%);
+  }
+
+  .logo-link {
+    display: flex;
+    justify-content: center;
+
+    padding: 2em 1em;
+
+    .logo {
+      max-width: 75%;
+      position: relative;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    font-size: 2rem;
+
+    li { list-style: none;}
+  }
+}
+
+}
+
+
+@media screen and (min-width: 900px) {
+.mobile {
+  display: none;
 }
 
 
@@ -106,4 +223,6 @@ nav {
     list-style: none;
   }
 }
+}
+
 </style>
