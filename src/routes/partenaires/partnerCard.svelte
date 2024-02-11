@@ -51,10 +51,13 @@ export let partner: Partner = {
     content: '';
     position: absolute;
 
+    left: 25%;
+    top: -50%;
+
     z-index: -1;
 
-    width: 150px;
-    height: 500px;
+    width: 50%;
+    height: 200%;
 
     background: rgba(255, 73, 1, 1);
     transform: rotate(45deg);
@@ -69,13 +72,13 @@ export let partner: Partner = {
   }
 
   img {
-    width: 96%;
-    height: 96%;
+    width: calc(100% - 10pt);
+    height: calc(100% - 10pt);
 
     object-fit: cover;
     border-radius: 6px;
 
-    transform: translateY(9px);
+    transform: translateY(5pt);
   }
 
   /*
