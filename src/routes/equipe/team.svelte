@@ -27,8 +27,7 @@ export let desc: string = "Unset desc";
   flex-direction: column;
 
   gap: 5em;
-
-  padding: 10em 10em;
+  padding: 5vw;
 
   h3 {
     font-size: 2rem;
@@ -39,6 +38,11 @@ export let desc: string = "Unset desc";
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 1em;
+    width: 100%;
 
     li { list-style: none; }
   }

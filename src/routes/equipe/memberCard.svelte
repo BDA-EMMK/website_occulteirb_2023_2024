@@ -11,7 +11,7 @@ export let member: Member = {
 };
 </script>
 
-<div class="team-member" tabindex="0">
+<div class="team-member" tabindex="-1" >
   <div class="face face1">
     <img src="/img/team/the_rock.jpg" alt="photo - { member.name }" title="{ member.name }" id="image">
 
@@ -34,16 +34,21 @@ export let member: Member = {
 
 <style lang="scss">
 .team-member {
-  width: 200px;
-  height: 350px;
+  position: relative;
+
+  min-width: 17em;
+  min-height: 30em;
+
+  width: 15vw;
+  height: 26.25vw;
+  /* object-fit: contain;*/
 
   background-color: #f8f5f2;
-  margin: auto;
 
   text-align: center;
-  object-fit: cover;
-  position: relative;
+
   overflow: hidden;
+
   transition: transform 0.3s ease-in-out;
 }
 
