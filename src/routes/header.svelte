@@ -13,23 +13,23 @@ const links = [
     text: 'Accueil'
   },
   {
-    url: '/equipe',
+    url: '/equipe/',
     text: 'Équipe'
   },
   {
-    url: '/allo',
+    url: '/allo/',
     text: 'Allos'
   },
   {
-    url: '/partenaires',
+    url: '/partenaires/',
     text: 'Partenaires'
   },
   {
-    url: '/video',
+    url: '/video/',
     text: 'Vidéo'
   },
   {
-    url: '/jeu',
+    url: '/jeu/',
     text: 'Jeu'
   },
 ];
