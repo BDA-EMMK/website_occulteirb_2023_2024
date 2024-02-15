@@ -1,6 +1,6 @@
 
 <script lang="ts">
-import type { Member } from './+page.svelte';
+import type { Member } from './member';
 
 import MemberCard from './memberCard.svelte';
 

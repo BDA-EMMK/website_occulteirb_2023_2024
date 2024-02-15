@@ -1,12 +1,7 @@
 
-<script lang="ts" context="module">
-export type Member = {
-  name: string;
-  major: string;
-  img1URL?: string;
-  aka: string;
-  role: string;
-};
+<script lang="ts">
+import type { Member } from './member';
+
 
 import Team from "./team.svelte";
 

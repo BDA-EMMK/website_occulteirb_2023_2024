@@ -1,6 +1,6 @@
 
 <script lang="ts">
-import type { Member } from "./+page.svelte";
+import type { Member } from "./member";
 
 export let member: Member = {
   name: "unset",
