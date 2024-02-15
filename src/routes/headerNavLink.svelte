@@ -1,10 +1,16 @@
 
 <script lang="ts">
-export let url: string = "/error_url_not_set";
-export let text: string = "NOT SET !";
-export let active: boolean;
+import type { HeaderNavData } from "./headerNav";
 
 import { createEventDispatcher } from "svelte";
+
+export let headerNavData: HeaderNavData = {
+	URL: "/error_url_not_set",
+	text: "NOT SET !"
+}
+
+export let active: boolean;
+
 
 const dispatch = createEventDispatcher();
 
@@ -14,14 +20,13 @@ function forwardClick() {
 
 </script>
 
-<a href="{url}" on:click={forwardClick}>
+<a href="{ headerNavData.URL }" on:click={forwardClick}>
   <div class="hover_effect" class:active/>
-  <p>{text}</p>
+  <p>{ headerNavData.text }</p>
 </a>
 
 <style lang="scss">
-
-  /* Navbar links style */
+/* Navbar links style */
 a {
   text-decoration: none;
   padding: .5em 1.5em;

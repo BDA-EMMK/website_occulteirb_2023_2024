@@ -1,35 +1,39 @@
 
 <script lang="ts">
 import HeaderNavLink from "./headerNavLink.svelte";
+
 import { onMount } from "svelte";
 import { page } from '$app/stores';
+
+import type { HeaderNavData } from "./headerNav";
+import { isHeaderNavActive } from './headerNav';
 
 /*
     All
 */
-const links = [
+const headerNavDatas: HeaderNavData[] = [
   {
-    url: '/',
+    URL: '/',
     text: 'Accueil'
   },
   {
-    url: '/equipe/',
+    URL: '/equipe/',
     text: 'Équipe'
   },
   {
-    url: '/allo/',
+    URL: '/allo/',
     text: 'Allos'
   },
   {
-    url: '/partenaires/',
+    URL: '/partenaires/',
     text: 'Partenaires'
   },
   {
-    url: '/video/',
+    URL: '/video/',
     text: 'Vidéo'
   },
   {
-    url: '/jeu/',
+    URL: '/jeu/',
     text: 'Jeu'
   },
 ];
@@ -66,9 +70,14 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
     <!-- Navbar to the right -->
     <ul class="navbar">
-    {#each links as link}
+    {#each headerNavDatas as headerNavData}
       <li class="navbar-item">
-        <HeaderNavLink url="{link.url}" text="{link.text}" active={ pathname === link.url }  on:click="{toggleNav}"/>
+
+        <HeaderNavLink headerNavData="{ headerNavData }"
+					active={ isHeaderNavActive(headerNavData, pathname) }
+					on:click="{toggleNav}"
+				/>
+
       </li>
     {/each}
     </ul>
