@@ -1,10 +1,7 @@
 
-<script lang="ts" context="module">
-export type Partner = {
-  name: string;
-  imgURL: string;
-  desc: string;
-}
+<script lang="ts">
+
+import type { Partner } from './partner';
 
 import PartnerCard from "./partnerCard.svelte";
 

@@ -1,6 +1,6 @@
 
 <script lang="ts">
-import type { Partner } from "./+page.svelte";
+import type { Partner } from "./partner";
 
 export let partner: Partner = {
   name: "unset",
