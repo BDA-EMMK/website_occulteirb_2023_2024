@@ -11,7 +11,7 @@ export let member: Member = {
 };
 </script>
 
-<div class="team-member">
+<div class="team-member" tabindex="0">
   <div class="face face1">
     <img src="/img/team/the_rock.jpg" alt="photo - { member.name }" title="{ member.name }" id="image">
 
@@ -100,7 +100,7 @@ export let member: Member = {
 }
 
 
-.team-member:hover {
+.team-member:hover, .team-member:focus {
   transform: scale(1.2);
 
   .face1 {
