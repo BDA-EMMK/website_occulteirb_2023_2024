@@ -51,7 +51,7 @@ $: if (isLoaded) { pathname = $page.url.pathname };
 /*
   Mobile
 */
-export let isNavOpened: boolean = true
+export let isNavOpened: boolean = false
 
 function toggleNav() { isNavOpened = !isNavOpened; }
 
@@ -86,14 +86,12 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 
 <style lang="scss">
-:root {
-  --header-background-color: rgba(50, 50, 50, 255);
-}
+@import '$lib/theme.scss';
 
 @media screen and (max-width: 899px) {
 .mobile {
   position: sticky;
-  background: blue;
+  background: $background;
 
   top: 0;
 
@@ -104,7 +102,7 @@ function toggleNav() { isNavOpened = !isNavOpened; }
   min-height: 4em;
   height: 5svh;
 
-  z-index: 999;
+  z-index: 3;
 
   .toggleHeader {
     position: relative;
@@ -120,7 +118,9 @@ function toggleNav() { isNavOpened = !isNavOpened; }
     padding: 0;
     outline: 0;
     background: transparent;
+		color: $foreground;
 
+		&:hover { cursor: pointer; }
   }
 }
 
@@ -211,7 +211,7 @@ nav {
 
   position: relative;
 
-  background-color: var(--header-background-color);
+  background-color: $background;
   padding: 1em 2em;
 }
 
@@ -224,8 +224,7 @@ nav {
 
   gap: .5em;
   margin: 0;
-
-  background-color: var(--header-background-color);
+	padding: 0;
 
   /* remove items list icon */
   li.navbar-item {

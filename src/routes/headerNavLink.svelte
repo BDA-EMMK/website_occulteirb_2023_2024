@@ -26,6 +26,8 @@ function forwardClick() {
 </a>
 
 <style lang="scss">
+@import '$lib/theme.scss';
+
 /* Navbar links style */
 a {
   text-decoration: none;
@@ -37,7 +39,7 @@ a {
   p {
     font-size: 1.5rem;
 
-    color: rgba(255, 255, 255, 1);
+    color: $foreground;
     text-decoration: none;
 
     position: relative;
@@ -71,7 +73,7 @@ a {
 
       transform: translateX(-150%);
       filter: opacity(0);
-      background-color: red;
+      background-color: $red;
       transition: transform 0.4s cubic-bezier(.22,.61,.36,1), filter 0.3s cubic-bezier(.22,.61,.36,1);
     }
 
@@ -100,7 +102,7 @@ a {
 
       transform: translateY(-150%);
       filter: opacity(0);
-      background-color: red;
+      background-color: $red;
       transition: transform 0.4s cubic-bezier(.22,.61,.36,1), filter 0.3s cubic-bezier(.22,.61,.36,1);
     }
   }
@@ -121,8 +123,7 @@ a {
     }
 
     p {
-      color: rgba(255, 73, 1, 1);
-      background-color: rgba(255, 255, 255, 0);
+      color: $red;
     }
   }
 }
