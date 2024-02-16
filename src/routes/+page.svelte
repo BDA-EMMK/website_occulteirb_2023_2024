@@ -2,7 +2,12 @@
 <script lang="ts">
 </script>
 
-<h1>Welcome to SvelteKit</h1>
+<div class="logo">
+	<div class="container">
+		<img src="/logo_destineirb_fond.png" alt="" class="back">
+		<img src="/logo_destineirb_abeille.png" alt="" class="bee">
+	</div>
+</div>
 
 <div class="texts">
   <p class="text">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
@@ -25,6 +30,64 @@
 </div>
 
 <style lang="scss">
+@import '$lib/theme.scss';
+
+@keyframes logo-rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes logo-translation {
+	from {
+		transform: translateY(-1em);
+	}
+	to {
+		transform: translateY(-1.5em);
+	}
+}
+
+
+.logo {
+	width: 100vw;
+	height: 100svh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.container {
+		position: relative;
+		width: 70svh;
+		height: 70svh;
+	}
+
+	.bee {
+		position: relative;
+		height: 100%;
+		width: 100%;
+
+		animation: 1s ease-in-out 0s infinite alternate logo-translation;
+	}
+
+	.back {
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		border-radius: 100%;
+		background-color: $red;
+
+		animation: 60s linear 0s infinite logo-rotation;
+	}
+	
+}
 
 div.texts {
   display: flex;
@@ -39,7 +102,6 @@ p.text {
   margin: 0;
   max-width: 65ch;
 }
-
 </style>
 
 
