@@ -12,6 +12,24 @@ const allos: Allo[] = [
     finishDate: "not set",
     creationDate: "5 min ago",
     requestText: "Des crèpes pitié monsieur...."
+  },
+  {
+    UID: "1",
+    CAS_UID: "jsp",
+    state: "In Progress",
+    title: "Des crèpes !",
+    finishDate: "not set",
+    creationDate: "5 min ago",
+    requestText: "Des crèpes pitié monsieur...."
+  },
+  {
+    UID: "2",
+    CAS_UID: "jsp",
+    state: "In Progress",
+    title: "Des crèpes !",
+    finishDate: "not set",
+    creationDate: "5 min ago",
+    requestText: "Des crèpes pitié monsieur...."
   }
 ]
 </script>
@@ -31,7 +49,14 @@ const allos: Allo[] = [
 <style lang="scss">
 
 .allos-list {
-  padding: 0;
+  padding: 5vw 10vw;
+  gap: 5vw;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: space-between;
 
   li { list-style: none; }
 }

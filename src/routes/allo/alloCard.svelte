@@ -13,6 +13,8 @@ export let allo: Allo = {
 };
 
 let showdetails: boolean = false;
+
+function toggleDetails() { showdetails = !showdetails; }
 </script>
 
 <div class="allo-card">
@@ -21,13 +23,24 @@ let showdetails: boolean = false;
   </h3>
 
   <p class="state text">
-    Status: { allo.state }
+    Status : { allo.state }
   </p>
 
+  <p>
+    Request date : { allo.creationDate }
+  </p>
 
   <div class="details" class:showdetails>
     <p>{ allo.requestText}</p>
   </div>
+
+  <button on:click={toggleDetails} class="toggle-details">
+    {#if showdetails}
+      Hide details
+    {:else}
+      Show details
+    {/if}
+  </button>
 </div>
 
 
@@ -38,16 +51,49 @@ let showdetails: boolean = false;
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
+
+  background-color: red;
+
+  /* width: 25vw;
+  min-width: 20ch;*/
+  padding: 5em;
+  gap: 1em;
+
+  .title, p { margin: 0; }
 
   .title {
     font-size: 2em;
+    padding-bottom: 1em;
+  }
+
+  .toggle-details {
+    position: absolute;
+
+    right: 1vw;
+    top: 1vw;
+
+    border: 0;
+
+    cursor: pointer;
+
+    background-color: transparent;
+
+
+
+    padding: 0;
+    margin: 0;
   }
 
   .details {
-    max-height: 0;
+    height: 0;
+    overflow: hidden;
 
-    .showdetails {
-      max-height: auto;
+    transition: height .3s;
+
+    &.showdetails {
+      height: 5em;
     }
   }
 }
