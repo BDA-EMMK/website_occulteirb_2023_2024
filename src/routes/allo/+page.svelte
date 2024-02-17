@@ -55,10 +55,26 @@ const allos: Allo[] = [
   display: flex;
   flex-wrap: wrap;
 
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
   li { list-style: none; }
+}
+
+
+@media screen and (max-width: 899px) {
+  .allos-list {
+    padding: 5vw 0vw;
+    gap: 5vw;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    background-color: blue;
+    justify-content: center;
+
+    li { list-style: none; }
+  }
 }
 
 </style>
