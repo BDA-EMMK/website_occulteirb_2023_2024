@@ -63,6 +63,11 @@
 		position: relative;
 		width: 70svh;
 		height: 70svh;
+
+    max-width: 90vw;
+    max-height: 90vw;
+
+    overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
 	}
 
 	.bee {
