@@ -33,6 +33,8 @@ export let member: Member = {
 
 
 <style lang="scss">
+@import '$lib/theme.scss';
+
 .team-member {
   position: relative;
 
@@ -43,7 +45,7 @@ export let member: Member = {
   height: 26.25vw;
   /* object-fit: contain;*/
 
-  background-color: #f8f5f2;
+  /* background-color: #f8f5f2; */
 
   text-align: center;
 
@@ -65,7 +67,7 @@ export let member: Member = {
   width: 100%;
   height: 100%;
 
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-color: rgba(255, 255, 255, 0.8) */;
   padding: 10px;
   transition: transform 0.5s, filter 0.5s;
 
