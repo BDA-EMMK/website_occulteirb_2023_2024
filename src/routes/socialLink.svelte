@@ -11,10 +11,6 @@ export let socialLinkData: SocialLinkData = {
 export let active: boolean;
 
 
-function forwardClick() {
-  dispatch('click');
-}
-
 </script>
 
 <a href="{ socialLinkData.URL }" target="_blank">
