@@ -41,6 +41,7 @@ export let desc: string = "Unset desc";
 
     flex-wrap: wrap;
     padding: 0;
+    margin: 0;
     gap: 1em;
     width: 100%;
 

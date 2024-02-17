@@ -68,7 +68,6 @@ export let member: Member = {
   height: 100%;
 
   /* background-color: rgba(255, 255, 255, 0.8) */;
-  padding: 10px;
   transition: transform 0.5s, filter 0.5s;
 
   .member-details {
