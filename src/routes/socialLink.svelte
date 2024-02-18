@@ -1,21 +1,20 @@
 
 <script lang="ts">
+import type { SocialLinkData } from './socialLink';
 
 export let socialLinkData: SocialLinkData = {
 	URL: "/error_url_not_set",
 	IMG: "NOT_SET",
 	ALT: "ALT_NOT_SET",
 	text: "NOT SET !"
-}
+};
 
-export let active: boolean;
-
-
+// export let active: boolean;
 </script>
 
 <a href="{ socialLinkData.URL }" target="_blank">
   <img src="{ socialLinkData.IMG }" alt="{ socialLinkData.ALT }">
-  <p>{ socialLinkData.text }</p>
+  <!-- <p>{ socialLinkData.text }</p> -->
 </a>
 
 <style lang="scss">
@@ -24,36 +23,38 @@ export let active: boolean;
 /* Social links style */
 a {
   text-decoration: none;
-  
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  transform: translateX(0);
-  z-index: 1000;
 
-  p {
-    font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    color: $foreground;
-    text-decoration: none;
-    border-radius: 5px;
-
-    position: relative;
-    line-height: 0;
-
-    display: inline-block;
-
-    transition: background-color 0.3s;
-  }
+  position: relative;
+  padding: .2vw;
 
   img {
    width: 40px;
    height: 40px;
-}
+  }
 
-  .hover_effect {
+  &::after {
+    content: "";
+
+    position: absolute;
+    padding: inherit;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transition: opacity ease-in-out .2s;
     border: 3px solid $foreground;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
     }
-  
+  }
+}
 </style>
 
