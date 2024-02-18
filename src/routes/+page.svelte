@@ -1,5 +1,29 @@
 
 <script lang="ts">
+import type { SocialLinkData } from "./socialLink";
+import SocialLink from "./socialLink.svelte";
+
+const socialLinks: SocialLinkData[] = [
+  {
+    URL: "/equipe",
+    IMG: "/img/logos/telegram_logo_white.png",
+    ALT: "Rejoignez Notre Telegram !",
+    text: ""
+  },
+  {
+    URL: "/equipe",
+    IMG: "/img/logos/facebook_logo_white.png",
+    ALT: "Rejoignez Notre Facebook !",
+    text: ""
+  },
+  {
+    URL: "/equipe",
+    IMG: "/img/logos/instagram_logo_white.png",
+    ALT: "Rejoignez Notre Instagram !",
+    text: ""
+  },
+]
+
 </script>
 
 <div class="logo">
@@ -7,6 +31,16 @@
 		<img src="/logo_destineirb_fond.png" alt="" class="back">
 		<img src="/logo_destineirb_abeille.png" alt="" class="bee">
 	</div>
+</div>
+
+<div class="social-links">
+  <ul>
+    {#each socialLinks as socialLink}
+      <li>
+        <SocialLink socialLinkData="{ socialLink }" />
+      </li>
+    {/each}
+  </ul>
 </div>
 
 <div class="texts">
@@ -106,6 +140,27 @@ div.texts {
 p.text {
   margin: 0;
   max-width: 65ch;
+}
+
+.social-links {
+  position: fixed;
+
+  bottom: 2vw;
+  left: 2vw;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    gap: .5em;
+
+    position: relative;
+
+    li {
+      list-style: none;
+    }
+  }
 }
 </style>
 
