@@ -37,17 +37,19 @@ a {
   display: block;
 
   p {
-    font-size: 1.5rem;
+    font-size: 2rem;
 
     color: $foreground;
     text-decoration: none;
+
+    padding: 2rem 0;
 
     position: relative;
     line-height: 0;
 
     display: inline-block;
 
-    transition: color 0.3s cubic-bezier(.22, .61, .36, 1), transform .3s, background-color 0.3s, border 0.3s;
+    transition: color 0.3s cubic-bezier(.22, .61, .36, 1), transform .3s ease-in-out, background-color 0.3s, border 0.3s;
   }
 
   .hover_effect {
@@ -123,10 +125,9 @@ a {
     }
 
     p {
-      color: $red;
+      color: #800004;
+      transform: scale(1.1);
     }
   }
 }
-
 </style>
-

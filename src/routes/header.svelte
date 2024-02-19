@@ -54,7 +54,6 @@ $: if (isLoaded) { pathname = $page.url.pathname };
 export let isNavOpened: boolean = false
 
 function toggleNav() { isNavOpened = !isNavOpened; }
-
 </script>
 
 <div class="mobile">
@@ -125,7 +124,7 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 }
 
 .header {
-  width: 100vw;
+  width: 100%;
   height: 100dvh;
   position: fixed;
 
@@ -197,11 +196,6 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 .logo {
   width: 80px;
 }
-
-header {
-  width: 100vw;
-}
-
 
 /* Header */
 nav {

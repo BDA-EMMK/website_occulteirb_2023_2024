@@ -8,4 +8,3 @@ export type HeaderNavData = {
 export function isHeaderNavActive(headerNavData: HeaderNavData, pathname: string): boolean {
 	return headerNavData.URL === pathname;
 }
-
