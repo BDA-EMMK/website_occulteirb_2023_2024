@@ -17,13 +17,14 @@ onMount(() => {
 
 <div class="loading" class:loaded class:endloaded></div>
 
-<Header />
-
 <main>
+  <Header />
+
   <slot />
+
+  <Footer />
 </main>
 
-<Footer />
 
 <style lang="scss">
 @import '$lib/theme.scss';
@@ -73,10 +74,12 @@ onMount(() => {
 }
 
 main {
-  overflow-y: hidden;
+  overflow-y: auto;
 
 	color: $foreground;
 	background-color: $background;
+
+  max-height: 100vh;
 }
 
 </style>
