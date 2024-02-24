@@ -61,6 +61,11 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 </div>
 
 <header class="header {isNavOpened ? 'opened': ''}"  >
+	<div class="bg">
+		<div class="top-right"></div>
+		<div class="bottom-left"></div>
+	</div>
+
   <nav>
     <!-- Left side logo -->
     <a href="/" class="logo-link" on:click={toggleNav}>
@@ -90,14 +95,14 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 @media screen and (max-width: 899px) {
 .mobile {
   position: sticky;
-  background: $background;
+  background: transparent;
 
   top: 0;
 
   display: flex;
   flex-direction: row-reverse;
 
-  width: 100vw;
+  width: 100%;
   min-height: 4em;
   height: 5svh;
 
@@ -125,19 +130,21 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 .header {
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   position: fixed;
 
   overflow: scroll;
+  pointer-events: none;  /* Do not prevent from click nav ... */
+	&.opened { pointer-events: auto; }
 
   left: 0;
   top: 0;
 
-  background: red;
+  z-index: 2;
 
   nav {
     width: 100%;
-    position: relative;
+    position: absolute;
 
     display: flex;
     flex-direction: column;
@@ -145,16 +152,25 @@ function toggleNav() { isNavOpened = !isNavOpened; }
     justify-content: space-between;
 
     gap: 10svh;
+
+		transition: transform .5s ease-in-out 0s;
   }
 
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  z-index: 2;
-  transform: translate(100%, -20%);
+    padding: 0;
 
-  transition: transform .5s cubic-bezier(0.19, 1, 0.22, 1);
+    font-size: 2rem;
 
-  &.opened {
-    transform: translate(0%);
+		width: 100%;
+
+    li {
+			list-style: none;
+		}
   }
 
   .logo-link {
@@ -169,18 +185,119 @@ function toggleNav() { isNavOpened = !isNavOpened; }
     }
   }
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	.logo-link, li {
+		transform: translateX(100vw);
+		filter: opacity(0);
+	}
 
-    padding: 0;
+	.logo-link {
+		transition: transform .5s ease-in-out 0s, filter .5s ease-in-out 0s;
+	}
 
-    font-size: 2rem;
+	ul :nth-child(1) {
+		transition: transform .5s ease-in-out .1s, filter .5s ease-in-out 0s;
+	}
 
-    li { list-style: none;}
+	ul :nth-child(2) {
+		transition: transform .5s ease-in-out .2s, filter .5s ease-in-out 0s;
+	}
+
+	ul :nth-child(3) {
+		transition: transform .5s ease-in-out .3s, filter .5s ease-in-out 0s;
+	}
+
+	ul :nth-child(4) {
+		transition: transform .5s ease-in-out .4s, filter .5s ease-in-out 0s;
+	}
+
+	ul :nth-child(5) {
+		transition: transform .5s ease-in-out .5s, filter .5s ease-in-out 0s;
+	}
+
+	ul :nth-child(6) {
+		transition: transform .5s ease-in-out .6s, filter .5s ease-in-out 0s;
+	}
+
+  &.opened {
+		.logo-link, li {
+			transform: translate(0%);
+			filter: opacity(1);
+		}
+
+		.logo-link {
+			transition: transform .5s ease-in-out .7s, filter .5s ease-in-out .7s;
+		}
+
+		ul :nth-child(1) {
+			transition: transform .5s ease-in-out .8s, filter .5s ease-in-out .8s;
+
+		}
+
+		ul :nth-child(2) {
+			transition: transform .5s ease-in-out .9s, filter .5s ease-in-out .9s;
+		}
+
+		ul :nth-child(3) {
+			transition: transform .5s ease-in-out 1s, filter .5s ease-in-out 1s;
+		}
+
+		ul :nth-child(4) {
+			transition: transform .5s ease-in-out 1.1s, filter .5s ease-in-out 1.1s;
+		}
+
+		ul :nth-child(5) {
+			transition: transform .5s ease-in-out 1.2s, filter .5s ease-in-out 1.2s;
+		}
+
+		ul :nth-child(6) {
+			transition: transform .5s ease-in-out 1.3s, filter .5s ease-in-out 1.3s;
+		}
   }
+
+	.bg {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	div.bg div {
+		content: '';
+
+		width: 100%;
+		height: 100%;
+		position: absolute;
+
+		left: 0;
+		top: 0;
+
+		background-color: $red;
+		transition: transform .8s ease-in-out .5s;
+		z-index: -1;
+	}
+
+	.bg .top-right {
+		transform: translate(70%, -100%);
+		border-bottom-left-radius: 100%;
+	}
+
+	.bg .bottom-left {
+		transform: translate(-70%, 100%);
+		border-top-right-radius: 100%;
+	}
+
+
+	&.opened .bg .top-right {
+		transform: translate(-0%, -0%);
+		transition: transform .8s ease-in-out 0s;
+	}
+
+	&.opened .bg .bottom-left {
+		transform: translate(-0%, -0%);
+		transition: transform .8s ease-in-out 0s;
+	}
+
 }
 
 }
