@@ -56,11 +56,15 @@ export let isNavOpened: boolean = false
 function toggleNav() { isNavOpened = !isNavOpened; }
 </script>
 
-<div class="mobile">
-  <button class="toggleHeader" on:click={toggleNav}>Toggle</button>
-</div>
-
 <header class="header {isNavOpened ? 'opened': ''}"  >
+	<div class="mobile">
+		<button class="toggleHeader" on:click={toggleNav}>
+			<div class="hamburger-top"></div>
+			<div class="hamburger-mid"></div>
+			<div class="hamburger-bot"></div>
+		</button>
+	</div>
+
 	<div class="bg">
 		<div class="top-right"></div>
 		<div class="bottom-left"></div>
@@ -96,6 +100,7 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 .mobile {
   position: sticky;
   background: transparent;
+	pointer-events: auto;
 
   top: 0;
 
@@ -109,22 +114,38 @@ function toggleNav() { isNavOpened = !isNavOpened; }
   z-index: 3;
 
   .toggleHeader {
-    position: relative;
-    top: 0;
-    right: 5vw;
-
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
 
     font-family: 'Protest Revolution', cursive;
     font-size: 2rem;
 
     border: 0;
     margin: 0;
-    padding: 0;
+		padding: 1rem;
     outline: 0;
-    background: transparent;
+
+    background: rgba($background, .61);
+		backdrop-filter: blur(5px);
+		transition: background-color .7s ease-in-out .7s;
+		border-bottom-left-radius: 1rem;
+
 		color: $foreground;
 
 		&:hover { cursor: pointer; }
+
+		.hamburger-top, .hamburger-mid, .hamburger-bot {
+			height: 10%;
+			width: 3rem;
+
+			border-radius: .5rem;
+
+			background-color: $foreground;
+
+			transition: transform .5s ease-in-out, filter .5s ease-in-out;
+		}
   }
 }
 
@@ -222,6 +243,24 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 	}
 
   &.opened {
+		.toggleHeader { 
+			background: rgba($red, .61);
+			transition: background-color .5s ease-in-out 0s;
+		}
+
+		.hamburger-top {
+			transform: translateY(450%) rotate(45deg);
+		}
+
+		.hamburger-mid {
+			transform: translateX(-100%);
+			filter: opacity(0);
+		}
+
+		.hamburger-bot {
+			transform: translateY(-450%) rotate(-45deg);
+		}
+
 		.logo-link, li {
 			transform: translate(0%);
 			filter: opacity(1);
