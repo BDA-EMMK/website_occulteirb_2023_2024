@@ -167,8 +167,15 @@ p.text {
 .social-links {
   position: fixed;
 
-  bottom: 2vw;
-  left: 2vw;
+	background: rgba($background, .61);
+	backdrop-filter: blur(5px);
+
+	border-top-left-radius: 1rem;
+
+  bottom: 0;
+  right: 0;
+
+	padding: 2vw;
 
   z-index: 1;
 
