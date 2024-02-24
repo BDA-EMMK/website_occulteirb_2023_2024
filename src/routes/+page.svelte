@@ -91,6 +91,22 @@ const socialLinks: SocialLinkData[] = [
 	}
 }
 
+@media screen and (max-width: 899px) {
+div.texts {
+  display: flex;
+	flex-direction: column;
+
+	gap: 3em;
+  padding: 2em 10vw;
+}
+
+p.text {
+  margin: 0;
+  max-width: 60ch;
+}
+}
+
+
 
 .logo {
 	width: 100%;
