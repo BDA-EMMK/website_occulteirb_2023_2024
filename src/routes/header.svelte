@@ -133,9 +133,12 @@ function toggleNav() { isNavOpened = !isNavOpened; }
   height: 100%;
   position: fixed;
 
-  overflow: scroll;
+  overflow: hidden;
   pointer-events: none;  /* Do not prevent from click nav ... */
-	&.opened { pointer-events: auto; }
+	&.opened {
+		pointer-events: auto;
+		overflow-y: auto;
+	}
 
   left: 0;
   top: 0;
