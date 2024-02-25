@@ -4,6 +4,7 @@ import Header from "./header.svelte";
 import Footer from './footer.svelte';
 
 import { onMount } from "svelte";
+import { afterNavigate } from '$app/navigation';
 
 let loaded: boolean = false
 let endloaded: boolean = false
@@ -13,11 +14,15 @@ onMount(() => {
 
   setTimeout(() => { endloaded = true }, 1000)
 });
+
+afterNavigate(() => {
+	document.getElementById('page')?.scrollTo(0, 0);
+});
 </script>
 
 <div class="loading" class:loaded class:endloaded></div>
 
-<main>
+<main id="page">
   <Header />
 
   <slot />
@@ -30,6 +35,21 @@ onMount(() => {
 @import '$lib/theme.scss';
 
 @keyframes loading-screen {
+	0% {
+    translate: 0% 100%;
+	}
+	20% {
+    translate: 0% 60%;
+	}
+	30% {
+    translate: 0% 50%;
+	}
+	45% {
+    translate: 0% 30%;
+	}
+	60% {
+    translate: 0% 15%;
+	}
 	100% {
     translate: 0% 0%;
 	}
@@ -44,8 +64,9 @@ onMount(() => {
 
   background-color: $background;
 
-  transition: opacity 1s;
-  pointer-events: none;  /* Do not prevent from click nav ... */
+	will-change: opacity;
+	opacity: 1;
+  transition: opacity ease-in-out 3s;
 
   &::after {
     content: "";
@@ -57,18 +78,17 @@ onMount(() => {
     width: 100%;
     height: 100%;
 
-		translate: 0% 100%;
-		transition: translate .5s;
     background-color: $red;
-		animation: 3s ease-in-out 0s forwards loading-screen;
+
+		translate: 0% 100%;
+		will-change: translate;
+
+		animation: 10s ease-in-out 0s forwards loading-screen;
   }
 
   &.loaded {
     opacity: 0;
-
-  }
-
-  &.endloaded {
+		pointer-events: none;  /* Do not prevent from click nav ... */
   }
 }
 
@@ -79,6 +99,9 @@ main {
 	background-color: $background;
 
   max-height: 100vh;
+  min-height: 100svh;
+
+	scroll-behavior: smooth;
 }
 
 </style>
