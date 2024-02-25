@@ -60,6 +60,8 @@ a {
     top: 0;
     left: 0;
 
+		&::before, &::after { display: none; }
+
     &::before {
       content: "";
 
