@@ -30,11 +30,8 @@ onMount(() => {
 @import '$lib/theme.scss';
 
 @keyframes loading-screen {
-	from {
-    opacity: 0;
-	}
-	to {
-    opacity: 100%;
+	100% {
+    translate: 0% 0%;
 	}
 }
 
@@ -45,7 +42,7 @@ onMount(() => {
 
   z-index: 999;
 
-  background-color: yellow;
+  background-color: $background;
 
   transition: opacity 1s;
   pointer-events: none;  /* Do not prevent from click nav ... */
@@ -60,16 +57,18 @@ onMount(() => {
     width: 100%;
     height: 100%;
 
-    background-color: red;
-		animation: 1s ease-in-out 0s infinite alternate loading-screen;
+		translate: 0% 100%;
+		transition: translate .5s;
+    background-color: $red;
+		animation: 3s ease-in-out 0s forwards loading-screen;
   }
 
   &.loaded {
     opacity: 0;
+
   }
 
   &.endloaded {
-    display: none;
   }
 }
 
