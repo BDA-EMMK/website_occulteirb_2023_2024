@@ -58,7 +58,7 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 <header class="header {isNavOpened ? 'opened': ''}"  >
 	<div class="mobile">
-		<button class="toggleHeader" on:click={toggleNav}>
+		<button class="toggleHeader" aria-label="Show header" on:click={toggleNav}>
 			<div class="hamburger-top"></div>
 			<div class="hamburger-mid"></div>
 			<div class="hamburger-bot"></div>
@@ -67,13 +67,13 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 	<div class="bg">
 		<div class="top-right"></div>
-		<div class="bottom-left"></div>
 	</div>
 
   <nav>
     <!-- Left side logo -->
     <a href="/" class="logo-link" on:click={toggleNav}>
-      <img class="logo" src="/img/logos/eye_logo.png" alt="Logo">
+			<div class="logo"></div>
+      <!-- <img class="logo" src="/img/logos/eye_logo.png" alt="Logo"> -->
     </a>
 
     <!-- Navbar to the right -->
@@ -95,6 +95,15 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+@keyframes header-show {
+	from {
+		transform: translate(70%, -100%);
+	}
+	to {
+		transform: translate(-50%, 0%);
+	}
+}
 
 @media screen and (max-width: 899px) {
 .mobile {
@@ -127,14 +136,30 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 		padding: 1rem;
     outline: 0;
 
-    background: rgba($background, .61);
+
+    background-color: rgba($background, .61);
+
+		&::before {
+			content: '';
+
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			position: absolute;
+
+			background-color: $red;
+
+			transition: opacity .7s ease-in-out .7s;
+			will-change: opacity, tansition;
+			opacity: 0;
+		}
+
 		backdrop-filter: blur(5px);
-		transition: background-color .7s ease-in-out .7s;
 		border-bottom-left-radius: 1rem;
 
 		color: $foreground;
-
-		&:hover { cursor: pointer; }
+		cursor: pointer;
 
 		.hamburger-top, .hamburger-mid, .hamburger-bot {
 			height: 10%;
@@ -144,6 +169,14 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 			background-color: $foreground;
 
+			will-change: transform;
+
+			filter: opacity(1);
+			transition: transform .5s ease-in-out;
+		}
+
+		.hamburger-mid { 
+			will-change: transform, filter;
 			transition: transform .5s ease-in-out, filter .5s ease-in-out;
 		}
   }
@@ -200,52 +233,60 @@ function toggleNav() { isNavOpened = !isNavOpened; }
   .logo-link {
     display: flex;
     justify-content: center;
+		width: 75%;
 
     padding: 2em 1em;
 
+		translate: 0vw 0vw;
+
     .logo {
-      max-width: 75%;
-      position: relative;
+			width: 100%;
+			aspect-ratio: 15 / 10;
+
+
+			background-image: url('/img/logos/eye_logo.png');
+			background-size: cover;
     }
   }
 
 	.logo-link, li {
-		transform: translateX(100vw);
-		filter: opacity(0);
+		will-change: translate, transition;
+		translate: 100vw 0vw;
+		/* opacity: 0; */
 	}
 
 	.logo-link {
-		transition: transform .5s ease-in-out 0s, filter .5s ease-in-out 0s;
+		transition: translate .5s ease-in-out 0s;
 	}
 
 	ul :nth-child(1) {
-		transition: transform .5s ease-in-out .1s, filter .5s ease-in-out 0s;
+		transition: translate .5s ease-in-out .1s;
 	}
 
 	ul :nth-child(2) {
-		transition: transform .5s ease-in-out .2s, filter .5s ease-in-out 0s;
+		transition: translate .5s ease-in-out .2s;
 	}
 
 	ul :nth-child(3) {
-		transition: transform .5s ease-in-out .3s, filter .5s ease-in-out 0s;
+		transition: translate .5s ease-in-out .3s;
 	}
 
 	ul :nth-child(4) {
-		transition: transform .5s ease-in-out .4s, filter .5s ease-in-out 0s;
+		transition: translate .5s ease-in-out .4s;
 	}
 
 	ul :nth-child(5) {
-		transition: transform .5s ease-in-out .5s, filter .5s ease-in-out 0s;
+		transition: translate .5s ease-in-out .5s;
 	}
 
 	ul :nth-child(6) {
-		transition: transform .5s ease-in-out .6s, filter .5s ease-in-out 0s;
+		transition: translate .5s ease-in-out .6s;
 	}
 
   &.opened {
-		.toggleHeader { 
-			background: rgba($red, .61);
-			transition: background-color .5s ease-in-out 0s;
+		.toggleHeader::before { 
+			transition: opacity .5s ease-in-out 0s;
+			opacity: 1;
 		}
 
 		.hamburger-top {
@@ -262,37 +303,37 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 		}
 
 		.logo-link, li {
-			transform: translate(0%);
-			filter: opacity(1);
+			translate: 0vw 0vw;
+			/* filter: opacity(1); */
 		}
 
 		.logo-link {
-			transition: transform .5s ease-in-out .7s, filter .5s ease-in-out .7s;
+			transition: translate .5s ease-in-out .7s;
 		}
 
 		ul :nth-child(1) {
-			transition: transform .5s ease-in-out .8s, filter .5s ease-in-out .8s;
+			transition: translate .5s ease-in-out .8s;
 
 		}
 
 		ul :nth-child(2) {
-			transition: transform .5s ease-in-out .9s, filter .5s ease-in-out .9s;
+			transition: translate .5s ease-in-out .9s;
 		}
 
 		ul :nth-child(3) {
-			transition: transform .5s ease-in-out 1s, filter .5s ease-in-out 1s;
+			transition: translate .5s ease-in-out 1s;
 		}
 
 		ul :nth-child(4) {
-			transition: transform .5s ease-in-out 1.1s, filter .5s ease-in-out 1.1s;
+			transition: translate .5s ease-in-out 1.1s;
 		}
 
 		ul :nth-child(5) {
-			transition: transform .5s ease-in-out 1.2s, filter .5s ease-in-out 1.2s;
+			transition: translate .5s ease-in-out 1.2s;
 		}
 
 		ul :nth-child(6) {
-			transition: transform .5s ease-in-out 1.3s, filter .5s ease-in-out 1.3s;
+			transition: translate .5s ease-in-out 1.3s;
 		}
   }
 
@@ -307,39 +348,28 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 	div.bg div {
 		content: '';
 
-		width: 100%;
-		height: 100%;
+		width: 150%;
+		height: 200%;
 		position: absolute;
 
 		left: 0;
 		top: 0;
 
+		will-change: translate, transition;
 		background-color: $red;
-		transition: transform .8s ease-in-out .5s;
+		transition: translate .8s ease-in-out .5s;
 		z-index: -1;
 	}
 
 	.bg .top-right {
-		transform: translate(70%, -100%);
-		border-bottom-left-radius: 100%;
+		translate: 0% -100%;
+		border-bottom-left-radius: 150vw;
 	}
-
-	.bg .bottom-left {
-		transform: translate(-70%, 100%);
-		border-top-right-radius: 100%;
-	}
-
 
 	&.opened .bg .top-right {
-		transform: translate(-0%, -0%);
-		transition: transform .8s ease-in-out 0s;
+		translate: 0% 0%;
+		transition: translate .8s ease-in-out 0s;
 	}
-
-	&.opened .bg .bottom-left {
-		transform: translate(-0%, -0%);
-		transition: transform .8s ease-in-out 0s;
-	}
-
 }
 
 }
@@ -347,7 +377,8 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 @media screen and (min-width: 900px) {
 .mobile {
-  display: none;
+	filter: opacity(0);
+	pointer-events: none;
 }
 
 
@@ -375,6 +406,7 @@ nav {
   justify-content: space-between;
   align-items: center;
 
+	position: relative;
   gap: .5em;
   margin: 0;
 	padding: 0;
