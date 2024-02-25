@@ -25,16 +25,16 @@ const headerNavDatas: HeaderNavData[] = [
     text: 'Allos'
   },
   {
-    URL: '/partenaires/',
-    text: 'Partenaires'
-  },
-  {
     URL: '/video/',
     text: 'Vidéo'
   },
   {
     URL: '/jeu/',
     text: 'Jeu'
+  },
+  {
+    URL: '/partenaires/',
+    text: 'Partenaires'
   },
 ];
 
@@ -65,15 +65,10 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 		</button>
 	</div>
 
-	<div class="bg">
-		<div class="top-right"></div>
-	</div>
-
   <nav>
     <!-- Left side logo -->
     <a href="/" class="logo-link" on:click={toggleNav}>
 			<div class="logo"></div>
-      <!-- <img class="logo" src="/img/logos/eye_logo.png" alt="Logo"> -->
     </a>
 
     <!-- Navbar to the right -->
@@ -128,8 +123,7 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 		align-items: center;
 		justify-content: space-between;
 
-    font-family: 'Protest Revolution', cursive;
-    font-size: 2rem;
+		position: relative;
 
     border: 0;
     margin: 0;
@@ -137,7 +131,7 @@ function toggleNav() { isNavOpened = !isNavOpened; }
     outline: 0;
 
 
-    background-color: rgba($background, .61);
+    background-color: rgba($darker-background, .61);
 
 		&::before {
 			content: '';
@@ -150,12 +144,12 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
 			background-color: $red;
 
-			transition: opacity .7s ease-in-out .7s;
+			transition: opacity .5s ease-in-out .5s;
 			will-change: opacity, tansition;
 			opacity: 0;
 		}
 
-		backdrop-filter: blur(5px);
+		/* backdrop-filter: blur(2px); */
 		border-bottom-left-radius: 1rem;
 
 		color: $foreground;
@@ -189,15 +183,16 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 
   overflow: hidden;
   pointer-events: none;  /* Do not prevent from click nav ... */
-	&.opened {
-		pointer-events: auto;
-		overflow-y: auto;
-	}
 
   left: 0;
   top: 0;
 
   z-index: 2;
+
+	&.opened {
+		pointer-events: auto;
+		overflow-y: auto;
+	}
 
   nav {
     width: 100%;
@@ -207,8 +202,6 @@ function toggleNav() { isNavOpened = !isNavOpened; }
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
-    gap: 10svh;
 
 		transition: transform .5s ease-in-out 0s;
   }
@@ -235,16 +228,14 @@ function toggleNav() { isNavOpened = !isNavOpened; }
     justify-content: center;
 		width: 75%;
 
-    padding: 2em 1em;
-
 		translate: 0vw 0vw;
 
     .logo {
 			width: 100%;
-			aspect-ratio: 15 / 10;
+			max-width: 18rem;
+			aspect-ratio: 1 / 1;
 
-
-			background-image: url('/img/logos/eye_logo.png');
+			background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiBoZWlnaHQ9IjY0cHgiIGlkPSJJY29ucyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNjQgNjQiIHdpZHRoPSI2NHB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBpZD0idmlzdWFsX2lkZW50aXRpZXMiPjxnPjxwYXRoIGQ9Ik0zMiwyNGMtNC40MTksMC04LDMuNTgxLTgsOHMzLjU4MSw4LDgsOHM4LTMuNTgxLDgtOFMzNi40MTksMjQsMzIsMjR6IE0zMiwzOWMtMy44NjYsMC03LTMuMTM0LTctNyAgICBzMy4xMzQtNyw3LTdzNywzLjEzNCw3LDdTMzUuODY2LDM5LDMyLDM5eiIgZmlsbD0iIzJCNDE0RCIvPjxwYXRoIGQ9Ik0zMiwxN2MxMi42MTUsMCwyMy4zNTQsMTIuMTI5LDI1LjcyLDE1QzU1LjM1NCwzNC44NzEsNDQuNjE1LDQ3LDMyLDQ3UzguNjQ2LDM0Ljg3MSw2LjI4LDMyICAgIEM4LjY0NiwyOS4xMjksMTkuMzg1LDE3LDMyLDE3IE0zMiwxNkMxNy4wODIsMTYsNSwzMiw1LDMyczEyLjA4MiwxNiwyNywxNnMyNy0xNiwyNy0xNlM0Ni45MTgsMTYsMzIsMTZMMzIsMTZ6IiBmaWxsPSIjMzc0NzRGIi8+PHBhdGggZD0iTTMyLDE5YzcuMTY4LDAsMTMsNS44MzIsMTMsMTNzLTUuODMyLDEzLTEzLDEzcy0xMy01LjgzMi0xMy0xM1MyNC44MzIsMTksMzIsMTkgTTMyLDE4ICAgIGMtNy43MzUsMC0xNCw2LjI2NS0xNCwxNHM2LjI2NSwxNCwxNCwxNHMxNC02LjI2NSwxNC0xNFMzOS43MzUsMTgsMzIsMThMMzIsMTh6IiBmaWxsPSIjMzc0NzRGIi8+PGc+PHBhdGggZD0iTTMyLDM3LjQ5N2MtMS40MDgsMC0yLjgxNi0wLjUzNi0zLjg4OS0xLjYwOGwwLjcwNy0wLjcwN2MxLjc1NCwxLjc1NCw0LjYwOSwxLjc1NCw2LjM2MywwICAgICBjMC44NS0wLjg1LDEuMzE3LTEuOTc5LDEuMzE3LTMuMTgycy0wLjQ2OC0yLjMzMi0xLjMxNy0zLjE4MmwwLjcwNy0wLjcwN2MxLjAzOSwxLjAzOCwxLjYxLDIuNDE5LDEuNjEsMy44ODkgICAgIGMwLDEuNDY5LTAuNTcxLDIuODUxLTEuNjEsMy44ODlDMzQuODE2LDM2Ljk2MSwzMy40MDgsMzcuNDk3LDMyLDM3LjQ5N3oiIGZpbGw9IiMzNzQ3NEYiLz48L2c+PC9nPjwvZz48L3N2Zz4=);
 			background-size: cover;
     }
   }
@@ -256,31 +247,31 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 	}
 
 	.logo-link {
-		transition: translate .5s ease-in-out 0s;
+		transition: translate .4s ease-in-out 0s;
 	}
 
 	ul :nth-child(1) {
-		transition: translate .5s ease-in-out .1s;
+		transition: translate .4s ease-in-out .1s;
 	}
 
 	ul :nth-child(2) {
-		transition: translate .5s ease-in-out .2s;
+		transition: translate .4s ease-in-out .2s;
 	}
 
 	ul :nth-child(3) {
-		transition: translate .5s ease-in-out .3s;
+		transition: translate .4s ease-in-out .3s;
 	}
 
 	ul :nth-child(4) {
-		transition: translate .5s ease-in-out .4s;
+		transition: translate .4s ease-in-out .4s;
 	}
 
 	ul :nth-child(5) {
-		transition: translate .5s ease-in-out .5s;
+		transition: translate .4s ease-in-out .5s;
 	}
 
 	ul :nth-child(6) {
-		transition: translate .5s ease-in-out .6s;
+		transition: translate .4s ease-in-out .6s;
 	}
 
   &.opened {
@@ -308,67 +299,57 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 		}
 
 		.logo-link {
-			transition: translate .5s ease-in-out .7s;
+			transition: translate .4s ease-in-out .5s;
 		}
 
 		ul :nth-child(1) {
-			transition: translate .5s ease-in-out .8s;
+			transition: translate .4s ease-in-out .6s;
 
 		}
 
 		ul :nth-child(2) {
-			transition: translate .5s ease-in-out .9s;
+			transition: translate .4s ease-in-out .7s;
 		}
 
 		ul :nth-child(3) {
-			transition: translate .5s ease-in-out 1s;
+			transition: translate .4s ease-in-out .8s;
 		}
 
 		ul :nth-child(4) {
-			transition: translate .5s ease-in-out 1.1s;
+			transition: translate .4s ease-in-out .9s;
 		}
 
 		ul :nth-child(5) {
-			transition: translate .5s ease-in-out 1.2s;
+			transition: translate .4s ease-in-out 1s;
 		}
 
 		ul :nth-child(6) {
-			transition: translate .5s ease-in-out 1.3s;
+			transition: translate .4s ease-in-out 1.1s;
 		}
   }
 
-	.bg {
+	&::before {
+		content: '';
+
 		position: fixed;
 		left: 0;
 		top: 0;
-		width: 100%;
-		height: 100%;
-	}
 
-	div.bg div {
-		content: '';
-
-		width: 150%;
-		height: 200%;
-		position: absolute;
-
-		left: 0;
-		top: 0;
+		width: 100vw;
+		height: 220vh;
 
 		will-change: translate, transition;
 		background-color: $red;
-		transition: translate .8s ease-in-out .5s;
+		transition: translate .6s ease-in-out .5s;
 		z-index: -1;
-	}
 
-	.bg .top-right {
 		translate: 0% -100%;
 		border-bottom-left-radius: 150vw;
 	}
 
-	&.opened .bg .top-right {
+	&.opened::before {
 		translate: 0% 0%;
-		transition: translate .8s ease-in-out 0s;
+		transition: translate .6s ease-in-out 0s;
 	}
 }
 

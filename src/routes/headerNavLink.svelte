@@ -28,9 +28,28 @@ function forwardClick() {
 <style lang="scss">
 @import '$lib/theme.scss';
 
+@media screen and (max-width: 899px) {
 /* Navbar links style */
 a {
-  text-decoration: none;
+  position: relative;
+  display: block;
+  padding: .5em 1.5em;
+
+  p {
+    display: inline-block;
+    position: relative;
+    line-height: 0;
+    padding: 2rem 0;
+
+    font-size: 4rem;
+  }
+}
+
+}
+
+@media screen and (min-width: 899px) {
+/* Navbar links style */
+a {
   padding: .5em 1.5em;
 
   position: relative;
@@ -39,9 +58,6 @@ a {
   p {
     font-size: 2rem;
 
-    color: $foreground;
-    text-decoration: none;
-
     padding: 2rem 0;
 
     position: relative;
@@ -49,7 +65,7 @@ a {
 
     display: inline-block;
 
-    transition: color 0.3s cubic-bezier(.22, .61, .36, 1), transform .3s ease-in-out, background-color 0.3s, border 0.3s;
+    transition: color 0.3s cubic-bezier(.22, .61, .36, 1), transform .3s ease-in-out;
   }
 
   .hover_effect {
@@ -59,14 +75,19 @@ a {
 
     top: 0;
     left: 0;
+		pointer-events: none;
 
-		&::before, &::after { display: none; }
-
-    &::before {
+		&::before, &::after {
       content: "";
 
       position: absolute;
+      background-color: $red;
 
+      opacity: 0;
+      transition: translate 0.4s ease-in-out, opacity 0.3s ease-in-out;
+		}
+
+    &::before {
       left: 0%;
       bottom: 20%;
 
@@ -75,27 +96,10 @@ a {
 
       border-radius: 4px;
 
-      transform: translateX(-150%);
-      filter: opacity(0);
-      background-color: $red;
-      transition: transform 0.4s cubic-bezier(.22,.61,.36,1), filter 0.3s cubic-bezier(.22,.61,.36,1);
-    }
-
-    &.active::before {
-      transform: translateX(.5em);
-      filter: opacity(1);
-    }
-
-    &.active::after {
-      transform: translateY(10%);
-      filter: opacity(1);
+      translate: -150% 0;
     }
 
     &::after {
-      content: "";
-
-      position: absolute;
-
       left: 1em;
       top: 0%;
 
@@ -104,11 +108,23 @@ a {
 
       border-radius: 1px;
 
-      transform: translateY(-150%);
-      filter: opacity(0);
-      background-color: $red;
-      transition: transform 0.4s cubic-bezier(.22,.61,.36,1), filter 0.3s cubic-bezier(.22,.61,.36,1);
+      translate: 0 -150%;
     }
+
+    &.active {
+			&::before, &::after {
+				opacity: 1;
+			}
+
+			&::before {
+				translate: .5em 0;
+			}
+
+			&::after {
+				translate: 0 10%;
+			}
+		}
+
   }
 
 
@@ -116,20 +132,25 @@ a {
     Nice visual effects on hover
   */
   &:hover {
-    .hover_effect:not(.active)::before {
-      transform: translateX(0);
-      filter: opacity(1);
-    }
+    .hover_effect:not(.active) {
+			&::before, &::after {
+				opacity: 1;
+			}
 
-    .hover_effect:not(.active):after {
-      transform: translateY(0);
-      filter: opacity(1);
-    }
+			&::before {
+				translate: 0 0;
+			}
+
+			&::after {
+				translate: 0 0;
+			}
+		}
 
     p {
-      color: #800004;
-      transform: scale(1.1);
+      color: $red;
+      transform: scale(1.05);
     }
   }
+}
 }
 </style>
