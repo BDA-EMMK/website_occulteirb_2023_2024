@@ -44,6 +44,7 @@ const socialLinks: SocialLinkData[] = [
 </div>
 
 <div class="brasse">
+
 <h2>Time for the brasse !</h2>
 
 <div class="brasse-items">
@@ -92,22 +93,111 @@ const socialLinks: SocialLinkData[] = [
 }
 
 @media screen and (max-width: 899px) {
-div.texts {
+.logo {
+	width: 100%;
+	height: 100svh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.container {
+		position: relative;
+		height: 70svh;
+		aspect-ratio: 1 / 1;
+
+    max-width: 90vw;
+    max-height: 90vw;
+
+    overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
+	}
+
+	.bee {
+		position: relative;
+
+		width: 100%;
+		aspect-ratio: 1 / 1;
+
+		background-image: url('/logo_destineirb_abeille.png');
+		background-size: cover;
+
+		will-change: transform;
+		animation: 1s ease-in-out 0s infinite alternate logo-translation;
+	}
+
+	.back {
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		width: 100%;
+		aspect-ratio: 1 / 1;
+
+		background-image: url('/logo_destineirb_fond.png');
+		background-size: cover;
+
+		border-radius: 100%;
+		background-color: $logo-red;
+
+		animation: 60s linear 0s infinite logo-rotation;
+	}
+	
+}
+
+.brasse {
+  padding: 2em 10vw;
+
+	h2 {
+		font-size: 3rem;
+		margin-bottom: 3rem;
+	}
+}
+
+.texts {
   display: flex;
 	flex-direction: column;
 
 	gap: 3em;
-  padding: 2em 10vw;
 }
 
 p.text {
   margin: 0;
   max-width: 60ch;
 }
+
+.social-links {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+	padding: 2vw;
+
+	background: rgba($background, .61);
+	backdrop-filter: blur(5px);
+
+	border-top-right-radius: 1rem;
+
+  z-index: 1;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    gap: .5em;
+
+    position: relative;
+
+    li {
+      list-style: none;
+    }
+  }
+}
 }
 
 
 
+@media screen and (min-width: 900px) {
 .logo {
 	width: 100%;
 	height: 100svh;
@@ -177,10 +267,10 @@ p.text {
 	background: rgba($background, .61);
 	backdrop-filter: blur(5px);
 
-	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
 
   bottom: 0;
-  right: 0;
+  left: 0;
 
 	padding: 2vw;
 
@@ -199,6 +289,7 @@ p.text {
       list-style: none;
     }
   }
+}
 }
 </style>
 
