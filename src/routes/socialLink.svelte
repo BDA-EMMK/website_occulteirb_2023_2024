@@ -12,8 +12,8 @@ export let socialLinkData: SocialLinkData = {
 // export let active: boolean;
 </script>
 
-<a href="{ socialLinkData.URL }" target="_blank">
-  <img src="{ socialLinkData.IMG }" alt="{ socialLinkData.ALT }">
+<a href="{ socialLinkData.URL }" target="_blank" aria-label="{ socialLinkData.text }">
+	<div class="logo-img" style="{ `background-image: url(${socialLinkData.IMG})` }"></div>
   <!-- <p>{ socialLinkData.text }</p> -->
 </a>
 
@@ -31,9 +31,12 @@ a {
   position: relative;
   padding: .2vw;
 
-  img {
-   width: 40px;
-   height: 40px;
+  .logo-img {
+		width: 48px;
+		height: 48px;
+
+		background-size: cover;
+		color: white;
   }
 
   &::after {
