@@ -1,54 +1,32 @@
 
 <script lang="ts">
-import type { SocialLinkData } from "./socialLink";
-import SocialLink from "./socialLink.svelte";
-
-const socialLinks: SocialLinkData[] = [
-  {
-    URL: "/equipe",
-    IMG: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHN0eWxlPSJkaXNwbGF5OiBibG9jazsiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxkZWZzPgoJCTxzdHlsZT4uY2xzLTF7ZmlsbDpub25lO3N0cm9rZTojRThFNkUzO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS13aWR0aDoycHg7fTwvc3R5bGU+Cgk8L2RlZnM+Cgk8dGl0bGUvPgoJPGcgZGF0YS1uYW1lPSJMYXllciAyIiBpZD0iTGF5ZXJfMiI+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTMuNTUsMzcuNTYsNDEuNjksMjMuOGEuMTQuMTQsMCwwLDEsLjE1LjIzTDE5LjY2LDQyYTIuMDYsMi4wNiwwLDAsMC0uNzcsMS42djguODFhLjQxLjQxLDAsMCwwLC42MS4zNmw3Ljc1LTQuM2gwbDYuODUsNC44QS44My44MywwLDAsMCwzNS4zLDUzTDYwLDExLjA2YS4zMS4zMSwwLDAsMC0uMzctLjQ0TDQuNTQsMzFhLjgzLjgzLDAsMCwwLS4xOSwxLjQ1bDcuMTEsNUEyLjA2LDIuMDYsMCwwLDAsMTMuNTUsMzcuNTZaIi8+PC9nPgo8L3N2Zz4KCg==",
-    ALT: "Rejoignez Notre Telegram !",
-    text: ""
-  },
-  {
-    URL: "/equipe",
-    IMG: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHN0eWxlPSJkaXNwbGF5OiBibG9jazsiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiA+Cgk8ZGVmcyA+CgkJPHN0eWxlPi5jbHMtMXtmaWxsOm5vbmU7c3Ryb2tlOiNFOEU2RTM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDoycHg7fS5jbHMtMntmaWxsOiNFOEU2RTM7fTwvc3R5bGU+Cgk8L2RlZnM+Cgk8dGl0bGUvPgoJPGcgZGF0YS1uYW1lPSJMYXllciA2IiBpZD0iTGF5ZXJfNiI+CgkJPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzAuNTQsNTFIMTcuMjJhNC42NCw0LjY0LDAsMCwxLTQuNjMtNC42MlYxNy4yOGE0LjY0LDQuNjQsMCwwLDEsNC42My00LjYzSDQ1LjgiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MC40MywxNy4yOFY0Ni4zNkE0LjY0LDQuNjQsMCwwLDEsNDUuOCw1MWgtOSIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iNTAuNDgiIGN5PSIxMy45NSIgcj0iMSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMwLjU0LDUxVjM4LjUxaC00LjRWMzIuNTdoNC40VjI2Ljg0YTYsNiwwLDAsMSw2LTZoNi4yM3Y1LjY1SDM4LjIxQTEuNDcsMS40NywwLDAsMCwzNi43NCwyOHY0LjU0aDZ2NmgtNlY1MSIvPgoJPC9nPgoJPHVzZSBocmVmPSIjZmFjZWJvb2stbG9nbyIvPgo8L3N2Zz4KCg==",
-    ALT: "Rejoignez Notre Facebook !",
-    text: ""
-  },
-  {
-    URL: "/equipe",
-    IMG: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHN0eWxlPSJkaXNwbGF5OiBibG9jazsiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxkZWZzPgoJCTxzdHlsZT4uY2xzLTF7ZmlsbDpub25lO3N0cm9rZTojRThFNkUzO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MnB4O30gLmNscy0ye2ZpbGw6I0U4RTZFMzt9PC9zdHlsZT4KCTwvZGVmcz4KCTx0aXRsZS8+Cgk8ZyBkYXRhLW5hbWU9IkxheWVyIDYiIGlkPSJMYXllcl82Ij4KCQk8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MC4zOSwxNy40NlY0Ni41NGE0LjY0LDQuNjQsMCwwLDEtNC42Miw0LjYzSDE3LjE4YTQuNjQsNC42NCwwLDAsMS00LjYyLTQuNjJWMTcuNDZhNC42NCw0LjY0LDAsMCwxLDQuNjItNC42M0g0NS43NyIvPgoJCTxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iNTAuNDQiIGN5PSIxNC4xMyIgcj0iMSIvPgoJCTxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMzkuMDMiIGN5PSIyNSIgcj0iMSIvPgoJCTxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIzLjc3LDIwLjMyYTMuNzUsMy43NSwwLDAsMC0zLjQ3LDMuNzRWMzkuOTRhMy43NywzLjc3LDAsMCwwLDMuNzYsMy43Nmg4LjU5Ii8+CgkJPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzIuNjUsNDMuN2g3LjI5YTMuNzcsMy43NywwLDAsMCwzLjc2LTMuNzZWMjQuMDZhMy43NywzLjc3LDAsMCwwLTMuNzYtMy43NkgyNC4wNmExLjM3LDEuMzcsMCwwLDAtLjI5LDAiLz4KCQk8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zNCwyNi43NEE1LjY0LDUuNjQsMCwxLDAsMzcuNjQsMzIiLz4KCTwvZz4KCTx1c2UgaHJlZj0iI2luc3RhZ3JhbS1sb2dvIi8+Cjwvc3ZnPgoK",
-    ALT: "Rejoignez Notre Instagram !",
-    text: ""
-  },
-]
-
 </script>
 
-<div class="logo">
+<!-- Content -->
+
+<section class="hero">
 	<div class="container" >
 		<div class="back"></div>
 		<div class="bee"></div>
 	</div>
-</div>
 
-<div class="social-links">
-  <ul>
-    {#each socialLinks as socialLink}
-      <li>
-        <SocialLink socialLinkData="{ socialLink }" />
-      </li>
-    {/each}
-  </ul>
-</div>
+	<div class="action-scroll">
+		<h1>Destin'eirb</h1>
 
-<div class="brasse">
+		<a  href="#brasse" aria-label="Lire la brasse">
+			<div class="call-read">
+				<p>Lire la brasse !</p>
+			</div>
+		</a>
+	</div>
+</section>
 
-<h2>Time for the brasse !</h2>
+<section id="brasse">
 
 <div class="brasse-items">
-  <div class="texts">
+  <div class="texts p1">
+		<h2>Time for the brasse !</h2>
+
     <p class="text">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
     <p class="text">
@@ -69,7 +47,7 @@ const socialLinks: SocialLinkData[] = [
   </div>
 </div>
 
-</div>
+</section>
 
 <style lang="scss">
 @import '$lib/theme.scss';
@@ -93,21 +71,27 @@ const socialLinks: SocialLinkData[] = [
 }
 
 @media screen and (max-width: 899px) {
-.logo {
+section { background-color: $background; }
+  
+
+section.hero {
 	width: 100%;
-	height: 100svh;
+	min-height: 100svh;
 
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+	gap: 3rem;
 
 	.container {
 		position: relative;
 		height: 70svh;
 		aspect-ratio: 1 / 1;
 
-    max-width: 90vw;
-    max-height: 90vw;
+    max-width: 80vw;
+    max-height: 80vw;
 
     overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
 	}
@@ -118,7 +102,7 @@ const socialLinks: SocialLinkData[] = [
 		width: 100%;
 		aspect-ratio: 1 / 1;
 
-		background-image: url('/logo_destineirb_abeille.png');
+		background-image: url('/img/logo/logo_abeille.svg');
 		background-size: cover;
 
 		will-change: transform;
@@ -133,7 +117,7 @@ const socialLinks: SocialLinkData[] = [
 		width: 100%;
 		aspect-ratio: 1 / 1;
 
-		background-image: url('/logo_destineirb_fond.png');
+		background-image: url('/img/logo/logo_fond.svg');
 		background-size: cover;
 
 		border-radius: 100%;
@@ -141,11 +125,56 @@ const socialLinks: SocialLinkData[] = [
 
 		animation: 60s linear 0s infinite logo-rotation;
 	}
+
+
+	.action-scroll {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+	}
+
+	h1 {
+		font-size: 5rem;
+		text-shadow: $foreground 0 0 .2rem;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	overflow-x: hidden;
+
+	.call-read {
+
+		font-size: 2rem;
+		display: flex;
+		justify-content: center;
+		
+		height: 11rem;
+		aspect-ratio: 2.2 / 1;
+		background-image: url('/img/tour_du_lire_brasse.svg');
+		background-size: cover;
+
+		filter: drop-shadow($foreground 0 0 .2rem);
+
+		p {
+			font-size: 2.5rem;
+			text-align: center;
+			position: relative;
+			top: 3rem;
+
+			/* text-shadow: $foreground 0 0 .2rem; */
+			text-shadow: $foreground 0 0 .1rem;
+		}
+	}
+
+
 	
 }
 
-.brasse {
-  padding: 2em 10vw;
+#brasse {
+  padding: 2em 0;
 
 	h2 {
 		font-size: 3rem;
@@ -165,40 +194,23 @@ p.text {
   max-width: 60ch;
 }
 
-.social-links {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+.brasse-items {
+	div {
+		padding: 2rem 10vw;
+	}
 
-	padding: 2vw;
-
-	background: rgba($background, .61);
-	backdrop-filter: blur(5px);
-
-	border-top-right-radius: 1rem;
-
-  z-index: 1;
-
-  ul {
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    gap: .5em;
-
-    position: relative;
-
-    li {
-      list-style: none;
-    }
-  }
+	.p1 {
+		background-color: $alt-background;
+		color: $foreground;
+	}
 }
+
 }
 
 
 
 @media screen and (min-width: 900px) {
-.logo {
+section.hero {
 	width: 100%;
 	height: 100svh;
 
@@ -245,7 +257,6 @@ p.text {
 
 		animation: 60s linear 0s infinite logo-rotation;
 	}
-	
 }
 
 div.texts {
@@ -261,35 +272,6 @@ p.text {
   max-width: 60ch;
 }
 
-.social-links {
-  position: fixed;
-
-	background: rgba($background, .61);
-	backdrop-filter: blur(5px);
-
-	border-top-right-radius: 1rem;
-
-  bottom: 0;
-  left: 0;
-
-	padding: 2vw;
-
-  z-index: 1;
-
-  ul {
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    gap: .5em;
-
-    position: relative;
-
-    li {
-      list-style: none;
-    }
-  }
-}
 }
 </style>
 
