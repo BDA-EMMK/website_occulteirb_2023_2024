@@ -40,9 +40,11 @@ const headerNavDatas: HeaderNavData[] = [
 
 let pathname = "";
 let isLoaded: boolean = false;
+let header: HTMLElement | null = null;
 
 onMount(() => {
   isLoaded = true
+	header = document.querySelector('.header');
 });
 
 
@@ -53,7 +55,12 @@ $: if (isLoaded) { pathname = $page.url.pathname };
 */
 export let isNavOpened: boolean = false
 
-function toggleNav() { isNavOpened = !isNavOpened; }
+function toggleNav() {
+	isNavOpened = !isNavOpened;
+
+	if (isNavOpened && header)
+		header.scrollTo(0, 0);
+}
 </script>
 
 <header class="header {isNavOpened ? 'opened': ''}"  >
@@ -247,15 +254,15 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 	}
 
 	.logo-link {
-		transition: translate .4s ease-in-out 0s;
+		transition: translate .4s ease-in-out .6s;
 	}
 
 	ul :nth-child(1) {
-		transition: translate .4s ease-in-out .1s;
+		transition: translate .4s ease-in-out .5s;
 	}
 
 	ul :nth-child(2) {
-		transition: translate .4s ease-in-out .2s;
+		transition: translate .4s ease-in-out .4s;
 	}
 
 	ul :nth-child(3) {
@@ -263,15 +270,15 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 	}
 
 	ul :nth-child(4) {
-		transition: translate .4s ease-in-out .4s;
+		transition: translate .4s ease-in-out .2s;
 	}
 
 	ul :nth-child(5) {
-		transition: translate .4s ease-in-out .5s;
+		transition: translate .4s ease-in-out .1s;
 	}
 
 	ul :nth-child(6) {
-		transition: translate .4s ease-in-out .6s;
+		transition: translate .4s ease-in-out 0s;
 	}
 
   &.opened {
@@ -299,32 +306,32 @@ function toggleNav() { isNavOpened = !isNavOpened; }
 		}
 
 		.logo-link {
-			transition: translate .4s ease-in-out .5s;
+			transition: translate .4s ease-in-out .4s;
 		}
 
 		ul :nth-child(1) {
-			transition: translate .4s ease-in-out .6s;
+			transition: translate .4s ease-in-out .5s;
 
 		}
 
 		ul :nth-child(2) {
-			transition: translate .4s ease-in-out .7s;
+			transition: translate .4s ease-in-out .6s;
 		}
 
 		ul :nth-child(3) {
-			transition: translate .4s ease-in-out .8s;
+			transition: translate .4s ease-in-out .7s;
 		}
 
 		ul :nth-child(4) {
-			transition: translate .4s ease-in-out .9s;
+			transition: translate .4s ease-in-out .8s;
 		}
 
 		ul :nth-child(5) {
-			transition: translate .4s ease-in-out 1s;
+			transition: translate .4s ease-in-out .9s;
 		}
 
 		ul :nth-child(6) {
-			transition: translate .4s ease-in-out 1.1s;
+			transition: translate .4s ease-in-out 1s;
 		}
   }
 
