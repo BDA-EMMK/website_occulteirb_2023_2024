@@ -12,7 +12,7 @@ export let socialLinkData: SocialLinkData = {
 // export let active: boolean;
 </script>
 
-<a href="{ socialLinkData.URL }" target="_blank" aria-label="{ socialLinkData.text }">
+<a href="{ socialLinkData.URL }" target="_blank" aria-label="{ socialLinkData.ALT }">
 	<div class="logo-img" style="{ `background-image: url(${socialLinkData.IMG})` }"></div>
   <!-- <p>{ socialLinkData.text }</p> -->
 </a>
