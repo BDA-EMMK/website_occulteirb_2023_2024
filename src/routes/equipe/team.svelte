@@ -21,7 +21,36 @@ export let desc: string = "Unset desc";
 </div>
 
 <style lang="scss">
+@import '$lib/theme.scss';
 
+@media screen and (max-width: 899px) {
+.team {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5em;
+  padding: 5vw;
+
+  h3 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    gap: 1em;
+  }
+}
+
+}
+
+@media screen and (min-width: 899px) {
 .team {
   display: flex;
   flex-direction: column;
@@ -48,6 +77,6 @@ export let desc: string = "Unset desc";
     li { list-style: none; }
   }
 }
-
+}
 </style>
 
