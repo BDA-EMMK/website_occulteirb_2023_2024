@@ -35,14 +35,19 @@ const socialLinks: SocialLinkData[] = [
 let showSocial: boolean = false;
 
 onMount(() => {
-  loaded = true;
-
   setTimeout(() => { endloaded = true }, 1000);
 
 	window.onscroll = () => {
 		if (window.visualViewport)
 			showSocial = window.scrollY > window.visualViewport.height / 10;
 	}
+
+	if (document.readyState === 'complete')
+		loaded = true;
+
+	window.addEventListener("load", (_) => {
+		loaded = true;
+	});
 });
 </script>
 
@@ -180,10 +185,16 @@ onMount(() => {
 
 	will-change: opacity;
 	opacity: 1;
-  transition: opacity ease-in-out 3s;
+  transition: opacity ease-in-out 3s 1s;
+
+	&.loaded::after { content: 'Loaded !'; }
 
   &::after {
     content: "";
+		display: flex;
+		justify-content: center;
+		font-size: 5rem;
+		color: $foreground;
 
     position: absolute;
     left: 0;
