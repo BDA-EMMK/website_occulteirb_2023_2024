@@ -182,21 +182,125 @@ const webMembers: Member[] = [
 
 </script>
 
-<h1>
-  Notre Équipe de fous !
-</h1>
+<section class="hero">
+		<h1>
+			Notre Équipe de fous !
+		</h1>
 
-<Team members="{deskMembers}" desc="Bureau" />
-<Team members="{trezMembers}" desc="Trésorerie" />
-<Team members="{eventMembers}" desc="Event" />
-<Team members="{logMembers}" desc="Logistique" />
-<Team members="{comMembers}" desc="Communication" />
-<Team members="{partMembers}" desc="Part" />
-<Team members="{videoMembers}" desc="Vidéo" />
-<Team members="{barMembers}" desc="Bar" />
-<Team members="{webMembers}" desc="Web" />
+		<div class="imgs">
+			<img class="imgs-skeletton" src="/img/Illustration_squelette.svg" alt="">
+			<img class="imgs-bee" src="/img/Illustration_bee.svg" alt="">
+		</div>
+
+		<a  href="#presentation" aria-label="Découvrir la liste">
+			<div class="call-read">
+				<p>Découvrir la liste</p>
+			</div>
+		</a>
+</section>
+
+<section id="presentation">
+	<Team members="{deskMembers}" desc="Le Bureau" />
+	<Team members="{trezMembers}" desc="La Trésorerie" />
+	<Team members="{eventMembers}" desc="Pôle Event" />
+	<Team members="{logMembers}" desc="Pôle Logistique" />
+	<Team members="{comMembers}" desc="Pôle Communication" />
+	<Team members="{partMembers}" desc="Pôle Part" />
+	<Team members="{videoMembers}" desc="Pôle Vidéo" />
+	<Team members="{barMembers}" desc="Pôle Bar" />
+	<Team members="{webMembers}" desc="Pôle Web" />
+</section>
 
 
 <style lang="scss">
+@import '$lib/theme.scss';
+
+/* Begin Mobile media query */
+
+@media screen and (max-width: 899px) {
+
+@keyframes floating {
+	from {
+		translate: 0 0rem;
+	}
+	to {
+		translate: 0 2rem;
+	}
+}
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+
+	min-height: 100svh;
+
+	.imgs {
+		position: relative;
+		width: 100vw;
+		aspect-ratio: 3 / 4;
+		max-height: 80vw;
+		overflow-x: hidden;
+
+		.imgs-bee, .imgs-skeletton {
+			position: absolute;
+			height: calc(100% - 2rem);
+		}
+
+		.imgs-bee {
+			right: -10%;
+			animation: 1.5s infinite ease-in-out floating alternate-reverse;
+		}
+
+		.imgs-skeletton {
+			transform: rotateY(180deg);  /* Original image has wrong orientation */
+			left: -20%;
+			animation: 4s infinite ease-in-out floating alternate-reverse;
+		}
+	}
+
+	a { 
+		text-decoration: none;
+		max-width: 100vw;  /* To prevent .call-read to overflow */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.call-read {
+		font-size: 2rem;
+		display: flex;
+		justify-content: center;
+		
+		/* min-height: 11rem; */
+		width: 24.2rem;
+		max-width: 100vw;
+		aspect-ratio: 2.2 / 1;
+		background-image: url('/img/tour_du_lire_brasse.svg');
+		background-size: 100%;
+
+		filter: drop-shadow($foreground 0 0 .2rem);
+
+		p {
+			font-size: 2.5rem;
+			height: 2.5rem;
+			text-align: center;
+			position: relative;
+			top: 3rem;
+
+			/* text-shadow: $foreground 0 0 .2rem; */
+			text-shadow: $foreground 0 0 1px;
+		}
+	}
+}
+
+h1 {
+	font-size: 4rem;
+	text-align: center;
+}
+
+}
+
 </style>
 
