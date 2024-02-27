@@ -5,20 +5,18 @@
 <!-- Content -->
 
 <section class="hero">
+	<h1>Destin'eirb</h1>
+
 	<div class="container" >
 		<div class="back"></div>
 		<div class="bee"></div>
 	</div>
 
-	<div class="action-scroll">
-		<h1>Destin'eirb</h1>
-
-		<a  href="#brasse" aria-label="Lire la brasse">
-			<div class="call-read">
-				<p>Lire la brasse !</p>
-			</div>
-		</a>
-	</div>
+	<a  href="#brasse" aria-label="Lire la brasse">
+		<div class="call-read">
+			<p>Lire la brasse !</p>
+		</div>
+	</a>
 </section>
 
 <section id="brasse">
@@ -80,10 +78,8 @@ section.hero {
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
-
-	gap: 3rem;
 
 	.container {
 		position: relative;
@@ -126,46 +122,42 @@ section.hero {
 		animation: 60s linear 0s infinite logo-rotation;
 	}
 
-
-	.action-scroll {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-
-	}
-
 	h1 {
 		font-size: 5rem;
 		text-shadow: $foreground 0 0 .2rem;
 	}
 
-	a {
+	a { 
 		text-decoration: none;
+		max-width: 100vw;  /* To prevent .call-read to overflow */
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	overflow-x: hidden;
-
 	.call-read {
-
 		font-size: 2rem;
 		display: flex;
 		justify-content: center;
 		
-		height: 11rem;
+		/* min-height: 11rem; */
+		width: 24.2rem;
+		max-width: 100vw;
 		aspect-ratio: 2.2 / 1;
 		background-image: url('/img/tour_du_lire_brasse.svg');
-		background-size: cover;
+		background-size: 100%;
 
 		filter: drop-shadow($foreground 0 0 .2rem);
 
 		p {
 			font-size: 2.5rem;
+			height: 2.5rem;
 			text-align: center;
 			position: relative;
 			top: 3rem;
 
 			/* text-shadow: $foreground 0 0 .2rem; */
-			text-shadow: $foreground 0 0 .1rem;
+			text-shadow: $foreground 0 0 1px;
 		}
 	}
 
@@ -174,8 +166,6 @@ section.hero {
 }
 
 #brasse {
-  padding: 2em 0;
-
 	h2 {
 		font-size: 3rem;
 		margin-bottom: 3rem;
@@ -234,7 +224,7 @@ section.hero {
 		width: 100%;
 		aspect-ratio: 1 / 1;
 
-		background-image: url('/logo_destineirb_abeille.png');
+		background-image: url('/img/logo/logo_abeille.svg');
 		background-size: cover;
 
 		will-change: transform;
@@ -245,7 +235,7 @@ section.hero {
 		width: 100%;
 		aspect-ratio: 1 / 1;
 
-		background-image: url('/logo_destineirb_fond.png');
+		background-image: url('/img/logo/logo_fond.svg');
 		background-size: cover;
 
 		position: absolute;
@@ -274,5 +264,3 @@ p.text {
 
 }
 </style>
-
-
