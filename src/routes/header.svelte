@@ -54,12 +54,15 @@ $: if (isLoaded) { pathname = $page.url.pathname };
   Mobile
 */
 export let isNavOpened: boolean = false
+export let onNavToggle: (newState: boolean) => void = () => {};
 
 function toggleNav() {
 	isNavOpened = !isNavOpened;
 
 	if (isNavOpened && header)
 		header.scrollTo(0, 0);
+
+	onNavToggle(isNavOpened);
 }
 </script>
 
