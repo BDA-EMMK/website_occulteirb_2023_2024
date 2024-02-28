@@ -7,9 +7,9 @@ import Header from "./header.svelte";
 import Footer from './footer.svelte';
 
 import { onMount } from "svelte";
+import { afterNavigate } from "$app/navigation"
 
 let loaded: boolean = false
-let endloaded: boolean = false
 
 const socialLinks: SocialLinkData[] = [
   {
@@ -34,20 +34,39 @@ const socialLinks: SocialLinkData[] = [
 
 let showSocial: boolean = false;
 
-onMount(() => {
-  setTimeout(() => { endloaded = true }, 1000);
+let isNavOpened: boolean = false;
+let htmlElement: HTMLElement | null = null
 
-	window.onscroll = () => {
+onMount(() => {
+	htmlElement = document.querySelector('body');
+
+	// Show or hide social links
+	window.onscroll = (e) => {
 		if (window.visualViewport)
-			showSocial = window.scrollY > window.visualViewport.height / 10;
+			showSocial = window.scrollY > window.visualViewport.height / 5;
 	}
 
+	// Hide loading screen
 	if (document.readyState === 'complete')
 		loaded = true;
 
 	window.addEventListener("load", (_) => {
 		loaded = true;
 	});
+});
+
+const onNavOpen = (newState: boolean) => {
+	if (htmlElement === null)
+		return;
+
+	// if (newState)
+	// 	htmlElement.classList.add('block-scrolling');
+	// else
+	// 	htmlElement.classList.remove('block-scrolling');
+}
+
+afterNavigate(() => {
+	window.scrollTo(0, 0);
 });
 </script>
 
@@ -61,10 +80,10 @@ onMount(() => {
   </ul>
 </div>
 
-<div class="loading" class:loaded class:endloaded></div>
+<div class="loading" class:loaded ></div>
 
-<main id="page">
-  <Header />
+<main id="page" class="{ isNavOpened ? 'hide-overflow': ''}">
+  <Header onNavToggle="{ onNavOpen }" />
 
   <slot />
 
@@ -140,6 +159,7 @@ onMount(() => {
 
 /* Begin desktop media query */
 @media screen and (min-width: 900px) {
+
 .social-links {
   position: fixed;
 
@@ -221,7 +241,7 @@ main {
 	color: $foreground;
 	background-color: $background;
 
-  min-height: 100svh;
+  height: 100svh;
 
 	scroll-behavior: smooth;
 }
