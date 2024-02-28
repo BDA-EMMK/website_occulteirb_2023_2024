@@ -184,7 +184,7 @@ const webMembers: Member[] = [
 
 <section class="hero">
 		<h1>
-			Notre Équipe de fous !
+			Notre Équipe !
 		</h1>
 
 		<div class="imgs">
@@ -201,13 +201,37 @@ const webMembers: Member[] = [
 
 <section id="presentation">
 	<Team members="{deskMembers}" desc="Le Bureau" />
+
+	<hr>
+
 	<Team members="{trezMembers}" desc="La Trésorerie" />
+
+	<hr>
+
 	<Team members="{eventMembers}" desc="Pôle Event" />
+
+	<hr>
+
 	<Team members="{logMembers}" desc="Pôle Logistique" />
+
+	<hr>
+
 	<Team members="{comMembers}" desc="Pôle Communication" />
+
+	<hr>
+
 	<Team members="{partMembers}" desc="Pôle Part" />
+
+	<hr>
+
 	<Team members="{videoMembers}" desc="Pôle Vidéo" />
+
+	<hr>
+
 	<Team members="{barMembers}" desc="Pôle Bar" />
+
+	<hr>
+
 	<Team members="{webMembers}" desc="Pôle Web" />
 </section>
 
@@ -228,11 +252,17 @@ const webMembers: Member[] = [
 	}
 }
 
+section {
+	background-color: $alt-background;
+}
+
 .hero {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: center;
+
+	background-color: $background;
 
 	min-height: 100svh;
 
@@ -296,7 +326,8 @@ const webMembers: Member[] = [
 }
 
 h1 {
-	font-size: 4rem;
+	font-size: 5rem;
+	text-shadow: $foreground 0 0 .2rem;
 	text-align: center;
 }
 
