@@ -34,10 +34,24 @@ const allos: Allo[] = [
 ]
 </script>
 
+<section class="allo-hero">
 <h1>
   Les Allos !
 </h1>
 
+<div class="links">
+	<a href="/commandeAllo/#commande-allo">
+		<h2>Commander des allos</h2>
+	</a>
+
+	<a href="/allo/#allo">
+		<h2>Historique des commandes</h2>
+	</a>
+</div>
+
+</section>
+
+<section id="allo">
 <ul class="allos-list">
   {#each allos as allo}
     <li>
@@ -45,9 +59,75 @@ const allos: Allo[] = [
     </li>
   {/each}
 </ul>
+</section>
+
 
 <style lang="scss">
+@import '$lib/theme.scss';
 
+@media screen and (max-width: 899px) {
+.allo-hero {
+	height: 100svh;
+	padding: 0rem 10vw;
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	.links, h1 {
+		position: relative;
+	}
+
+	.links {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+
+		bottom: 10svh;
+	}
+
+	h1 {
+		font-size: 5rem;
+		text-align: center;
+		text-shadow: $foreground 0 0 .2rem;
+
+		top: 10svh;
+	}
+
+	h2 {
+		font-size: 3rem;
+		text-align: center;
+	}
+
+	/*
+	a {
+		text-decoration: none;
+	}
+	*/
+}
+
+#allo {
+	background-color: $alt-background;
+}
+
+.allos-list {
+	padding: 5vw 0vw;
+	gap: 5vw;
+
+	display: flex;
+	flex-wrap: wrap;
+
+	justify-content: center;
+
+	li {
+		width: 90%;
+	}
+}
+}
+
+
+@media screen and (min-width: 900px) {
 .allos-list {
   padding: 5vw 10vw;
   gap: 5vw;
@@ -57,24 +137,7 @@ const allos: Allo[] = [
 
   align-items: flex-start;
   justify-content: space-between;
-
-  li { list-style: none; }
 }
-
-
-@media screen and (max-width: 899px) {
-  .allos-list {
-    padding: 5vw 0vw;
-    gap: 5vw;
-
-    display: flex;
-    flex-wrap: wrap;
-
-    background-color: blue;
-    justify-content: center;
-
-    li { list-style: none; }
-  }
 }
 
 </style>
