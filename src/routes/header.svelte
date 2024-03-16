@@ -59,8 +59,9 @@ export let onNavToggle: (newState: boolean) => void = () => {};
 function toggleNav() {
 	isNavOpened = !isNavOpened;
 
-	if (isNavOpened && header)
+	if (isNavOpened && header) {
 		header.scrollTo(0, 0);
+		}
 
 	onNavToggle(isNavOpened);
 }
@@ -196,7 +197,6 @@ header {
   height: 100%;
   position: fixed;
 
-  overflow: hidden;
   pointer-events: none;  /* Do not prevent from click nav ... */
 
   left: 0;
@@ -378,7 +378,6 @@ header {
 @media screen and (min-width: 900px) {
 .mobile {
 	display: none;
-	/* filter: opacity(0); */
 	pointer-events: none;
 }
 

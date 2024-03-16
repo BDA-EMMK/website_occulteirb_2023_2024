@@ -60,10 +60,10 @@ const onNavOpen = (newState: boolean) => {
 	if (htmlElement === null)
 		return;
 
-	// if (newState)
-	// 	htmlElement.classList.add('block-scrolling');
-	// else
-	// 	htmlElement.classList.remove('block-scrolling');
+	if (newState)
+		htmlElement.classList.add('block-scrolling');
+	else
+		htmlElement.classList.remove('block-scrolling');
 }
 
 const allosRoutesRegexs: RegExp = /(\/allo)|(\/commandeAllo)/;

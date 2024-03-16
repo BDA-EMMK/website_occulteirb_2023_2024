@@ -81,8 +81,6 @@
 	aspect-ratio: 1 / 1;
 	pointer-events: none;
 
-	z-index: 500;
-
 	overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
 }
 
@@ -248,6 +246,7 @@ section.hero {
 
 	.logo-container {
 		grid-area: logo;
+		z-index: 500;
 	}
 
 	h1 {
