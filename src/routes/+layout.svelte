@@ -8,6 +8,7 @@ import Footer from './footer.svelte';
 
 import { onMount } from "svelte";
 import { afterNavigate } from "$app/navigation"
+    import type { AfterNavigate } from "@sveltejs/kit";
 
 let loaded: boolean = false
 
@@ -65,7 +66,28 @@ const onNavOpen = (newState: boolean) => {
 	// 	htmlElement.classList.remove('block-scrolling');
 }
 
-afterNavigate(() => {
+const allosRoutesRegexs: RegExp = /(\/allo)|(\/commandeAllo)/;
+
+// Returns true if shouldn't scroll to top on navigation
+const excludeFilterScrollOnTop: ((nav: AfterNavigate) => boolean)[]= [
+	(nav: AfterNavigate) =>
+	/* Type checking */
+		nav.from !== null &&
+		nav.to !== null &&
+		nav.from.route.id !== null &&
+		nav.to.route.id !== null &&
+	/* Actual test */
+		allosRoutesRegexs.test(nav.from.route.id) &&
+		allosRoutesRegexs.test(nav.to.route.id),
+]
+
+afterNavigate((nav) => {
+	for (let i = 0 ; i < excludeFilterScrollOnTop.length ; ++i)
+		if (excludeFilterScrollOnTop[i](nav))
+			return;
+
+	console.log("SCROLL, nav: ", nav)
+
 	window.scrollTo(0, 0);
 });
 </script>
