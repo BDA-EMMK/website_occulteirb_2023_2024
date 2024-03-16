@@ -48,6 +48,9 @@ function toggleDetails() { showdetails = !showdetails; }
 <style lang="scss">
 @import '$lib/theme.scss';
 
+/*
+	Mobile style
+*/
 @media screen and (max-width: 899px) {
 .allo-card {
   display: flex;
@@ -116,6 +119,10 @@ function toggleDetails() { showdetails = !showdetails; }
 }
 }
 
+
+/*
+	Desktop style
+*/
 @media screen and (min-width: 899px) {
 .details {
 	display: flex;
@@ -156,17 +163,14 @@ function toggleDetails() { showdetails = !showdetails; }
 }
 
 .allo-card {
+  position: relative;
   display: flex;
   flex-direction: column;
 
-  position: relative;
-
-  background-color: $background;
-
   max-width: 90vw;
 
-  padding: 5em;
-  padding: 10vw;
+  background-color: $background;
+  padding: 5rem 3rem;
 
   font-family: 'fanwood-master', serif;
 
@@ -183,6 +187,7 @@ function toggleDetails() { showdetails = !showdetails; }
 .details {
 	display: flex;
 	justify-content: space-between;
+	padding-top: 2rem;
 
   .toggle-details {
     border: 0;
