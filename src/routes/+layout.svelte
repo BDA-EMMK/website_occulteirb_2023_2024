@@ -46,14 +46,6 @@ onMount(() => {
 		if (window.visualViewport)
 			showSocial = window.scrollY > window.visualViewport.height / 5;
 	}
-
-	// Hide loading screen
-	if (document.readyState === 'complete')
-		loaded = true;
-
-	window.addEventListener("load", (_) => {
-		loaded = true;
-	});
 });
 
 const onNavOpen = (newState: boolean) => {
@@ -102,8 +94,6 @@ afterNavigate((nav) => {
   </ul>
 </div>
 
-<div class="loading" class:loaded ></div>
-
 <main id="page" class="{ isNavOpened ? 'hide-overflow': ''}">
   <Header onNavToggle="{ onNavOpen }" />
 
@@ -115,27 +105,6 @@ afterNavigate((nav) => {
 
 <style lang="scss">
 @import '$lib/theme.scss';
-
-@keyframes loading-screen {
-	0% {
-    translate: 0% 100%;
-	}
-	20% {
-    translate: 0% 60%;
-	}
-	30% {
-    translate: 0% 50%;
-	}
-	45% {
-    translate: 0% 30%;
-	}
-	60% {
-    translate: 0% 15%;
-	}
-	100% {
-    translate: 0% 0%;
-	}
-}
 
 .social-links {
   position: fixed;
@@ -185,51 +154,6 @@ afterNavigate((nav) => {
 }
 /* End desktop media query */
 
-
-
-.loading {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-
-  z-index: 999;
-
-  background-color: $background;
-
-	will-change: opacity;
-	opacity: 1;
-  transition: opacity ease-in-out 3s 1s;
-
-	&.loaded::after { content: 'Loaded !'; }
-
-  &::after {
-    content: "";
-		display: flex;
-		justify-content: center;
-		font-size: 5rem;
-		color: $foreground;
-
-    position: absolute;
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: $red;
-
-		translate: 0% 100%;
-		will-change: translate;
-
-		animation: 10s ease-in-out 0s forwards loading-screen;
-  }
-
-  &.loaded {
-    opacity: 0;
-		pointer-events: none;  /* Do not prevent from click nav ... */
-  }
-}
-
 main {
 	color: $foreground;
 	background-color: $background;
@@ -240,4 +164,3 @@ main {
 }
 
 </style>
-
