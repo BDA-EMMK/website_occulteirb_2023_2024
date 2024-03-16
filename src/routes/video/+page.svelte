@@ -10,10 +10,12 @@ function toggleVideo() { isVideoShowed = !isVideoShowed; }
 <!-- For the video -->
 <div class="video-container" id="videoContainer" >
   <!-- Youtube video -->
-  <iframe class={isVideoShowed ? '': 'hidden'} width="560" height="315" src="{ isVideoShowed ? videoURL: '' }" title="YouTube video player" allowfullscreen></iframe>
+  <!-- <iframe class={isVideoShowed ? '': 'hidden'} width="560" height="315" src="{ isVideoShowed ? videoURL: '' }" title="YouTube video player" allowfullscreen></iframe> -->
+  <iframe width="560" height="315" src="{videoURL}" title="YouTube video player" allowfullscreen></iframe>
 </div>
 
 <!-- The button that permits to display the video -->
+<!--
 <div class="button-container" >
   <button on:click="{toggleVideo}">
     {#if (isVideoShowed) }
@@ -23,7 +25,7 @@ function toggleVideo() { isVideoShowed = !isVideoShowed; }
     {/if}
   </button>
 </div>
-
+-->
 
 <style lang="scss">
 /* For the video */
