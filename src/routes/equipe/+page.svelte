@@ -250,19 +250,19 @@ const webMembers: Member[] = [
 
 @keyframes floating-bee {
 	from {
-		translate: -20vw 0rem;
+		translate: 0vw 0rem;
 	}
 	to {
-		translate: 120vw 2rem;
+		translate: calc(100vw + 100%) 0rem;
 	}
 }
 
 @keyframes floating-skeleton {
 	from {
-		translate: -20vw 0rem;
+		translate: 0vw 0rem;
 	}
 	to {
-		translate: 120vw 2rem;
+		translate: calc(110vw + 100%) 0rem;
 	}
 }
 
@@ -279,18 +279,44 @@ section {
 	background-color: $alt-background;
 }
 
-/* Begin Mobile media query */
-
 .hero {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 
 	background-color: $background;
 
 	min-height: 100svh;
 }
+
+.call-read {
+	font-size: 2rem;
+	display: flex;
+	justify-content: center;
+	
+	/* min-height: 11rem; */
+	width: 24.2rem;
+	max-width: 100vw;
+	aspect-ratio: 2.2 / 1;
+	background-image: url('/img/tour_du_lire_brasse.svg');
+	background-size: 100%;
+
+	filter: drop-shadow($foreground 0 0 .2rem);
+
+	p {
+		font-size: 2.5rem;
+		height: 2.5rem;
+		text-align: center;
+		position: relative;
+		top: 3rem;
+
+		/* text-shadow: $foreground 0 0 .2rem; */
+		text-shadow: $foreground 0 0 1px;
+	}
+}
+
+/* Begin Mobile media query */
 
 @media screen and (max-width: 899px) {
 
@@ -327,31 +353,6 @@ section {
 		justify-content: center;
 	}
 
-	.call-read {
-		font-size: 2rem;
-		display: flex;
-		justify-content: center;
-		
-		/* min-height: 11rem; */
-		width: 24.2rem;
-		max-width: 100vw;
-		aspect-ratio: 2.2 / 1;
-		background-image: url('/img/tour_du_lire_brasse.svg');
-		background-size: 100%;
-
-		filter: drop-shadow($foreground 0 0 .2rem);
-
-		p {
-			font-size: 2.5rem;
-			height: 2.5rem;
-			text-align: center;
-			position: relative;
-			top: 3rem;
-
-			/* text-shadow: $foreground 0 0 .2rem; */
-			text-shadow: $foreground 0 0 1px;
-		}
-	}
 }
 
 h1 {
@@ -365,26 +366,41 @@ h1 {
 
 @media screen and (min-width: 900px) {
 .hero {
+	h1 {
+		position: relative;
+		width: 90%;
+		padding-top: 2rem;
+		pointer-events: none;
+		overflow-x: hidden;
+
+		z-index: 500;
+		font-size: 5rem;
+		text-shadow: $foreground 0 0 .2rem;
+		text-align: left;
+	}
+
 	.imgs {
 		position: relative;
-		width: 50vw;
+		width: 100vw;
 		aspect-ratio: 3 / 4;
 		max-height: 60vh;
 		overflow-x: hidden;
 
 		.imgs-bee, .imgs-skeletton {
+			left: -20%;
 			position: absolute;
 			height: calc(100% - 2rem);
+
+			will-change: translate;
 		}
 
 		.imgs-bee {
-			right: -10%;
-			animation: 5s infinite ease-in-out floating-bee;
+			animation: 5s infinite linear floating-bee;
 		}
 
 		.imgs-skeletton {
 			transform: rotateY(180deg);  /* Original image has wrong orientation */
-			animation: 4s infinite ease-in-out floating alternate-reverse;
+			animation: 5s infinite 1s linear floating-skeleton;
 		}
 	}
 }
