@@ -70,13 +70,30 @@ export let desc: string = "Unset desc";
 .team {
   display: flex;
   flex-direction: column;
+	align-items: center;
 
   gap: 5em;
-  padding: 5vw;
+  padding: 10rem 5vw;
 
   h3 {
-    font-size: 2rem;
+		margin: 0 0 10rem 0;
+		position: relative;
+
+    font-size: 5rem;
     text-align: center;
+
+		/* Decoration */
+		&::before {
+			content: "";
+			position: absolute;
+			left: calc((100% - 40rem) / 2);
+			top: 90%;
+
+			width: 40rem;
+			aspect-ratio: 1014 / 178;
+			background-image: url('/img/separation_entre_polev2.svg');
+			background-size: cover;
+		}
   }
 
   ul {
