@@ -321,6 +321,8 @@ section {
 @media screen and (max-width: 899px) {
 
 .hero {
+	justify-content: space-evenly;
+
 	.imgs {
 		position: relative;
 		width: 100vw;

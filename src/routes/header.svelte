@@ -131,8 +131,6 @@ header {
   min-height: 4rem;
   height: 5svh;
 
-  z-index: 3;
-
   .toggleHeader {
 		display: flex;
 		flex-direction: column;
@@ -202,7 +200,7 @@ header {
   left: 0;
   top: 0;
 
-  z-index: 2;
+  z-index: 1000;
 
 	&.opened {
 		pointer-events: auto;
