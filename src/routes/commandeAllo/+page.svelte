@@ -2,8 +2,7 @@
 <script lang="ts">
 import type { Allo } from "./allo";
 import AlloCard from "./alloCard.svelte";
-
-
+import AlloHero from "../allo/alloHero.svelte";
 
 const allos: Allo[] = [
   {
@@ -36,22 +35,7 @@ const allos: Allo[] = [
 ]
 </script>
 
-<section class="allo-hero">
-<h1>
-  Commande d'Allos
-</h1>
-
-<div class="links">
-	<a href="/commandeAllo/#commande-allo">
-		<h2>Commander des allos</h2>
-	</a>
-
-	<a href="/allo/#allo">
-		<h2>Historique des commandes</h2>
-	</a>
-</div>
-
-</section>
+<AlloHero />
 
 <section id="commande-allo">
 <ul class="allos-list">
@@ -71,47 +55,6 @@ const allos: Allo[] = [
 	background-color: $alt-background;
 }
 
-.allo-hero {
-	height: 100svh;
-	padding: 0rem 10vw;
-	position: relative;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-
-	.links, h1 {
-		position: relative;
-	}
-
-	.links {
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
-
-		bottom: 10svh;
-	}
-
-	h1 {
-		font-size: 5rem;
-		text-align: center;
-		text-shadow: $foreground 0 0 .2rem;
-
-		top: 10svh;
-	}
-
-	h2 {
-		font-size: 3rem;
-		text-align: center;
-	}
-
-	/*
-	a {
-		text-decoration: none;
-	}
-	*/
-}
-
 .allos-list {
   padding: 5vw 10vw;
   gap: 5vw;
@@ -120,7 +63,6 @@ const allos: Allo[] = [
   flex-wrap: wrap;
 
   align-items: flex-start;
-  justify-content: space-around;
 }
 
 
@@ -133,6 +75,7 @@ const allos: Allo[] = [
     flex-wrap: wrap;
 
     justify-content: center;
+
   }
 }
 
