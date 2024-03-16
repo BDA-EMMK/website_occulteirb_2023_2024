@@ -32,7 +32,23 @@ export let desc: string = "Unset desc";
   padding: 5vw;
 
   h3 {
-    font-size: 3rem;
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 90%;
+
+			width: 100%;
+			aspect-ratio: 1014 / 178;
+			border: 0;
+			margin: 0;
+			background-image: url('/img/separation_entre_polev2.svg');
+			background-size: cover;
+		}
+		margin: 7svh 0;
+		position: relative;
+
+    font-size: 4rem;
     text-align: center;
   }
 

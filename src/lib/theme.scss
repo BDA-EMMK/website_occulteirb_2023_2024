@@ -1,6 +1,6 @@
 
-$background: #150B1C;
-$darker-background: #0e0712;
+$background: #1A1027;
+$darker-background: #0c0712;
 $alt-background: #AD343B;
 
 $foreground: #E8E6E3;
@@ -11,9 +11,17 @@ $purple: #801892;
 $logo-red: #5a1215;
 $red: #6b0004;
 $red: #5D0D12;
-$yellow: #f2cc0d;
 
+$purple: #9A6AC6;
 
+$yellow: #D5B962;
+$orange: #D09125;
+
+/*
+		Elements definition
+*/
 
 $primary: $yellow;
 
+$header-background: $orange;
+$header-foreground: $background;

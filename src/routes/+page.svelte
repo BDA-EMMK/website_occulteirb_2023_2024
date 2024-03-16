@@ -7,8 +7,9 @@
 <section class="hero">
 	<h1>Destin'eirb</h1>
 
-	<div class="container" >
-		<div class="back"></div>
+	<div class="logo-container" >
+		<div class="sun"></div>
+		<div class="runes"></div>
 		<div class="bee"></div>
 	</div>
 
@@ -50,11 +51,17 @@
 <style lang="scss">
 @import '$lib/theme.scss';
 
+/*
+	Logo
+*/
+
+/* Logo animation */
 @keyframes logo-rotation {
 	from {
 		transform: rotate(0deg);
 	}
 	to {
+		/* transform: rotate(360deg); */
 		transform: rotate(360deg);
 	}
 }
@@ -68,8 +75,78 @@
 	}
 }
 
-@media screen and (max-width: 899px) {
+/* Logo layout ! */
+.logo-container {
+	position: relative;
+	aspect-ratio: 1 / 1;
+	pointer-events: none;
+
+	z-index: 500;
+
+	overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
+}
+
+.bee {
+	position: relative;
+
+	width: 100%;
+	aspect-ratio: 1 / 1;
+
+	background-image: url('/img/logo/logo_abeille.svg');
+	background-size: cover;
+
+	will-change: transform;
+	animation: 1s ease-in-out 0s infinite alternate logo-translation;
+}
+
+.sun {
+	position: absolute;
+	left: 1%;
+	top: 1%;
+
+	width: 98%;
+	aspect-ratio: 382 / 390;
+
+	background-image: url('/img/logo/sun.svg');
+	background-size: cover;
+
+	animation: 60s linear 0s infinite logo-rotation;
+}
+
+.runes {
+	position: absolute;
+	left: 5%;
+	top: 5%;
+
+	width: 90%;
+	aspect-ratio: 272 / 280;
+
+	background-image: url('/img/logo/runes.svg');
+	background-size: cover;
+
+	animation: 60s linear 0s infinite reverse logo-rotation;
+}
+
+/*
+		Sections
+*/
 section { background-color: $background; }
+
+.p1 {
+	background-color: $alt-background;
+	color: $foreground;
+}
+
+
+/*
+	Responsive
+*/
+@media screen and (max-width: 899px) {
+.logo-container {
+	height: 70svh;
+	max-width: 80vw;
+	max-height: 80vw;
+}
   
 
 section.hero {
@@ -80,47 +157,6 @@ section.hero {
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-
-	.container {
-		position: relative;
-		height: 70svh;
-		aspect-ratio: 1 / 1;
-
-    max-width: 80vw;
-    max-height: 80vw;
-
-    overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
-	}
-
-	.bee {
-		position: relative;
-
-		width: 100%;
-		aspect-ratio: 1 / 1;
-
-		background-image: url('/img/logo/logo_abeille.svg');
-		background-size: cover;
-
-		will-change: transform;
-		animation: 1s ease-in-out 0s infinite alternate logo-translation;
-	}
-
-	.back {
-		position: absolute;
-		left: 0;
-		top: 0;
-
-		width: 100%;
-		aspect-ratio: 1 / 1;
-
-		background-image: url('/img/logo/logo_fond.svg');
-		background-size: cover;
-
-		border-radius: 100%;
-		background-color: $logo-red;
-
-		animation: 60s linear 0s infinite logo-rotation;
-	}
 
 	h1 {
 		font-size: 5rem;
@@ -188,64 +224,85 @@ p.text {
 	div {
 		padding: 2rem 10vw;
 	}
-
-	.p1 {
-		background-color: $alt-background;
-		color: $foreground;
-	}
 }
 
 }
 
 
-
+/* Begin desktop style */
 @media screen and (min-width: 900px) {
 section.hero {
 	width: 100%;
 	height: 100svh;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	grid-template-areas: 
+            ". . . . ."
+            ". logo logo name ."
+            ". logo logo name ."
+            ". . . read ."
+            ". . . . .";
 
-	.container {
-		position: relative;
-		width: 70svh;
-		height: 70svh;
+	grid-template-rows: 3rem minmax(20vw, 30vh) auto auto 1rem;
+	grid-template-columns: 3rem minmax(20vw, 30vh) auto auto 1rem;
 
-    max-width: 90vw;
-    max-height: 90vw;
-
-    overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
+	.logo-container {
+		grid-area: logo;
 	}
 
-	.bee {
-		position: relative;
-		width: 100%;
-		aspect-ratio: 1 / 1;
+	h1 {
+		grid-area: name;
 
-		background-image: url('/img/logo/logo_abeille.svg');
-		background-size: cover;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 
-		will-change: transform;
-		animation: 1s ease-in-out 0s infinite alternate logo-translation;
+		font-size: 6rem;
+		text-shadow: $foreground 0 0 .2rem;
 	}
 
-	.back {
-		width: 100%;
-		aspect-ratio: 1 / 1;
+	a {
+		grid-area: read;
 
-		background-image: url('/img/logo/logo_fond.svg');
-		background-size: cover;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-		position: absolute;
-		left: 0;
-		top: 0;
+	.call-read {
+		font-size: 2rem;
+		display: flex;
+		justify-content: center;
+		
+		/* min-height: 11rem; */
+		width: 24.2rem;
+		max-width: 100vw;
+		aspect-ratio: 2.2 / 1;
+		background-image: url('/img/tour_du_lire_brasse.svg');
+		background-size: 100%;
 
-		border-radius: 100%;
-		background-color: $logo-red;
+		filter: drop-shadow($foreground 0 0 .2rem);
 
-		animation: 60s linear 0s infinite logo-rotation;
+		p {
+			font-size: 2.5rem;
+			height: 2.5rem;
+			text-align: center;
+			position: relative;
+			top: 3rem;
+
+			/* text-shadow: $foreground 0 0 .2rem; */
+			text-shadow: $foreground 0 0 1px;
+		}
+
+		font-size: 2rem;
+		display: flex;
+		justify-content: center;
+
+		aspect-ratio: 2.2 / 1;
+		background-image: url('/img/tour_du_lire_brasse.svg');
+		background-size: 100%;
+
+		filter: drop-shadow($foreground 0 0 .2rem);
 	}
 }
 
@@ -254,7 +311,7 @@ div.texts {
   
   justify-content: space-between;
 
-  padding: 2em 10vw;
+  padding: 5em 10vw;
 }
 
 p.text {

@@ -239,10 +239,6 @@ const webMembers: Member[] = [
 <style lang="scss">
 @import '$lib/theme.scss';
 
-/* Begin Mobile media query */
-
-@media screen and (max-width: 899px) {
-
 @keyframes floating {
 	from {
 		translate: 0 0rem;
@@ -252,9 +248,38 @@ const webMembers: Member[] = [
 	}
 }
 
+@keyframes floating-bee {
+	from {
+		translate: -20vw 0rem;
+	}
+	to {
+		translate: 120vw 2rem;
+	}
+}
+
+@keyframes floating-skeleton {
+	from {
+		translate: -20vw 0rem;
+	}
+	to {
+		translate: 120vw 2rem;
+	}
+}
+
+hr {
+	width: 0%;
+	aspect-ratio: 1014 / 178;
+	border: 0;
+	margin: 0;
+	background-image: url('/img/separation_entre_polev2.svg');
+	background-size: cover;
+}
+
 section {
 	background-color: $alt-background;
 }
+
+/* Begin Mobile media query */
 
 .hero {
 	display: flex;
@@ -265,7 +290,11 @@ section {
 	background-color: $background;
 
 	min-height: 100svh;
+}
 
+@media screen and (max-width: 899px) {
+
+.hero {
 	.imgs {
 		position: relative;
 		width: 100vw;
@@ -332,6 +361,36 @@ h1 {
 }
 
 }
+
+
+@media screen and (min-width: 900px) {
+.hero {
+	.imgs {
+		position: relative;
+		width: 50vw;
+		aspect-ratio: 3 / 4;
+		max-height: 60vh;
+		overflow-x: hidden;
+
+		.imgs-bee, .imgs-skeletton {
+			position: absolute;
+			height: calc(100% - 2rem);
+		}
+
+		.imgs-bee {
+			right: -10%;
+			animation: 5s infinite ease-in-out floating-bee;
+		}
+
+		.imgs-skeletton {
+			transform: rotateY(180deg);  /* Original image has wrong orientation */
+			animation: 4s infinite ease-in-out floating alternate-reverse;
+		}
+	}
+}
+
+}
+
 
 </style>
 

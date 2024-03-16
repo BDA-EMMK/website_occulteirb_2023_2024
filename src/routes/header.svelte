@@ -101,6 +101,10 @@ function toggleNav() {
 <style lang="scss">
 @import '$lib/theme.scss';
 
+header {
+	z-index: 100;
+	}
+
 @keyframes header-show {
 	from {
 		transform: translate(70%, -100%);
@@ -122,7 +126,7 @@ function toggleNav() {
   flex-direction: row-reverse;
 
   width: 100%;
-  min-height: 4em;
+  min-height: 4rem;
   height: 5svh;
 
   z-index: 3;
@@ -152,7 +156,7 @@ function toggleNav() {
 			top: 0;
 			position: absolute;
 
-			background-color: $red;
+			background-color: $header-background;
 
 			transition: opacity .5s ease-in-out .5s;
 			will-change: opacity, tansition;
@@ -162,7 +166,7 @@ function toggleNav() {
 		/* backdrop-filter: blur(2px); */
 		border-bottom-left-radius: 1rem;
 
-		color: $foreground;
+		/* color: $header-foreground; */
 		cursor: pointer;
 
 		.hamburger-top, .hamburger-mid, .hamburger-bot {
@@ -176,12 +180,12 @@ function toggleNav() {
 			will-change: transform;
 
 			filter: opacity(1);
-			transition: transform .5s ease-in-out;
+			transition: background-color .5s ease-in-out, transform .5s ease-in-out;
 		}
 
 		.hamburger-mid { 
 			will-change: transform, filter;
-			transition: transform .5s ease-in-out, filter .5s ease-in-out;
+			transition: transform .5s ease-in-out, filter .5s ease-in-out, background-color .5s ease-in-out;
 		}
   }
 }
@@ -290,6 +294,10 @@ function toggleNav() {
 			opacity: 1;
 		}
 
+		.hamburger-top, .hamburger-mid, .hamburger-bot {
+			background-color: $header-foreground;
+		}
+
 		.hamburger-top {
 			transform: translateY(450%) rotate(45deg);
 		}
@@ -349,7 +357,7 @@ function toggleNav() {
 		height: 220vh;
 
 		will-change: translate, transition;
-		background-color: $red;
+		background-color: $header-background;
 		transition: translate .6s ease-in-out .5s;
 		z-index: -1;
 
@@ -368,7 +376,8 @@ function toggleNav() {
 
 @media screen and (min-width: 900px) {
 .mobile {
-	filter: opacity(0);
+	display: none;
+	/* filter: opacity(0); */
 	pointer-events: none;
 }
 
@@ -379,6 +388,16 @@ function toggleNav() {
 }
 
 /* Header */
+header {
+	position: fixed;
+
+	background: rgba($header-foreground, .61);
+	backdrop-filter: blur(5px);
+
+	width: 100%;
+	right: 0;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -386,8 +405,8 @@ nav {
 
   position: relative;
 
-  background-color: $background;
-  padding: 1em 2em;
+  padding: 1rem 2rem;
+	font-size: 3rem;
 }
 
 
@@ -398,7 +417,7 @@ nav {
   align-items: center;
 
 	position: relative;
-  gap: .5em;
+  gap: .5rem;
   margin: 0;
 	padding: 0;
 

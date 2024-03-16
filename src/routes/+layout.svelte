@@ -115,10 +115,6 @@ afterNavigate(() => {
 	}
 }
 
-
-/* Begin mobile media query */
-@media screen and (max-width: 899px) {
-
 .social-links {
   position: fixed;
   bottom: 0;
@@ -154,41 +150,16 @@ afterNavigate(() => {
   }
 }
 
+
+/* Begin mobile media query */
+@media screen and (max-width: 899px) {
+
 }
 /* End mobile media query */
 
 /* Begin desktop media query */
 @media screen and (min-width: 900px) {
 
-.social-links {
-  position: fixed;
-
-	background: rgba($background, .61);
-	backdrop-filter: blur(5px);
-
-	border-top-right-radius: 1rem;
-
-  bottom: 0;
-  left: 0;
-
-	padding: 2vw;
-
-  z-index: 1;
-
-  ul {
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    gap: .5em;
-
-    position: relative;
-
-    li {
-      list-style: none;
-    }
-  }
-}
 }
 /* End desktop media query */
 

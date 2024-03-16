@@ -20,8 +20,8 @@ function forwardClick() {
 
 </script>
 
-<a href="{ headerNavData.URL }" on:click={forwardClick}>
-  <div class="hover_effect" class:active/>
+<a href="{ headerNavData.URL }" on:click={forwardClick} class:active>
+  <div class="hover_effect" />
   <p>{ headerNavData.text }</p>
 </a>
 
@@ -33,7 +33,7 @@ function forwardClick() {
 a {
   position: relative;
   display: block;
-  padding: .5em 1.5em;
+  padding: .5rem 1.5rem;
 
   p {
     display: inline-block;
@@ -42,6 +42,7 @@ a {
     padding: 2rem 0;
 
     font-size: 4rem;
+		color: $header-foreground;
   }
 }
 
@@ -50,13 +51,13 @@ a {
 @media screen and (min-width: 899px) {
 /* Navbar links style */
 a {
-  padding: .5em 1.5em;
+  padding: .5rem 1.5rem;
 
   position: relative;
   display: block;
 
   p {
-    font-size: 2rem;
+    font-size: 3rem;
 
     padding: 2rem 0;
 
@@ -81,7 +82,7 @@ a {
       content: "";
 
       position: absolute;
-      background-color: $red;
+      background-color: $header-background;
 
       opacity: 0;
       transition: translate 0.4s ease-in-out, opacity 0.3s ease-in-out;
@@ -100,39 +101,43 @@ a {
     }
 
     &::after {
-      left: 1em;
+      left: 1rem;
       top: 0%;
 
-      width: .2em;
+      width: .2rem;
       height: 100%;
 
       border-radius: 1px;
 
       translate: 0 -150%;
     }
+  }
 
-    &.active {
-			&::before, &::after {
-				opacity: 1;
-			}
-
-			&::before {
-				translate: .5em 0;
-			}
-
-			&::after {
-				translate: 0 10%;
-			}
+	/* The active root style */
+	&.active {
+		p {
+			color: $header-background;
 		}
 
-  }
+		.hover_effect::before, .hover_effect::after {
+			opacity: 1;
+		}
+
+		.hover_effect::before {
+			translate: .5rem 0;
+		}
+
+		.hover_effect::after {
+			translate: 0 10%;
+		}
+	}
 
 
   /*
     Nice visual effects on hover
   */
-  &:hover {
-    .hover_effect:not(.active) {
+  &:hover:not(.active) {
+    .hover_effect {
 			&::before, &::after {
 				opacity: 1;
 			}
@@ -147,7 +152,7 @@ a {
 		}
 
     p {
-      color: $red;
+      color: $foreground;
       transform: scale(1.05);
     }
   }
