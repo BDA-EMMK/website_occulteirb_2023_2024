@@ -55,6 +55,7 @@ a {
 
   position: relative;
   display: block;
+	pointer-events: auto;
 
   p {
     font-size: 3rem;
