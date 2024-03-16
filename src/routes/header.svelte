@@ -103,7 +103,8 @@ function toggleNav() {
 
 header {
 	z-index: 100;
-	}
+	pointer-events: none;
+}
 
 @keyframes header-show {
 	from {
@@ -180,12 +181,12 @@ header {
 			will-change: transform;
 
 			filter: opacity(1);
-			transition: background-color .5s ease-in-out, transform .5s ease-in-out;
+			transition: background-color .5s ease-in-out .5s, transform .5s ease-in-out;
 		}
 
 		.hamburger-mid { 
 			will-change: transform, filter;
-			transition: transform .5s ease-in-out, filter .5s ease-in-out, background-color .5s ease-in-out;
+			transition: transform .5s ease-in-out, filter .5s ease-in-out, background-color .5s ease-in-out .5s;
 		}
   }
 }
