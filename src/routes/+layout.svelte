@@ -10,8 +10,6 @@ import { onMount } from "svelte";
 import { afterNavigate } from "$app/navigation"
     import type { AfterNavigate } from "@sveltejs/kit";
 
-let loaded: boolean = false
-
 const socialLinks: SocialLinkData[] = [
   {
     URL: "/equipe",
@@ -36,10 +34,10 @@ const socialLinks: SocialLinkData[] = [
 let showSocial: boolean = false;
 
 let isNavOpened: boolean = false;
-let htmlElement: HTMLElement | null = null
+let bodyElement: HTMLBodyElement | null = null
 
 onMount(() => {
-	htmlElement = document.querySelector('body');
+	bodyElement = document.querySelector('body');
 
 	// Show or hide social links
 	window.onscroll = (e) => {
@@ -48,14 +46,14 @@ onMount(() => {
 	}
 });
 
-const onNavOpen = (newState: boolean) => {
-	if (htmlElement === null)
-		return;
+const onOpenNav = () => {
+	if (bodyElement !== null)
+		bodyElement.classList.add('block-scrolling');
+}
 
-	if (newState)
-		htmlElement.classList.add('block-scrolling');
-	else
-		htmlElement.classList.remove('block-scrolling');
+const onCloseNav = () => {
+	if (bodyElement !== null)
+		bodyElement.classList.remove('block-scrolling');
 }
 
 const allosRoutesRegexs: RegExp = /(\/allo)|(\/commandeAllo)/;
@@ -78,9 +76,7 @@ afterNavigate((nav) => {
 		if (excludeFilterScrollOnTop[i](nav))
 			return;
 
-	console.log("SCROLL, nav: ", nav)
-
-	window.scrollTo(0, 0);
+	// window.scrollTo(0, 0);
 });
 </script>
 
@@ -95,7 +91,7 @@ afterNavigate((nav) => {
 </div>
 
 <main id="page" class="{ isNavOpened ? 'hide-overflow': ''}">
-  <Header onNavToggle="{ onNavOpen }" />
+  <Header onOpenNav="{ onOpenNav }" onCloseNav="{ onCloseNav }" />
 
   <slot />
 

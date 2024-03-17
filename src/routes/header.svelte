@@ -54,16 +54,30 @@ $: if (isLoaded) { pathname = $page.url.pathname };
   Mobile
 */
 export let isNavOpened: boolean = false
-export let onNavToggle: (newState: boolean) => void = () => {};
+export let onOpenNav: () => void = () => {};
+export let onCloseNav: () => void = () => {};
+
+function openNav() {
+	onOpenNav();
+
+	isNavOpened = true;
+
+	if (header)
+		header.scrollTo(0, 0);
+}
+
+function closeNav() {
+	onCloseNav();
+
+	isNavOpened = false;
+}
 
 function toggleNav() {
-	isNavOpened = !isNavOpened;
+	if (isNavOpened)
+		closeNav();
 
-	if (isNavOpened && header) {
-		header.scrollTo(0, 0);
-		}
-
-	onNavToggle(isNavOpened);
+	else
+		openNav();
 }
 </script>
 
@@ -78,7 +92,7 @@ function toggleNav() {
 
   <nav>
     <!-- Left side logo -->
-    <a href="/" class="logo-link" on:click={toggleNav}>
+    <a href="/" class="logo-link" on:click={closeNav}>
 			<div class="logo"></div>
     </a>
 
@@ -89,7 +103,7 @@ function toggleNav() {
 
         <HeaderNavLink headerNavData="{ headerNavData }"
 					active={ isHeaderNavActive(headerNavData, pathname) }
-					on:click="{toggleNav}"
+					on:click="{closeNav}"
 				/>
 
       </li>
