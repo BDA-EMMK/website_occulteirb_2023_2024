@@ -36,6 +36,10 @@ const headerNavDatas: HeaderNavData[] = [
     URL: '/partenaires/',
     text: 'Partenaires'
   },
+  {
+    URL: '/account/',
+    text: 'Compte'
+  },
 ];
 
 let pathname = "";
@@ -82,15 +86,15 @@ function toggleNav() {
 </script>
 
 <header class="header {isNavOpened ? 'opened': ''}"  >
+  <nav>
 	<div class="mobile">
-		<button class="toggleHeader" aria-label="Show header" on:click={toggleNav}>
+		<button class="toggleHeader" aria-label="Show header" on:click={ toggleNav }>
 			<div class="hamburger-top"></div>
 			<div class="hamburger-mid"></div>
 			<div class="hamburger-bot"></div>
 		</button>
 	</div>
 
-  <nav>
     <!-- Left side logo -->
     <a href="/" class="logo-link" on:click={closeNav}>
 			<div class="logo"></div>
@@ -119,6 +123,7 @@ function toggleNav() {
 header {
 	z-index: 100;
 	pointer-events: none;
+	overflow-x: hidden;
 }
 
 @keyframes header-show {
@@ -274,30 +279,34 @@ header {
 	}
 
 	.logo-link {
-		transition: translate .4s ease-in-out .6s;
+		transition: translate .4s ease-in-out .7s;
 	}
 
 	ul :nth-child(1) {
-		transition: translate .4s ease-in-out .5s;
+		transition: translate .4s ease-in-out .6s;
 	}
 
 	ul :nth-child(2) {
-		transition: translate .4s ease-in-out .4s;
+		transition: translate .4s ease-in-out .5s;
 	}
 
 	ul :nth-child(3) {
-		transition: translate .4s ease-in-out .3s;
+		transition: translate .4s ease-in-out .4s;
 	}
 
 	ul :nth-child(4) {
-		transition: translate .4s ease-in-out .2s;
+		transition: translate .4s ease-in-out .3s;
 	}
 
 	ul :nth-child(5) {
-		transition: translate .4s ease-in-out .1s;
+		transition: translate .4s ease-in-out .2s;
 	}
 
 	ul :nth-child(6) {
+		transition: translate .4s ease-in-out 0.1s;
+	}
+
+	ul :nth-child(7) {
 		transition: translate .4s ease-in-out 0s;
 	}
 
@@ -356,6 +365,10 @@ header {
 
 		ul :nth-child(6) {
 			transition: translate .4s ease-in-out 1s;
+		}
+
+		ul :nth-child(7) {
+			transition: translate .4s ease-in-out 1.1s;
 		}
   }
 
