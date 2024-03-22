@@ -26,6 +26,29 @@ const login = () => {
   window.location.href = `${AUTH_API_URL}?login=site${DEV_MODE ? "_dev" : ""}`;
 }
 
+const getTicket: () => {} | null = () => {
+	let authData = null;
+
+	// if (window !== undefined)
+	// 	window.sessionStorage.getItem("authData");
+
+	return {};
+
+	try {
+		if (authData) {
+			const jsondata = JSON.parse(authData);
+			return jsondata;
+		}
+	}
+	catch (e) {
+		console.error("authData: ");
+		console.error(authData);
+		throw new Error(`Error while parsing authData = ${authData}`)
+	}
+
+	return null;
+}
+
 /**
  * Set a callback to be called when the user has passed the CAS login
  * @param {(data: any) => void} callback : the callback to be called
@@ -113,6 +136,7 @@ const logout = () => {
 const auth = {
   setDevMode,
   setApiUrl,
+	getTicket,
   login,
   onAuthStateChange,
   logout
