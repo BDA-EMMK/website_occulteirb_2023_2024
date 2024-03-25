@@ -241,8 +241,8 @@ section.hero {
             ". . . read ."
             ". . . . .";
 
-	grid-template-rows: 3rem minmax(20vw, 30vh) auto auto 1rem;
-	grid-template-columns: 3rem minmax(20vw, 30vh) auto auto 1rem;
+	grid-template-rows: 5rem minmax(20vw, 30vh) auto auto 5rem;
+	grid-template-columns: 5rem minmax(20vw, 30vh) auto auto 5rem;
 
 	.logo-container {
 		grid-area: logo;

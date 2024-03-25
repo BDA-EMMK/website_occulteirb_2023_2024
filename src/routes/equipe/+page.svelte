@@ -294,7 +294,7 @@ section {
 	font-size: 2rem;
 	display: flex;
 	justify-content: center;
-	
+
 	/* min-height: 11rem; */
 	width: 24.2rem;
 	max-width: 100vw;
