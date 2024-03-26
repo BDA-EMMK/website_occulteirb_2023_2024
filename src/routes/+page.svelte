@@ -92,6 +92,7 @@
 
 	background-image: url('/img/logo/logo_abeille.svg');
 	background-size: cover;
+	translate: 3% 0;
 
 	will-change: transform;
 	animation: 1s ease-in-out 0s infinite alternate logo-translation;
@@ -113,10 +114,10 @@
 
 .runes {
 	position: absolute;
-	left: 5%;
-	top: 5%;
+	left: 10%;
+	top: 10%;
 
-	width: 90%;
+	width: 80%;
 	aspect-ratio: 272 / 280;
 
 	background-image: url('/img/logo/runes.svg');
@@ -142,8 +143,8 @@ section { background-color: $background; }
 @media screen and (max-width: 899px) {
 .logo-container {
 	height: 70svh;
-	max-width: 80vw;
-	max-height: 80vw;
+	max-width: 95vw;
+	max-height: 95vw;
 }
   
 
