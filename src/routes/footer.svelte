@@ -27,6 +27,10 @@ const headerNavDatas: HeaderNavData[] = [
     URL: '/partenaires/',
     text: 'Partenaires'
   },
+  {
+    URL: '/account/',
+    text: 'Compte'
+  },
 ];
 </script>
 
