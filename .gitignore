@@ -6,6 +6,7 @@ node_modules
 
 # svelt shit
 /build
+/build.zip
 /.svelte-kit
 /package
 .env
