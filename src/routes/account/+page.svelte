@@ -34,26 +34,47 @@ onMount(() => {
 (async () => {
 	id = auth.getID();
 	data = await getData();
+
 	console.log(data);
+
+	if (data) {
+		sessionStorage.setItem('rank', data.rank.toString());
+		sessionStorage.setItem('points', data.rank.toString());
+		sessionStorage.setItem('name', data.name.toString());
+	}
 })()
 
+const getAdress = () => {
+	if (sessionStorage.getItem('adress'))
+		return sessionStorage.getItem('adress');
+
+	return "unknown";
+}
+
+const getPhone = () => {
+	if (sessionStorage.getItem('phone'))
+		return sessionStorage.getItem('phone');
+
+	return "unknown";
+}
+
 const getName = () => {
-	if (data)
-		return data.name;
+	if (sessionStorage.getItem('name'))
+		return sessionStorage.getItem('name');
 
 	return name;
 }
 
 const getRank = () => {
-	if (data)
-		return data.rank;
+	if (sessionStorage.getItem('rank'))
+		return sessionStorage.getItem('rank');
 
 	return rank;
 }
 
 const getPoints = () => {
-	if (data)
-		return data.points;
+	if (sessionStorage.getItem('points'))
+		return sessionStorage.getItem('points');
 
 	return points
 }
