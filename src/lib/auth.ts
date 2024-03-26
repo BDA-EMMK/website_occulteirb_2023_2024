@@ -1,6 +1,6 @@
 
 let DEV_MODE = false;
-let AUTH_API_URL = "/api/index.php";
+let AUTH_API_URL = "http://localhost:3000/auth/login";
 let AUTH_CALLBACK = (_data: any) => {};
 
 /**
@@ -23,30 +23,25 @@ const setApiUrl = (apiUrl: string) => {
  * Redirect the user to the CAS login page
  */
 const login = () => {
-  window.location.href = `${AUTH_API_URL}?login=site${DEV_MODE ? "_dev" : ""}`;
+  window.location.href = `${AUTH_API_URL}?redirect=${encodeURIComponent("http://localhost:5173/account")}`;
 }
 
-const getTicket: () => {} | null = () => {
-	let authData = null;
+const getID = (): string => {
+	if (typeof window !== 'undefined') {
+		const url = new URL(window.location.href);
 
-	// if (window !== undefined)
-	// 	window.sessionStorage.getItem("authData");
+		if (url.searchParams.has('token')) {
+			const id = url.searchParams.get("token") as string
 
-	return {};
-
-	try {
-		if (authData) {
-			const jsondata = JSON.parse(authData);
-			return jsondata;
+			sessionStorage.setItem('id', id);
+			return id;
 		}
 	}
-	catch (e) {
-		console.error("authData: ");
-		console.error(authData);
-		throw new Error(`Error while parsing authData = ${authData}`)
-	}
 
-	return null;
+	if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('id'))
+		return sessionStorage.getItem('id') as string;
+
+	return "";
 }
 
 /**
@@ -64,6 +59,8 @@ export type OnAuthStateChange = (
   callback: (data: {}) => void,
   errorCallback: (error: OnAuthStateChangeError) => void
 ) => void;
+
+
 
 const onAuthStateChange: OnAuthStateChange = async (callback, errorCallback = (_) => {}) => {
   AUTH_CALLBACK = callback;
@@ -136,7 +133,7 @@ const logout = () => {
 const auth = {
   setDevMode,
   setApiUrl,
-	getTicket,
+	getID,
   login,
   onAuthStateChange,
   logout
