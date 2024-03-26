@@ -1,19 +1,45 @@
 
 
+<script lang="ts">
+import auth from '$lib/auth';
+import { onMount } from 'svelte';
+
+let id: undefined | string = undefined;
+
+onMount(() => {
+	id = auth.getID();
+});
+
+</script>
+
 
 <section class="allo-hero">
 <h1>
   Les Allos !
 </h1>
 
-<div class="links">
-	<a href="/commandeAllo/#commande-allo">
-		<h2>Commander des allos</h2>
-	</a>
+<div class="hero-content">
+	{#if id === undefined}
+		<p>Loading</p>
 
-	<a href="/allo/#allo">
-		<h2>Historique des commandes</h2>
-	</a>
+	{:else if id === ""}
+		<button class="login-button" on:click="{ auth.login }">Se connecter pour commander</button>
+
+	{:else}
+		<a href="/submit/">
+			Envoyer la demande
+		</a>
+	{/if}
+
+	<div class="links">
+		<a href="/commandeAllo/#commande-allo">
+			<h2>Commander des allos</h2>
+		</a>
+
+		<a href="/allo/#allo">
+			<h2>Historique des commandes</h2>
+		</a>
+	</div>
 </div>
 
 </section>
@@ -21,6 +47,22 @@
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+@media screen and (min-width: 900px) {
+.hero-content {
+	width: 100%;
+	padding: 4rem 0 10svh 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+
+	flex-wrap: wrap;
+}
+
+h1 {
+	text-align: left;
+}
+}
 
 @media screen and (max-width: 899px) {
 .allo-hero {
@@ -40,8 +82,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
-
-		bottom: 10svh;
 	}
 
 	h1 {
@@ -49,7 +89,7 @@
 		text-align: center;
 		text-shadow: $foreground 0 0 .2rem;
 
-		top: 10svh;
+		top: 5svh;
 	}
 
 	h2 {
@@ -82,8 +122,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
-
-		bottom: 10svh;
 	}
 
 	h1 {
@@ -93,7 +131,6 @@
 		padding-top: 2rem;
 
 		font-size: 5rem;
-		text-align: left;
 		text-shadow: $foreground 0 0 .2rem;
 	}
 
