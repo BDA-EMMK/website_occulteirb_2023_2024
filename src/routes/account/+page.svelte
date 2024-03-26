@@ -1,30 +1,69 @@
 
 <script lang="ts">
 import auth from '$lib/auth';
+    import { onMount } from 'svelte';
+
+interface Data {
+	rank: number;
+	points: number;
+	name: string;
+}
 
 const rank = 1;
 const points = 200000;
 const name = "Nemo D'ACREMONT"
 
+let data: Data | null = null;
+let id: string | null = null;
+
+const getData = async (): Promise<Data | null> => {
+	const id = auth.getID();
+	if (!id)
+		return null;
+
+	return await (await fetch(`http://localhost:3000/getData?id=${id}`)).json();
+}
+
+onMount(() => {
+	const url = new URL(window.location.href);
+
+	if (url.searchParams.has('token'))
+		sessionStorage.setItem('id', url.searchParams.get("token") as string);
+});
+
+(async () => {
+	id = auth.getID();
+	data = await getData();
+	console.log(data);
+})()
+
 const getName = () => {
+	if (data)
+		return data.name;
+
 	return name;
 }
 
 const getRank = () => {
+	if (data)
+		return data.rank;
+
 	return rank;
 }
 
 const getPoints = () => {
+	if (data)
+		return data.points;
+
 	return points
 }
-
 </script>
 
 
 <section class="account">
 	<h1>Mon Compte</h1>
 
-	{#if auth.getTicket() !== null}
+	{#if id}
 		<div class="account-container">
 			<div class="account-info">
 				<h2>Infos &mdash; { getName() }</h2>
@@ -37,7 +76,7 @@ const getPoints = () => {
 
 					<div class="tel">
 						<label for="tel">tel: </label>
-						<input type="tel" name="tel" id="tel" value="0723913845" placeholder="0123456789">
+						<input type="tel" maxlength="10" name="tel" id="tel" value="0723913845" placeholder="0123456789">
 					</div>
 
 					<div class="place">
@@ -67,7 +106,9 @@ const getPoints = () => {
 		</div>
 
 	{:else}
-		<button class="login-button" on:click="{ auth.login }">login</button>
+		<div class="login-container">
+			<button class="login-button" on:click="{ auth.login }">login</button>
+		</div>
 	{/if}
 
 </section>
@@ -209,6 +250,15 @@ h1 {
 	font-size: 5rem;
 	text-shadow: $foreground 0 0 .2rem;
 	text-align: left;
+}
+
+.login-container {
+	width: 100%;
+	min-height: 100svh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .account-container {
