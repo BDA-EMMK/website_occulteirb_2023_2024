@@ -35,6 +35,7 @@ const allos: Allo[] = [
 ]
 </script>
 
+
 <AlloHero />
 
 <section id="allo">
