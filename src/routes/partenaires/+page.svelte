@@ -7,15 +7,29 @@ import PartnerCard from "./partnerCard.svelte";
 
 const partners: Partner[] = [
   {
-    name: "openAI",
-    imgURL: "/img/troll/openai.png",
-    desc: "Des randoms"
+    name: "Le Dé Caféiné",
+    imgURL: "/img/part/LOGO-De_cafeine.png",
+    desc: "Café ludique&dashmbar à jeux de société",
+		link: "http://ledecafeine.com/"
   },
   {
-    name: "The Rock !",
-    imgURL: "/img/troll/the_rock.jpg",
-    desc: "Un random"
-  }
+    name: "Gagnant Gagnant",
+    imgURL: "/img/part/LOGO-Gagnant_Gagnant.png",
+    desc: "Boutique de / bar à Jeux de société",
+		link: "https://gg33.fr/"
+  },
+  {
+    name: "Théâtre",
+    imgURL: "/img/part/LOGO-Theatres.png",
+    desc: "Le théâtre de trianon!",
+		link: "https://www.bordeauxtheatres.com/"
+  },
+  {
+    name: "Virtual Room",
+    imgURL: "/img/part/LOGO-Virtual_Room.png",
+    desc: "Une aventure en réalité virtuelle !",
+		link: "https://bordeaux.virtual-room.com/"
+  },
 ]
 
 </script>
