@@ -240,28 +240,55 @@ const webMembers: Member[] = [
 @import '$lib/theme.scss';
 
 @keyframes floating {
-	from {
+	0% {
 		translate: 0 0rem;
 	}
-	to {
+	25% {
+		translate: .5rem .5rem;
+	}
+	50% {
+		translate: 0 1rem;
+	}
+	75% {
+		translate: -.5rem 1.5rem;
+	}
+	100% {
 		translate: 0 2rem;
 	}
 }
 
 @keyframes floating-bee {
-	from {
+	0% {
 		translate: 0vw 0rem;
 	}
-	to {
+	25% {
+		translate: calc(25vw + 25%) 1rem;
+	}
+	50% {
+		translate: calc(50vw + 50%) 0;
+	}
+	75% {
+		translate: calc(75vw + 75%) -1rem;
+	}
+	100% {
 		translate: calc(100vw + 100%) 0rem;
 	}
 }
 
 @keyframes floating-skeleton {
-	from {
+	0% {
 		translate: 0vw 0rem;
 	}
-	to {
+	25% {
+		translate: calc(30vw + 25%) 1rem;
+	}
+	50% {
+		translate: calc(57vw + 50%) 0;
+	}
+	75% {
+		translate: calc(85vw + 75%) -1rem;
+	}
+	100% {
 		translate: calc(110vw + 100%) 0rem;
 	}
 }
