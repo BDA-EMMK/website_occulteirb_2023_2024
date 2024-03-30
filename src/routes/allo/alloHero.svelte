@@ -27,7 +27,8 @@ onMount(() => {
 
 	{:else}
 		<a href="/submit/">
-			Envoyer la demande
+			<h2>Envoyer la demande</h2>
+			
 		</a>
 	{/if}
 
@@ -47,6 +48,10 @@ onMount(() => {
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+.submit {
+	font-size: 3rem;
+}
 
 @media screen and (min-width: 900px) {
 .hero-content {
