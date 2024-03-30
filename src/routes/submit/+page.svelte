@@ -25,10 +25,37 @@ onMount(() => {
 <section class="container">
 	<h1>Submit</h1>
 
-	{#each allos as allo}
-		<p>ID: {allo.id}</p>
-		<p>Quantité {allo.quantity}</p>
-	{/each}
+	<div class="allos">
+		{#each allos as allo}
+			<p>ID: {allo.id}</p>
+			<p>Quantité {allo.quantity}</p>
+		{/each}
+	</div>
+
+	<form action="/">
+		<div class="mail">
+			<label for="mail">mail: </label>
+			<input type="email" name="mail" id="mail" value="ndacremont@enseirb-matmeca.fr" placeholder="Ex: mail@enseirb-matmeca.fr" required>
+		</div>
+
+		<div class="tel">
+			<label for="tel">tel: </label>
+			<input type="tel" maxlength="10" name="tel" id="tel" value="0723913845" placeholder="Ex: 0123456789" required>
+		</div>
+
+		<div class="place">
+			<label for="place">Adresse: </label>
+			<input type="text" name="place" id="place" value="Ma rue" placeholder="Ex: 1 rue de l'enseirb, Pessac" required>
+		</div>
+
+		<div class="city">
+			<label for="city">Ville: </label>
+			<input type="text" name="city" id="city" value="" placeholder="Ex: Talence" required>
+		</div>
+
+		<input type="submit" value="Envoyer ma demande">
+	</form>
+
 </section>
 
 <style lang="scss">
@@ -51,6 +78,7 @@ h1 {
 
 	text-shadow: $foreground 0 0 .2rem;
 	left: 5%;
+	width: 50%;
 }
 
 </style>
