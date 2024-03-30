@@ -66,7 +66,6 @@ const partners: Partner[] = [
 	background-color: $background;
 	min-height: 100svh;
 	width: 100vw;
-	padding-top: 4rem;
 }
 
 
@@ -78,6 +77,11 @@ h1 {
 	text-shadow: $foreground 0 0 .2rem;
 	text-align: center;
 }
+
+.partners-section {
+	padding-top: 4rem;
+}
+
 }
 
 @media screen and (min-width: 900px) {
