@@ -92,17 +92,22 @@ const getPoints = () => {
 				<div class="inputs">
 					<div class="mail">
 						<label for="mail">mail: </label>
-						<input type="email" name="mail" id="mail" value="ndacremont@enseirb-matmeca.fr" placeholder="mail@enseirb-matmeca.fr">
+						<input type="email" name="mail" id="mail" value="ndacremont@enseirb-matmeca.fr" placeholder="Ex: mail@enseirb-matmeca.fr">
 					</div>
 
 					<div class="tel">
 						<label for="tel">tel: </label>
-						<input type="tel" maxlength="10" name="tel" id="tel" value="0723913845" placeholder="0123456789">
+						<input type="tel" maxlength="10" name="tel" id="tel" value="0723913845" placeholder="Ex: 0123456789">
 					</div>
 
 					<div class="place">
 						<label for="place">Adresse: </label>
-						<input type="text" name="place" id="place" value="Ma rue" placeholder="1 rue de l'enseirb, Pessac">
+						<input type="text" name="place" id="place" value="Ma rue" placeholder="Ex: 1 rue de l'enseirb, Pessac">
+					</div>
+
+					<div class="city">
+						<label for="city">Ville: </label>
+						<input type="text" name="city" id="city" value="" placeholder="Ex: Talence">
 					</div>
 				</div>
 			</div>
