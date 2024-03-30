@@ -9,7 +9,7 @@ const partners: Partner[] = [
   {
     name: "Le Dé Caféiné",
     imgURL: "/img/part/LOGO-De_cafeine.png",
-    desc: "Café ludique&dashmbar à jeux de société",
+    desc: "Café ludique & bar à jeux de société",
 		link: "http://ledecafeine.com/"
   },
   {
@@ -21,25 +21,25 @@ const partners: Partner[] = [
   {
     name: "Théâtre",
     imgURL: "/img/part/LOGO-Theatres.png",
-    desc: "Le théâtre de trianon!",
+    desc: "Le théâtre de trianon",
 		link: "https://www.bordeauxtheatres.com/"
   },
   {
     name: "Virtual Room",
     imgURL: "/img/part/LOGO-Virtual_Room.png",
-    desc: "Une aventure en réalité virtuelle !",
+    desc: "Une aventure en réalité virtuelle",
 		link: "https://bordeaux.virtual-room.com/"
   },
 ]
-
 </script>
 
 <!-- The part -->
-<h1>
-  Les partenaires !
-</h1>
 
-<section class="pole-section">
+<section class="partners-section">
+	<h1>
+		Nos partenaires
+	</h1>
+
   <div class="partners">
 
     {#each partners as partner}
@@ -51,11 +51,48 @@ const partners: Partner[] = [
 
 
 <style lang="scss">
+@import '$lib/theme.scss';
+
 /* For the team */
 .partners {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  padding: 10rem 5vw;
+	gap: 5rem;
 }
+
+.partners-section {
+	background-color: $background;
+	min-height: 100svh;
+	width: 100vw;
+	padding-top: 4rem;
+}
+
+
+/* Begin Mobile media query */
+
+@media screen and (max-width: 899px) {
+h1 {
+	font-size: 5rem;
+	text-shadow: $foreground 0 0 .2rem;
+	text-align: center;
+}
+}
+
+@media screen and (min-width: 900px) {
+h1 {
+	position: relative;
+	left: 5%;
+	max-width: 95%;
+	padding-top: 2rem;
+	pointer-events: none;
+
+	z-index: 500;
+	font-size: 5rem;
+	text-shadow: $foreground 0 0 .2rem;
+}
+}
+
 </style>
 

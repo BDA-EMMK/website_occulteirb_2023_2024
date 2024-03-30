@@ -6,25 +6,28 @@ export let partner: Partner = {
   name: "unset",
   imgURL: "/unset",
   desc: "unset",
+	link: '/',
 };
 
 </script>
 
 <!-- Member 1 -->
-<div class="partner-card">
-  <img src="{ partner.imgURL }" alt="{ partner.name }" title="{ partner.name }">
+<a href="{partner.link}" target="_blank">
+	<div class="partner-card">
+		<div class="top-part">
+			<h3 class="title">{ partner.name }</h3>
+			<img src="{ partner.imgURL }" alt="{ partner.name }" title="{ partner.name }">
+		</div>
 
-  <!-- <p class="partner-card__name"> -->
-  <!--   { partner.name } -->
-  <!-- </p> -->
-  <!-- <p> -->
-  <!--   { partner.desc} -->
-  <!-- </p> -->
-
-</div>
-
+		<p class="desc">
+		  { partner.desc}
+		</p>
+	</div>
+</a>
 
 <style lang="scss">
+@import "$lib/theme.scss";
+
 @keyframes animate{
 	from {
 		transform: rotate(0deg);
@@ -34,43 +37,58 @@ export let partner: Partner = {
 		transform: rotate(362deg);
 	}
 }
-
+a { text-decoration: none; }
 
 .partner-card {
-  width: 250px;
-  height: 400px;
-  margin: auto;
-  text-align: center;
   object-fit: cover;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  transform: translateX(-150px);
+	position: relative;
+	width: 20rem;
+	max-width: 90vw;
 
-  &::before {
-    content: '';
-    position: absolute;
+	background-color: $orange;
+	border-radius: .2rem;
 
-    left: 25%;
-    top: -50%;
+	.top-part {
+		position: relative;
+		width: 100%;
+		height: 15rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-    z-index: -1;
+		img {
+			max-height: 100%;
+			max-width: 100%;
+		}
 
-    width: 50%;
-    height: 200%;
+		.title {
+			position: absolute;
+			left: 0;
+			bottom: -3.25rem;
 
-    background: rgba(255, 73, 1, 1);
-    transform: rotate(45deg);
-  }
+			padding: 1rem;
+			width: 100%;
 
-  &::after {
-    z-index: -1;
-    position: absolute;
-    content: '';
-    inset: 4px;
-    border-radius: 8px;
-  }
+			font-size: 2.5rem;
+			color: $background;
 
+			background-color: rgba($foreground, .75);
+		}
+	}
+
+	.desc {
+		padding: 6rem 2rem 3rem 2rem;
+		font-size: 1.5rem;
+		font-family: "fanwood-master", serif;
+		color: $background;
+	}
+
+
+
+/*
   img {
     width: calc(100% - 10pt);
     height: calc(100% - 10pt);
@@ -80,16 +98,13 @@ export let partner: Partner = {
 
     transform: translateY(5pt);
   }
+	*/
 
   /*
    * UI effects !
   */
   &:hover {
     transform: scale(1.05);
-  }
-
-  &:hover::before {
-    animation: animate 2s linear infinite;
   }
 }
 </style>
