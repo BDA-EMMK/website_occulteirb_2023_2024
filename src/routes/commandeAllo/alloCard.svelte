@@ -96,12 +96,13 @@ function addAllo() {
 	.quantity {
 		display: flex;
 		align-items: center;
-		padding: 1rem;
+		padding: 1rem .5rem;
+		gap: 1rem;
 		flex-wrap: wrap;
 	}
 
 	.price {
-		padding: 1rem;
+		padding: 1rem .5rem;
 	}
 
 	button {
