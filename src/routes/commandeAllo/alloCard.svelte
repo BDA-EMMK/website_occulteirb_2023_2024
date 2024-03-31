@@ -1,15 +1,13 @@
 
 <script lang="ts">
-import type { Allo } from "./allo";
+import type { AlloTask } from '$lib/allo';
 
-export let allo: Allo = {
-  UID: "-1",
-  CAS_UID: "not set",
-  title: "not set",
-  state: "In Progress",
-  creationDate: "not set",
-  finishDate: "not set",
-  requestText: "not set"
+export let allo: AlloTask = {
+	taskId: -1,
+	taskName: 'undefined',
+	price: -1,
+	picture: {},
+	description: 'undefined',
 };
 
 interface alloPreRequest {
@@ -17,10 +15,7 @@ interface alloPreRequest {
 	quantity: number;
 }
 
-let showdetails: boolean = false;
-
 let quantity: string | number = "";
-let price = 0.5;
 let id = 0;
 
 function addAllo() {
@@ -45,12 +40,12 @@ function addAllo() {
 <div class="allo-card">
 	<div class="top">
 		<h3 class="title">
-			{ allo.title }
+			{ allo.taskName }
 		</h3>
 	</div>
 
 	<p class="desc">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit animi natus doloribus nulla esse nostrum id nihil aspernatur quaerat modi molestias incidunt fugit, rerum soluta itaque quae sapiente voluptatem.
+		{ allo.description }
 	</p>
 
 	<div class="submit">
@@ -59,10 +54,10 @@ function addAllo() {
 			<input type="number" step="1" min='0' max="20" placeholder="Ex: 5" bind:value={quantity}>
 		</div>
 
-		<p class="price">Prix : { price }€ / u (total: { price * (typeof quantity === "number" ? quantity: 0) }€)</p>
+		<p class="price">Prix : { allo.price }€ / u (total: { allo.price * (typeof quantity === "number" ? quantity: 0) }€)</p>
 
 		<div class="submit-button-container">
-			<button on:click="{addAllo}" >Ajouter à la commande</button>
+			<button on:click="{ addAllo }" >Ajouter à la commande</button>
 		</div>
 	</div>
 
