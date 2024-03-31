@@ -23,23 +23,26 @@ const setApiUrl = (apiUrl: string) => {
  * Redirect the user to the CAS login page
  */
 const login = () => {
-  window.location.href = `${AUTH_API_URL}?redirect=${encodeURIComponent("http://localhost:5173/account")}`;
+	// previously "http://localhost:5173/account"
+	const redirect = window.location.origin + window.location.pathname;
+
+  window.location.href = `${AUTH_API_URL}?redirect=${encodeURIComponent(redirect)}`;
 }
 
-const getID = (): string => {
+const getToken = (): string => {
 	if (typeof window !== 'undefined') {
 		const url = new URL(window.location.href);
 
 		if (url.searchParams.has('token')) {
-			const id = url.searchParams.get("token") as string
+			const token = url.searchParams.get("token") as string
 
-			sessionStorage.setItem('id', id);
-			return id;
+			sessionStorage.setItem('token', token);
+			return token;
 		}
 	}
 
-	if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('id'))
-		return sessionStorage.getItem('id') as string;
+	if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token'))
+		return sessionStorage.getItem('token') as string;
 
 	return "";
 }
@@ -121,19 +124,19 @@ const onAuthStateChange: OnAuthStateChange = async (callback, errorCallback = (_
  * Logout the user
  */
 const logout = () => {
-  sessionStorage.removeItem("authData");
+  sessionStorage.removeItem("id");
 
-  if (AUTH_CALLBACK) {
-    AUTH_CALLBACK(null);
-  }
+  // if (AUTH_CALLBACK) {
+  //   AUTH_CALLBACK(null);
+  // }
 
-  window.location.reload();
+  // window.location.reload();
 }
 
 const auth = {
   setDevMode,
   setApiUrl,
-	getID,
+	getToken,
   login,
   onAuthStateChange,
   logout
