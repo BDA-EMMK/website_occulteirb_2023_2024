@@ -42,38 +42,5 @@ function toggleVideo() { isVideoShowed = !isVideoShowed; }
   width: 100%;
   height: 100%;
   display: block;
-
-  &.hidden {
-    display: none;
-  }
-}
-
-/* For the button */
-.button-container {
-  position: fixed;
-
-  font-size: 2rem;
-
-  bottom: 20px;
-  right: 20px;
-}
-
-/* Style du bouton */
-.button-container button {
-  font-family: 'Protest Revolution', cursive;
-
-  border: none;
-
-  width: 11em;
-
-  z-index: 1;
-
-  background-color: black;
-  color: red;
-
-  cursor: pointer;
-
-  font-size: 2rem;
-  padding: .5em 0em; 
 }
 </style>
