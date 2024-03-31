@@ -4,35 +4,17 @@ import type { Allo } from "./allo";
 import AlloCard from "./alloCard.svelte";
 import AlloHero from "../allo/alloHero.svelte";
 
-const allos: Allo[] = [
-  {
-    UID: "0",
-    CAS_UID: "jsp",
-    state: "In Progress",
-    title: "Des crèpes !",
-    finishDate: "not set",
-    creationDate: "5 min ago",
-    requestText: "Des crèpes pitié monsieur...."
-  },
-  {
-    UID: "1",
-    CAS_UID: "jsp",
-    state: "In Progress",
-    title: "Des crèpes !",
-    finishDate: "not set",
-    creationDate: "5 min ago",
-    requestText: "Des crèpes pitié monsieur...."
-  },
-  {
-    UID: "2",
-    CAS_UID: "jsp",
-    state: "In Progress",
-    title: "Des crèpes !",
-    finishDate: "not set",
-    creationDate: "5 min ago",
-    requestText: "Des crèpes pitié monsieur...."
-  }
-]
+import AlloAPI from '$lib/allo';
+import type { AlloTask } from '$lib/allo';
+import { onMount } from "svelte";
+
+let allos: AlloTask[] = [];
+
+onMount(async () => {
+	const tmp = await AlloAPI.getAvailableAllos();
+	console.log(tmp)
+	allos = tmp ? tmp: [];
+});
 </script>
 
 <AlloHero />
