@@ -3,11 +3,12 @@
 <script lang="ts">
 import auth from '$lib/auth';
 import { onMount } from 'svelte';
+import LoginButton from "$lib/login-button.svelte";
 
-let id: undefined | string = undefined;
+let token: undefined | string = undefined;
 
 onMount(() => {
-	id = auth.getID();
+	token = auth.getToken();
 });
 
 </script>
@@ -19,11 +20,11 @@ onMount(() => {
 </h1>
 
 <div class="hero-content">
-	{#if id === undefined}
+	{#if token === undefined}
 		<p>Loading</p>
 
-	{:else if id === ""}
-		<button class="login-button" on:click="{ auth.login }">Se connecter pour commander</button>
+	{:else if token === ""}
+		<LoginButton />
 
 	{:else}
 		<a href="/submit/">
@@ -48,10 +49,6 @@ onMount(() => {
 
 <style lang="scss">
 @import '$lib/theme.scss';
-
-.submit {
-	font-size: 3rem;
-}
 
 @media screen and (min-width: 900px) {
 .hero-content {
