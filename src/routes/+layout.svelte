@@ -1,4 +1,3 @@
-
 <script lang="ts">
 import type { SocialLinkData } from "./socialLink";
 import SocialLink from "./socialLink.svelte";
@@ -8,7 +7,7 @@ import Footer from './footer.svelte';
 
 import { onMount } from "svelte";
 import { afterNavigate } from "$app/navigation"
-    import type { AfterNavigate } from "@sveltejs/kit";
+import type { AfterNavigate } from "@sveltejs/kit";
 
 const socialLinks: SocialLinkData[] = [
   {
@@ -40,7 +39,7 @@ onMount(() => {
 	bodyElement = document.querySelector('body');
 
 	// Show or hide social links
-	window.onscroll = (e) => {
+	window.onscroll = (_event) => {
 		if (window.visualViewport)
 			showSocial = window.scrollY > window.visualViewport.height / 5;
 	}
@@ -66,10 +65,11 @@ const excludeFilterScrollOnTop: ((nav: AfterNavigate) => boolean)[]= [
 		nav.to !== null &&
 		nav.from.route.id !== null &&
 		nav.to.route.id !== null &&
+
 	/* Actual test */
 		allosRoutesRegexs.test(nav.from.route.id) &&
 		allosRoutesRegexs.test(nav.to.route.id),
-]
+];
 
 afterNavigate((nav) => {
 	for (let i = 0 ; i < excludeFilterScrollOnTop.length ; ++i)
