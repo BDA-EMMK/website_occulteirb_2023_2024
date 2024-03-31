@@ -1,82 +1,77 @@
 
 <script lang="ts">
 import auth from '$lib/auth';
-    import { onMount } from 'svelte';
+import api from '$lib/api';
+import LoginButton from '$lib/login-button.svelte';
+import { onMount } from 'svelte';
 
-interface Data {
-	rank: number;
-	points: number;
-	name: string;
-}
+import Account from '$lib/account';
+import type { AccountData } from '$lib/account';
+import account from '$lib/account';
 
-const rank = 1;
-const points = 200000;
-const name = "Nemo D'ACREMONT"
+let data: AccountData | null = null;
+let token: string | null = null;
 
-let data: Data | null = null;
-let id: string | null = null;
-
-const getData = async (): Promise<Data | null> => {
-	const id = auth.getID();
-	if (!id)
-		return null;
-
-	return await (await fetch(`http://localhost:3000/getData?id=${id}`)).json();
-}
-
-onMount(() => {
+onMount(async () => {
+	// if redirected from cas
 	const url = new URL(window.location.href);
 
-	if (url.searchParams.has('token'))
-		sessionStorage.setItem('id', url.searchParams.get("token") as string);
+	if (url.searchParams.has('token')) {
+		sessionStorage.setItem('token', url.searchParams.get("token") as string);
+	}
+
+	token = auth.getToken();
+	const fetchedData = await Account.fetchAccountData();
+	data = Account.getSavedAccountData();
+
+	if (fetchedData === null)
+		return;
+
+	data = {
+		...data,
+		rank: fetchedData.rank,
+		points: fetchedData.points,
+	}
+	account.saveAccountData(data);
 });
 
-(async () => {
-	id = auth.getID();
-	data = await getData();
 
+const formatMail = (mail: string): string => {
+	const mailRegExp = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/;
+
+	if (mailRegExp.test(mail))
+		return mail;
+
+	return '';
+}
+
+const formatTel = (tel: string): string => {
+	const telRegExp = /^(0|\+\d{1,3})\d{9}$/;
+
+	if (telRegExp.test(tel))
+		return tel;
+
+	return '';
+}
+
+const saveData = () => {
+	console.log("save data !");
 	console.log(data);
+	if (data === null)
+		return;
 
-	if (data) {
-		sessionStorage.setItem('rank', data.rank.toString());
-		sessionStorage.setItem('points', data.rank.toString());
-		sessionStorage.setItem('name', data.name.toString());
-	}
-})()
+	const newData = {
+		...data,
+		mail: formatMail(data.mail),
+		tel: formatTel(data.tel),
+	};
 
-const getAdress = () => {
-	if (sessionStorage.getItem('adress'))
-		return sessionStorage.getItem('adress');
-
-	return "unknown";
+	data = newData;
+	Account.saveAccountData(data);
 }
 
-const getPhone = () => {
-	if (sessionStorage.getItem('phone'))
-		return sessionStorage.getItem('phone');
-
-	return "unknown";
-}
-
-const getName = () => {
-	if (sessionStorage.getItem('name'))
-		return sessionStorage.getItem('name');
-
-	return name;
-}
-
-const getRank = () => {
-	if (sessionStorage.getItem('rank'))
-		return sessionStorage.getItem('rank');
-
-	return rank;
-}
-
-const getPoints = () => {
-	if (sessionStorage.getItem('points'))
-		return sessionStorage.getItem('points');
-
-	return points
+const forceRefresh = () => {
+	token = null;
 }
 </script>
 
@@ -84,56 +79,59 @@ const getPoints = () => {
 <section class="account">
 	<h1>Mon Compte</h1>
 
-	{#if id}
+	{#if token && data}
 		<div class="account-container">
 			<div class="account-info">
-				<h2>Infos &mdash; { getName() }</h2>
+				<h2>Infos &mdash; { data.name }</h2>
 
 				<div class="inputs">
 					<div class="mail">
 						<label for="mail">mail: </label>
-						<input type="email" name="mail" id="mail" value="ndacremont@enseirb-matmeca.fr" placeholder="Ex: mail@enseirb-matmeca.fr">
+						<input type="email" bind:value={data.mail} on:change={ saveData } name="mail" id="mail" placeholder="Ex: mail@enseirb-matmeca.fr">
 					</div>
 
 					<div class="tel">
 						<label for="tel">tel: </label>
-						<input type="tel" maxlength="10" name="tel" id="tel" value="0723913845" placeholder="Ex: 0123456789">
+						<input type="tel" bind:value={data.tel} on:change={ saveData } maxlength="10" name="tel" id="tel" placeholder="Ex: 0123456789">
 					</div>
 
 					<div class="place">
 						<label for="place">Adresse: </label>
-						<input type="text" name="place" id="place" value="Ma rue" placeholder="Ex: 1 rue de l'enseirb, Pessac">
+						<input type="text" bind:value={data.address} on:change={ saveData } name="place" id="place" placeholder="Ex: 1 rue de l'enseirb, Pessac">
 					</div>
 
 					<div class="city">
 						<label for="city">Ville: </label>
-						<input type="text" name="city" id="city" value="" placeholder="Ex: Talence">
+						<input type="text" bind:value={data.city} on:change={ saveData } name="city" id="city" placeholder="Ex: Talence">
 					</div>
 				</div>
 			</div>
 
 			<div class="account-rank">
-				<h2>Rank &mdash; { getName() }</h2>
+				<h2>Rank &mdash; { data.name }</h2>
 
 				<div class="ranks">
 					<div class="points">
 						<p>Points:</p>
-						<p>{ getPoints() }</p>
+						<p>{ data.points }</p>
 					</div>
 
 					<hr>
 
 					<div class="rank">
 						<p>Rank</p>
-						<p>#{ getRank() }</p>
+						<p>#{ data.rank }</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		
+		<LoginButton action="logout" onLogout="{ forceRefresh }" />
+
 	{:else}
 		<div class="login-container">
-			<button class="login-button" on:click="{ auth.login }">login</button>
+			<LoginButton />
 		</div>
 	{/if}
 
@@ -219,7 +217,7 @@ h1 {
 			font-size: 1.5rem;
 		}
 
-		.mail, .tel, .place {
+		.mail, .tel, .place, .city {
 			display: flex;
 
 			align-items: center;
@@ -285,6 +283,7 @@ h1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
 }
 
 .account-container {
@@ -338,7 +337,7 @@ h1 {
 			font-size: 3rem;
 		}
 
-		.mail, .tel, .place {
+		.mail, .tel, .place, .city {
 			display: flex;
 			gap: 3rem;
 
