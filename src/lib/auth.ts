@@ -37,12 +37,25 @@ const getToken = (): string => {
 			const token = url.searchParams.get("token") as string
 
 			sessionStorage.setItem('token', token);
+			const now = new Date();
+			now.setTime(now.getTime() + 1 * 3600 * 1000);
+			document.cookie = `token=${token}; expires=${now}; SameSite=None; Secure`;
+			window.location.href = window.location.origin + window.location.pathname;
 			return token;
 		}
 	}
 
-	if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token'))
-		return sessionStorage.getItem('token') as string;
+	// if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token'))
+	// 	return sessionStorage.getItem('token') as string;
+
+	if (typeof document !== 'undefined') {
+
+		const tokenMatch = document.cookie.match(/token=[a-zA-Z0-9\.\-_]+/);
+		if (!tokenMatch)
+			return "";
+
+		return tokenMatch[0].replace(/token=/g, '');
+	}
 
 	return "";
 }
@@ -62,8 +75,6 @@ export type OnAuthStateChange = (
   callback: (data: {}) => void,
   errorCallback: (error: OnAuthStateChangeError) => void
 ) => void;
-
-
 
 const onAuthStateChange: OnAuthStateChange = async (callback, errorCallback = (_) => {}) => {
   AUTH_CALLBACK = callback;

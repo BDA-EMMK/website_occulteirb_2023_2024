@@ -14,6 +14,7 @@ interface AccountData {
 
 export const fetchAccountData = async (): Promise<AccountData | null> => {
 	const token = auth.getToken();
+	console.log("Toekn:", token);
 	if (!token)
 		return null;
 
@@ -36,10 +37,10 @@ export const saveAccountData = (accountData: AccountData): void => {
 	if (typeof localStorage === 'undefined')
 		return;
 
-	if (accountData.rank >= 0)
+	if (accountData.rank > 0)
 		localStorage.setItem('rank', accountData.rank.toString());
 
-	if (accountData.points >= 0)
+	if (accountData.points > 0)
 		localStorage.setItem('points', accountData.points.toString());
 
 	localStorage.setItem('name', accountData.name);
