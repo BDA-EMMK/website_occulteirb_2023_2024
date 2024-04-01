@@ -27,9 +27,8 @@ onMount(() => {
 		<LoginButton />
 
 	{:else}
-		<a href="/submit/">
+		<a href="/submit/" class="submit-link">
 			<h2>Envoyer la demande</h2>
-			
 		</a>
 	{/if}
 
@@ -75,6 +74,15 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	.hero-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		flex-direction: column;
+		gap: 3rem;
+		padding: 3rem 0;
+	}
 
 	.links, h1 {
 		position: relative;
