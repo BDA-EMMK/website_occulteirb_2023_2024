@@ -3,42 +3,14 @@
 import AlloCard from "./alloCard.svelte";
 import AlloHero from "./alloHero.svelte";
 
-import type { Allo } from "$lib/allo";
+import type { Allo } from "$lib/api";
 import Allos from "$lib/allo";
 
 import Auth from "$lib/auth";
 import { onMount } from "svelte";
     import LoginButton from "$lib/login-button.svelte";
 
-let allos: Allo[] = [
-  {
-    UID: "0",
-    CAS_UID: "jsp",
-    state: "In Progress",
-    title: "Des crèpes !",
-    finishDate: "not set",
-    creationDate: "5 min ago",
-    requestText: "Des crèpes pitié monsieur...."
-  },
-  {
-    UID: "1",
-    CAS_UID: "jsp",
-    state: "In Progress",
-    title: "Des crèpes !",
-    finishDate: "not set",
-    creationDate: "5 min ago",
-    requestText: "Des crèpes pitié monsieur...."
-  },
-  {
-    UID: "2",
-    CAS_UID: "jsp",
-    state: "In Progress",
-    title: "Des crèpes !",
-    finishDate: "not set",
-    creationDate: "5 min ago",
-    requestText: "Des crèpes pitié monsieur...."
-  }
-];
+let allos: Allo[] = [];
 
 let ticket: string = "";
 onMount(async () => {
@@ -46,7 +18,7 @@ onMount(async () => {
 
 	if (Auth) {
 		console.log(allos);
-		allos = await Allos.getAllos(ticket);
+		allos = await Allos.getAllos(ticket) || [];
 		console.log(allos);
 	}
 
