@@ -139,7 +139,7 @@ header {
 .mobile {
   position: sticky;
   background: transparent;
-	pointer-events: auto;
+	pointer-events: none;
 
   top: 0;
 
@@ -155,6 +155,7 @@ header {
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
+		pointer-events: auto;
 
 		position: relative;
 
