@@ -7,20 +7,13 @@ import { onMount } from 'svelte';
 
 import Account from '$lib/account';
 import type { AccountData } from '$lib/account';
-import account from '$lib/account';
 
 let data: AccountData | null = null;
 let token: string | null = null;
 
 onMount(async () => {
-	// if redirected from cas
-	const url = new URL(window.location.href);
-
-	if (url.searchParams.has('token')) {
-		sessionStorage.setItem('token', url.searchParams.get("token") as string);
-	}
-
 	token = auth.getToken();
+
 	const fetchedData = await Account.fetchAccountData();
 	data = Account.getSavedAccountData();
 
@@ -32,7 +25,7 @@ onMount(async () => {
 		rank: fetchedData.rank,
 		points: fetchedData.points,
 	}
-	account.saveAccountData(data);
+	Account.saveAccountData(data);
 });
 
 
