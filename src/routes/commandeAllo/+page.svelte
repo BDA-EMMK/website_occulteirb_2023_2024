@@ -35,6 +35,8 @@ onMount(async () => {
 
 #commande-allo {
 	background-color: $alt-background;
+
+	min-height: 100svh;
 }
 
 .allos-list {
