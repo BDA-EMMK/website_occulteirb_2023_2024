@@ -1,7 +1,5 @@
-
 <script lang="ts">
 import auth from '$lib/auth';
-import api from '$lib/api';
 import LoginButton from '$lib/login-button.svelte';
 import { onMount } from 'svelte';
 
@@ -79,12 +77,12 @@ const forceRefresh = () => {
 
 				<div class="inputs">
 					<div class="mail">
-						<label for="mail">mail: </label>
+						<label for="mail">Mail: </label>
 						<input type="email" bind:value={data.mail} on:change={ saveData } name="mail" id="mail" placeholder="Ex: mail@enseirb-matmeca.fr">
 					</div>
 
 					<div class="tel">
-						<label for="tel">tel: </label>
+						<label for="tel">Tel: </label>
 						<input type="tel" bind:value={data.tel} on:change={ saveData } maxlength="10" name="tel" id="tel" placeholder="Ex: 0123456789">
 					</div>
 
@@ -120,7 +118,9 @@ const forceRefresh = () => {
 		</div>
 
 		
-		<LoginButton action="logout" onLogout="{ forceRefresh }" />
+    <div class="logout-container">
+      <LoginButton action="logout" onLogout="{ forceRefresh }" />
+    </div>
 
 	{:else}
 		<div class="login-container">
@@ -138,6 +138,55 @@ const forceRefresh = () => {
 	background-color: $background;
 }
 
+.login-container {
+	width: 100%;
+	min-height: 100svh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.account-info {
+  border-radius: .2rem;
+
+	.inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		position: relative;
+
+		input, label {
+			padding: 1rem 2rem;
+			border: 0;
+			border-radius: .2rem;
+			font-family: 'fanwood-master', serif;
+		}
+
+		input {
+			font-size: 2rem;
+		}
+
+		label {
+			font-size: 3rem;
+		}
+
+		.mail, .tel, .place, .city {
+			display: flex;
+			gap: 3rem;
+
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+		}
+	}
+}
+
+.account-rank {
+  height: 100%;
+  border-radius: .2rem;
+}
+
 /*
  * Mobile query
 */
@@ -146,28 +195,44 @@ h1 {
 	font-size: 5rem;
 	text-shadow: $foreground 0 0 .2rem;
 	text-align: center;
+  position: absolute;
 
-	margin-bottom: 5rem;
+  width: 100%;
+	top: 5rem;
+}
+
+.account-info {
+	.inputs {
+		input, label {
+			padding: .5rem 1rem;
+		}
+
+		input {
+			font-size: 1.5rem;
+			max-width: 100%;
+			box-sizing: border-box;
+		}
+
+		label {
+			font-size: 1.5rem;
+		}
+
+		.mail, .tel, .place, .city {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0rem;
+
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+		}
+	}
 }
 
 .account {
-	padding: 5rem 0;
+  box-sizing: border-box;
 	align-items: center;
 	justify-content: center;
-}
-
-
-.account-container {
-	width: 100vw;
-	min-height: 100svh;
-
-	display: flex;
-	flex-direction: column;
-
-	align-items: center;
-
-	gap: 1rem;
-	position: relative;
 }
 
 .account-rank, .account-info {
@@ -176,8 +241,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	border-radius: .2rem;
-	gap: 5rem;
+	gap: 2rem;
 
 	padding: 5rem 2rem;
 	background-color: $alt-background;
@@ -196,6 +260,7 @@ h1 {
 		position: relative;
 
 		input, label {
+			padding: 1rem 2rem;
 			border: 0;
 			border-radius: .2rem;
 			font-family: 'fanwood-master', serif;
@@ -203,11 +268,10 @@ h1 {
 
 		input {
 			font-size: 1.5rem;
-			max-width: 70%;
 		}
 
 		label {
-			font-size: 1.5rem;
+			font-size: 2rem;
 		}
 
 		.mail, .tel, .place, .city {
@@ -220,8 +284,28 @@ h1 {
 	}
 }
 
+.logout-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.account-container {
+	width: 100vw;
+	min-height: 100svh;
+  padding-top: 15rem;
+
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+
+	gap: 1rem;
+	position: relative;
+}
 
 .account-rank {
+
 	.ranks {
 		display: flex;
 		flex-direction: column;
@@ -269,16 +353,6 @@ h1 {
 	text-align: left;
 }
 
-.login-container {
-	width: 100%;
-	min-height: 100svh;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-}
-
 .account-container {
 	width: 100%;
 	min-height: 100svh;
@@ -292,7 +366,7 @@ h1 {
 }
 
 .account-rank, .account-info {
-	min-height: 50vh;
+	min-height: 28rem;
 	min-width: 25vw;
 
 	display: flex;
@@ -305,39 +379,6 @@ h1 {
 	h2 {
 		font-size: 3rem;
 		text-wrap: wrap;
-	}
-}
-
-.account-info {
-	.inputs {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		position: relative;
-
-		input, label {
-			padding: 1rem 2rem;
-			border: 0;
-			border-radius: .2rem;
-			font-family: 'fanwood-master', serif;
-		}
-
-		input {
-			font-size: 2rem;
-		}
-
-		label {
-			font-size: 3rem;
-		}
-
-		.mail, .tel, .place, .city {
-			display: flex;
-			gap: 3rem;
-
-			align-items: center;
-			justify-content: space-between;
-			width: 100%;
-		}
 	}
 }
 
@@ -369,5 +410,11 @@ h1 {
 
 }
 
-</style>
+@media screen and (min-width: 899px) {
+.account-container {
+  padding-top: 10rem;
+  box-sizing: border-box;
+}
 
+}
+</style>

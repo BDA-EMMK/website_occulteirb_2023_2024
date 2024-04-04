@@ -1,6 +1,7 @@
 
 <script lang="ts">
 import type { AlloTask } from '$lib/allo';
+    import Allo from '$lib/allo';
 
 export let allo: AlloTask = {
 	taskId: -1,
@@ -27,12 +28,7 @@ function addAllo() {
 		quantity
 	};
 
-	const currentRequest = sessionStorage.getItem('allo_request') || "{}";
-	const new_request = {...JSON.parse(currentRequest)};
-	new_request[id] = allo;
-
-	sessionStorage.setItem('allo_request', JSON.stringify(new_request));
-	console.log(sessionStorage.getItem('allo_request'))
+	Allo.saveAlloRequest(allo);
 }
 
 </script>
@@ -57,7 +53,7 @@ function addAllo() {
 		<p class="price">Prix : { allo.price }€ / u (total: { allo.price * (typeof quantity === "number" ? quantity: 0) }€)</p>
 
 		<div class="submit-button-container">
-			<button on:click="{ addAllo }" >Ajouter à la commande</button>
+			<button on:click="{ () => addAllo() }" >Ajouter à la commande</button>
 		</div>
 	</div>
 

@@ -1,32 +1,15 @@
-
-let DEV_MODE = false;
-let AUTH_API_URL = "http://localhost:3000/auth/login";
-let AUTH_CALLBACK = (_data: any) => {};
-
-/**
- * Configure the auth module to use dev mode or not
- * @param {boolean} devMode : true if the website is in development mode
- */
-const setDevMode = (devMode: boolean = true) => {
-  DEV_MODE = devMode;
-}
-
-/**
- * Configure the auth module to use a specific API URL
- * @param {string} apiUrl : the URL of the API
- */
-const setApiUrl = (apiUrl: string) => {
-  AUTH_API_URL = apiUrl;
-}
+import { APIUrl } from "./api";
 
 /**
  * Redirect the user to the CAS login page
  */
 const login = () => {
-	// previously "http://localhost:5173/account"
+	if (typeof window === 'undefined')
+		return;
+
 	const redirect = window.location.origin + window.location.pathname;
 
-  window.location.href = `${AUTH_API_URL}?redirect=${encodeURIComponent(redirect)}`;
+  window.location.href = `${APIUrl('/auth/login')}?redirect=${encodeURIComponent(redirect)}`;
 }
 
 const getToken = (): string => {
@@ -61,77 +44,6 @@ const getToken = (): string => {
 }
 
 /**
- * Set a callback to be called when the user has passed the CAS login
- * @param {(data: any) => void} callback : the callback to be called
- * @param {(error: {code: string, message: string}) => void} errorCallback : the callback to be called if an error occurs
- */
-
-export type OnAuthStateChangeError = {
-  code: string;
-  message: string;
-}
-
-export type OnAuthStateChange = (
-  callback: (data: {}) => void,
-  errorCallback: (error: OnAuthStateChangeError) => void
-) => void;
-
-const onAuthStateChange: OnAuthStateChange = async (callback, errorCallback = (_) => {}) => {
-  AUTH_CALLBACK = callback;
-
-  const url = new URL(window.location.href);
-  const site = url.searchParams.get("login");
-  const ticket = url.searchParams.get("ticket");
-
-  if (!site || !ticket) {
-    // Check if the user is already logged in
-    const authData = sessionStorage.getItem("authData");
-
-    if (authData) {
-      callback(JSON.parse(authData));
-
-      // Remove the query params from the URL
-      url.search = "";
-      window.history.replaceState({}, document.title, url.toString());
-    }
-
-    return;
-  }
-
-  const requestURL = `${AUTH_API_URL}?auth=${site}&ticket=${ticket}`;
-
-  const res = await fetch(requestURL);
-  const jsonRES = await res.json()
-
-  if (jsonRES.status === "success") {
-    // Save data to local storage
-    sessionStorage.setItem("authData", JSON.stringify(jsonRES.data));
-    AUTH_CALLBACK(jsonRES.data);
-
-    // Remove the query params from the URL
-    url.search = "";
-    window.history.replaceState({}, document.title, url.toString());
-
-    return;
-  }
-
-
-  if (errorCallback) {
-    errorCallback({
-      code: jsonRES.code,
-      message: jsonRES.message
-    });
-  }
-  else {
-    console.error(jsonRES.message);
-  }
-
-  // Remove the query params from the URL
-  url.search = "";
-  window.history.replaceState({}, document.title, url.toString());
-}
-
-/**
  * Logout the user
  */
 const logout = () => {
@@ -144,15 +56,10 @@ const logout = () => {
   // window.location.reload();
 }
 
-const auth = {
-  setDevMode,
-  setApiUrl,
+const Auth = {
 	getToken,
   login,
-  onAuthStateChange,
   logout
 }
 
-export default auth;
-
-
+export default Auth;

@@ -1,18 +1,19 @@
 
 <script lang="ts">
-import type { Allo } from "./allo";
-import AlloCard from "./alloCard.svelte";
+import RequestAlloCard from './requestAlloCard.svelte';
 import AlloHero from "../allo/alloHero.svelte";
 
-import AlloAPI from '$lib/allo';
 import type { AlloTask } from '$lib/allo';
+import AlloAPI from '$lib/allo';
 import { onMount } from "svelte";
 
 let allos: AlloTask[] = [];
 
 onMount(async () => {
 	const tmp = await AlloAPI.getAvailableAllos();
+	console.log("Allos dispo :")
 	console.log(tmp)
+
 	allos = tmp ? tmp: [];
 });
 </script>
@@ -23,7 +24,7 @@ onMount(async () => {
 <ul class="allos-list">
   {#each allos as allo}
     <li>
-      <AlloCard allo={allo} />
+      <RequestAlloCard allo={allo} />
     </li>
   {/each}
 </ul>

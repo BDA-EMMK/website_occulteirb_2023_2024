@@ -1,3 +1,4 @@
+const API_PREFIX = 'http://localhost:3000';
 
 export interface HeadQuarter {
 	name: string;
@@ -54,17 +55,15 @@ export interface StudentData {
   score: 0;
 }
 
-const API_PREFIX = 'http://localhost:3000';
-
 export function APIUrl(route: string): string {
 	return API_PREFIX + route;
 }
 
-export async function getStudentData(ticket: string): Promise<StudentData> {
+export async function getStudentData(token: string): Promise<StudentData> {
 	const requestURL = APIUrl('/student');
 	const init: RequestInit = {
 		headers: [
-			['Authorization', `Bearer ${ticket}`],
+			['Authorization', `Bearer ${token}`],
 		],
 	};
 
@@ -82,12 +81,13 @@ export async function getStudentData(ticket: string): Promise<StudentData> {
 			return await res.json() as StudentData;
 
 		default:
-			throw new Error("Unhandled submitAllo statusCode: " + res.status)
+			throw new Error("Unhandled /student statusCode: " + res.status)
 	}
 }
 
-export default {
+const API = {
 	getStudentData,
-	APIUrl
-}
+	APIUrl,
+};
 
+export default API;

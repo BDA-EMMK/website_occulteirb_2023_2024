@@ -3,10 +3,10 @@ import { onMount } from "svelte";
 import Account from '$lib/account';
 import type { AccountData } from '$lib/account';
 
-interface alloPreRequest {
-	id: number;
-	quantity: number;
-}
+import type { AlloRequest, AlloSubmit } from '$lib/allo';
+import Allo from '$lib/allo';
+import type { FormEventHandler } from "svelte/elements";
+    import Auth from "$lib/auth";
 
 let data: AccountData | null = null;
 
@@ -29,8 +29,6 @@ const formatTel = (tel: string): string => {
 }
 
 const saveData = () => {
-	console.log("save data !");
-	console.log(data);
 	if (data === null)
 		return;
 
@@ -44,18 +42,39 @@ const saveData = () => {
 	Account.saveAccountData(data);
 }
 
-let allos: alloPreRequest[] = [{id: 1, quantity: 30}];
+let allos: AlloRequest[] = [{taskId: 1, quantity: 30}];
+let requestText: string = "";
 
 onMount(async () => {
-	const allos_raw = JSON.parse(sessionStorage.getItem('allo_request') || "{}");
-
-	for (let key in allos_raw) {
-		allos = [...allos, allos_raw[key]];
-	}
+	allos = Allo.getSavedAlloRequests();
 
 	data = Account.getSavedAccountData();
 });
 
+function submit(e: Event) {
+  e.preventDefault();
+  const token = Auth.getToken();
+
+  if (!token)
+    throw new Error('You must be auth')
+
+  if (data && data.city && data.tel && data.address) {
+    const submitData: AlloSubmit = {
+      city: data.city,
+      phone: data.tel,
+      address: data.address,
+      requestText,
+      allos,
+    };
+
+    Allo.submitAllo(token, submitData);
+  }
+  else {
+    console.error("Data is missing data for submition : ")
+    console.error(data)
+  }
+
+}
 </script>
 
 
@@ -69,7 +88,7 @@ onMount(async () => {
 			<ul>
 				{#each allos as allo}
 					<li>
-						<p>ID: {allo.id}</p>
+						<p>ID: {allo.taskId}</p>
 						<p>Quantité {allo.quantity}</p>
 					</li>
 				{/each}
@@ -77,7 +96,7 @@ onMount(async () => {
 		</div>
 
 		{#if data !== null}
-			<form action="/" class="submit-form">
+			<form action="" on:submit={submit} class="submit-form">
 				<h2>Informations de livraison</h2>
 
 				<div class="mail">
@@ -100,15 +119,43 @@ onMount(async () => {
 					<input type="text" required bind:value={data.city} on:change={ saveData } name="city" id="city" placeholder="Ex: Talence">
 				</div>
 
+				<div class="additional">
+					<label for="additional">Autre informations (max 200 caractères): </label>
+					<textarea name="additional" bind:value="{requestText}" id="additional" maxlength="200" placeholder="Ex: Nemo est super cool !" ></textarea>
+				</div>
+
 				<input type="submit" required value="Envoyer ma demande" class="submit-button">
 			</form>
 		{/if}
 	</div>
-
 </section>
+
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+.container {
+	padding: 0 5rem 5rem;
+	box-sizing: border-box;
+
+	width: 100vw;
+	min-height: 100svh;
+	background-color: $background;
+
+
+	h1 {
+		font-size: 5rem;
+		pointer-events: none;
+
+		z-index: 500;
+		padding-top: 2rem;
+		position: relative;
+
+		text-shadow: $foreground 0 0 .2rem;
+		left: 5%;
+		width: 50%;
+	}
+}
 
 .submit-container {
 	display: flex;
@@ -131,7 +178,7 @@ onMount(async () => {
 	border-radius: .2rem;
 	padding: 3rem 2rem;
 
-	.tel, .mail, .place, .city {
+	.tel, .mail, .place, .city, .additional {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
@@ -139,7 +186,16 @@ onMount(async () => {
 		padding: 0rem 1rem;
 	}
 
-	input, label {
+	.additional {
+		textarea {
+			resize: none;
+			width: 100%;
+			height: 10rem;
+			padding: .5rem;
+		}
+	}
+
+	input, label, textarea {
 		font-size: 1.5rem;
 		font-family: 'fanwood-master', cursive;
 	}
@@ -165,25 +221,19 @@ onMount(async () => {
 	}
 }
 
-section {
-	width: 100vw;
-	height: 100svh;
 
+@media screen and (max-width: 899px) {
+	.container {
+		h1 {
+			z-index: 500;
+			padding: 2rem 0rem;
+			position: relative;
 
-}
-
-h1 {
-	font-size: 5rem;
-	pointer-events: none;
-
-	z-index: 500;
-	padding-top: 2rem;
-	position: relative;
-
-	text-shadow: $foreground 0 0 .2rem;
-	left: 5%;
-	width: 50%;
+			left: 0;
+			width: auto;
+			text-align: center;
+		}
+	}
 }
 
 </style>
-

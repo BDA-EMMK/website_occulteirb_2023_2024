@@ -21,7 +21,6 @@ onMount(async () => {
 		allos = await Allos.getAllos(ticket) || [];
 		console.log(allos);
 	}
-
 });
 
 </script>
@@ -61,8 +60,12 @@ onMount(async () => {
 	height: 100svh;
 	gap: 5rem;
 
+	padding: 2rem;
+	box-sizing: border-box;
+
 	h2 {
 		font-size: 3rem;
+		text-align: center;
 	}
 }
 
@@ -86,8 +89,14 @@ onMount(async () => {
 
 	li {
 		width: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 	}
 }
+
+
 }
 
 

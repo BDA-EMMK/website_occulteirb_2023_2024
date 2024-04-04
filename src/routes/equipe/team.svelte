@@ -28,8 +28,8 @@ export let desc: string = "Unset desc";
   display: flex;
   flex-direction: column;
 
-  gap: 5em;
-  padding: 5vw;
+  gap: 5rem;
+  padding: 10vw;
 
   h3 {
 		&::before {
@@ -60,12 +60,15 @@ export let desc: string = "Unset desc";
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
-    gap: 1em;
+    gap: 2rem;
   }
 }
 
 }
 
+/*
+ * Desktop media query
+*/
 @media screen and (min-width: 899px) {
 .team {
   display: flex;
@@ -73,7 +76,7 @@ export let desc: string = "Unset desc";
 	align-items: center;
 
   gap: 5em;
-  padding: 10rem 5vw;
+  padding: 10rem 8vw;
 
   h3 {
 		margin: 0 0 10rem 0;
@@ -104,7 +107,7 @@ export let desc: string = "Unset desc";
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
-    gap: 1em;
+    gap: 3rem;
     width: 100%;
 
     li { list-style: none; }

@@ -6,27 +6,36 @@ export let member: Member = {
   name: "unset",
   major: "unset",
   img1URL: "/unset",
+  img2URL: "/unset",
+  img3URL: "/unset",
   aka: "unset",
   role: "unset",
 };
 </script>
 
 <div class="team-member" tabindex="-1" >
+  <div class="face face2">
+    <div class="member-details">
+      <p class="name" >{ member.aka }</p>
+    </div>
+
+    <img src="{ member.img2URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">
+  </div>
+
+  <div class="face face3">
+    <div class="member-details">
+      <p class="name" >Rôle secte</p>
+    </div>
+
+    <img src="{ member.img3URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">
+  </div>
+
   <div class="face face1">
-    <img src="/img/team/the_rock.jpg" alt="photo - { member.name }" title="{ member.name }" id="image">
+    <img src="{ member.img1URL }" alt="photo - { member.name }" title="{ member.name }" id="image">
 
     <div class="member-details">
       <p class="name" >{ member.name }</p>
       <p class="major" >{ member.major }</p>
-    </div>
-  </div>
-
-  <div class="face face2">
-    <img src="/img/team/william_sauvage.png" alt="photo - { member.aka }" title="{ member.name }" id="image">
-
-    <div class="member-details">
-      <p class="name" >{ member.aka }</p>
-      <p class="major" >{ member.role }</p>
     </div>
   </div>
 </div>
@@ -37,27 +46,22 @@ export let member: Member = {
 
 .team-member {
   position: relative;
+	transition: z-index .2s ease-in-out;
+	box-sizing: border-box;
 
-  min-width: 17em;
-  min-height: 30em;
+  min-width: 22rem;
+	max-width: 70vw;
+  /* min-height: 30em; */
 
-  width: 15vw;
-  height: 26.25vw;
-  /* object-fit: contain;*/
-
-  /* background-color: #f8f5f2; */
+  aspect-ratio: 1 / 1;
 
   text-align: center;
-
-  overflow: hidden;
-
-  transition: transform 0.3s ease-in-out;
 }
 
 .team-member img {
   width: 100%;
-  height: 75%;
-  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
 }
 
 
@@ -67,22 +71,22 @@ export let member: Member = {
   width: 100%;
   height: 100%;
 
+	padding: 1rem;
+	box-sizing: border-box;
+
+	border-radius: .3rem;
+
+	background-color: $foreground;
+	color: $background;
+
+	display: flex;
+	flex-direction: column;
+
+	.member-details {
+		padding: 1rem;
+	}
+
   /* background-color: rgba(255, 255, 255, 0.8) */;
-  transition: transform 0.5s, filter 0.5s;
-
-  .member-details {
-    position: absolute;
-
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    left: 0;
-    bottom: 2em;
-  }
 
   p {
     margin: 0;
@@ -97,27 +101,75 @@ export let member: Member = {
   &.face1 {
     filter: opacity(1);
     transform: translate(0);
+		transition: transform .2s;
   }
+
+	&.face2, &.face3 {
+		pointer-events: none;
+		background-color: $foreground;
+		color: $background;
+		scale: 1;
+
+		transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+	}
 
   &.face2 {
     filter: opacity(0);
-    transform: translateX(-100%);
+    transform: rotate(40deg) translate(20%, 0%);
+  }
+
+  &.face3 {
+    filter: opacity(0);
+    transform: rotate(-20deg);
   }
 }
 
 
+/*
+ * Mobile media query
+*/
+@media screen and (max-width: 899px) {
 .team-member:hover, .team-member:focus {
-  transform: scale(1.2);
+	z-index: 5;
 
   .face1 {
-    filter: opacity(0);
-    transform: translateX(100%);
+		transform: scale(.9) translateY(3rem) rotate(5deg);
   }
 
   .face2 {
     filter: opacity(1);
-    transform: translate(0%);
+    transform: rotate(15deg) translate(20%, -40%);
+  }
+
+  .face3 {
+    filter: opacity(1);
+    transform: rotate(-15deg) translate(-20%, -40%);
+		pointer-events: none;
   }
 }
-</style>
+}
 
+/*
+ * Desktop media query
+*/
+@media screen and (min-width: 900px) {
+.team-member:hover, .team-member:focus {
+	z-index: 5;
+
+  .face1 {
+		transform: scale(.9);
+  }
+
+  .face2 {
+    filter: opacity(1);
+    transform: rotate(55deg) translate(20%, -60%);
+  }
+
+  .face3 {
+    filter: opacity(1);
+    transform: rotate(-30deg) translate(-20%, -60%);
+		pointer-events: none;
+  }
+}
+}
+</style>

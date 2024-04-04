@@ -1,4 +1,3 @@
-
 import auth from '$lib/auth';
 import api from '$lib/api';
 
@@ -75,11 +74,12 @@ export const getSavedAccountData = (): AccountData => {
 
 export type {
 	AccountData
-}
+};
 
-export default {
+const Account = {
 	fetchAccountData,
 	saveAccountData,
 	getSavedAccountData,
-}
+};
 
+export default Account;

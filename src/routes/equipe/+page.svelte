@@ -1,7 +1,5 @@
-
 <script lang="ts">
 import type { Member } from './member';
-
 
 import Team from "./team.svelte";
 
@@ -11,25 +9,37 @@ import Team from "./team.svelte";
 
 const deskMembers: Member[] = [
   {
-    name: "Nathanaël",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Nathanaël",
     major: "Elec",
     aka: "Nath",
     role: "Sorcier",
   },
   {
-    name: "Florian",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Florian",
     major: "Elec",
     aka: "Dicaprierb",
     role: "Acteur Studio",
   },
   {
-    name: "Guënael",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Guënael",
     major: "Info",
     aka: "Gégé",
     role: "Secrétaire",
   },
   {
-    name: "Théo",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Théo",
     major: "Info",
     aka: "Théo miel",
     role: "Bouquineirbed",
@@ -38,19 +48,28 @@ const deskMembers: Member[] = [
 
 const trezMembers: Member[] = [
   {
-    name: "Guillaume",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Guillaume",
     major: "Elec",
     aka: "Guil",
     role: "C'est la Maaf",
   },
   {
-    name: "Guillaume",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Guillaume",
     major: "Mmk",
     aka: "Laume",
     role: "Luigi",
   },
   {
-    name: "Juluan",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Juluan",
     major: "Mmk",
     aka: "Juju",
     role: "Joker",
@@ -59,31 +78,46 @@ const trezMembers: Member[] = [
 
 const eventMembers: Member[] = [
   {
-    name: "Louis",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Louis",
     major: "Elec",
     aka: "Louis le petit",
     role: "Ambianceur",
   },
   {
-    name: "Chloé",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Chloé",
     major: "Jsp",
     aka: "La boom",
     role: "Ambianceuse",
   },
   {
-    name: "Zhaniya",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Zhaniya",
     major: "Info",
     aka: "Demandeuse d'asile",
     role: "Ambianceuse",
   },
   {
-    name: "Faustine",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Faustine",
     major: "Info",
     aka: "Frosties",
     role: "Photo",
   },
   {
-    name: "Marine",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Marine",
     major: "Elec",
     aka: "Joker",
     role: "Ambianceuse",
@@ -92,13 +126,19 @@ const eventMembers: Member[] = [
 
 const logMembers: Member[] = [
   {
-    name: "William",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "William",
     major: "Mmk",
     aka: "Wii U",
     role: "Ninja",
   },
   {
-    name: "Pierre",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Pierre",
     major: "Mmk",
     aka: "Débranché",
     role: "Musicien",
@@ -107,19 +147,28 @@ const logMembers: Member[] = [
 
 const comMembers: Member[] = [
   {
-    name: "Shakty",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Shakty",
     major: "Telecom",
     aka: "Shake tea",
     role: "Poète",
   },
   {
-    name: "Thomas",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Thomas",
     major: "Info",
     aka: "Thomate",
     role: "Partout",
   },
   {
-    name: "Théo",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Théo",
     major: "Info",
     aka: "Théo miel",
     role: "Bouquineirbed",
@@ -128,7 +177,10 @@ const comMembers: Member[] = [
 
 const partMembers: Member[] = [
   {
-    name: "Martin",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Martin",
     major: "Mmk",
     aka: "Martine",
     role: "Parieur",
@@ -137,19 +189,28 @@ const partMembers: Member[] = [
 
 const videoMembers: Member[] = [
   {
-    name: "Shakty",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Shakty",
     major: "Telecom",
     aka: "Shake Tea",
     role: "Poète",
   },
   {
-    name: "Faustine",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Faustine",
     major: "Info",
     aka: "Frosties",
     role: "Photo",
   },
   {
-    name: "Thomas",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Thomas",
     major: "Info",
     aka: "Thomate",
     role: "Partout",
@@ -158,7 +219,10 @@ const videoMembers: Member[] = [
 
 const barMembers: Member[] = [
   {
-    name: "Juluan",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Juluan",
     major: "Elec",
     aka: "Juju",
     role: "Joker",
@@ -167,13 +231,28 @@ const barMembers: Member[] = [
 
 const webMembers: Member[] = [
   {
-    name: "Damien",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Nemo",
+    major: "Info",
+    aka: "Nems",
+    role: "fait ud web",
+  },
+  {
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Damien",
     major: "Info",
     aka: "Dams",
     role: "Cineirb",
   },
   {
-    name: "Théo",
+    img1URL: "/img/team/the_rock.jpg",
+		img2URL:"/img/team/the_rock.jpg",
+		img3URL: "/img/team/the_rock.jpg",
+		name: "Théo",
     major: "Info",
     aka: "Théo miel",
     role: "Bouquineirbed",
@@ -304,6 +383,7 @@ hr {
 
 section {
 	background-color: $alt-background;
+	overflow: hidden;
 }
 
 .hero {

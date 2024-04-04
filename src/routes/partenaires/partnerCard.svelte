@@ -1,4 +1,3 @@
-
 <script lang="ts">
 import type { Partner } from "./partner";
 
@@ -85,20 +84,6 @@ a { text-decoration: none; }
 		font-family: "fanwood-master", serif;
 		color: $background;
 	}
-
-
-
-/*
-  img {
-    width: calc(100% - 10pt);
-    height: calc(100% - 10pt);
-
-    object-fit: cover;
-    border-radius: 6px;
-
-    transform: translateY(5pt);
-  }
-	*/
 
   /*
    * UI effects !
