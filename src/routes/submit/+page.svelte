@@ -51,13 +51,14 @@ onMount(async () => {
 	data = Account.getSavedAccountData();
 });
 
-function submit(e: Event) {
+function submit(e: SubmitEvent) {
   e.preventDefault();
   const token = Auth.getToken();
 
   if (!token)
     throw new Error('You must be auth')
 
+  console.log(data);
   if (data && data.city && data.tel && data.address) {
     const submitData: AlloSubmit = {
       city: data.city,
@@ -66,6 +67,7 @@ function submit(e: Event) {
       requestText,
       allos,
     };
+    console.log(submitData);
 
     Allo.submitAllo(token, submitData);
   }
@@ -111,7 +113,7 @@ function submit(e: Event) {
 
 				<div class="place">
 					<label for="place">Adresse: </label>
-					<input type="text" required bind:value={data.address} on:change={ saveData } name="place" id="place" placeholder="Ex: 1 rue de l'enseirb, Pessac">
+					<input type="text" required bind:value={data.address} on:change={ saveData } name="place" id="place" placeholder="Ex: 1 rue de l'enseirb">
 				</div>
 
 				<div class="city">

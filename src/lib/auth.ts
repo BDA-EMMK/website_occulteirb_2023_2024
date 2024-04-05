@@ -13,6 +13,12 @@ const login = () => {
 }
 
 const getToken = (): string => {
+	if (typeof document !== 'undefined') {
+		const tokenMatch = document.cookie.match(/token=[a-zA-Z0-9\.\-_]+/);
+		if (tokenMatch)
+      return tokenMatch[0].replace(/token=/g, '');
+	}
+
 	if (typeof window !== 'undefined') {
 		const url = new URL(window.location.href);
 
@@ -30,15 +36,6 @@ const getToken = (): string => {
 
 	// if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token'))
 	// 	return sessionStorage.getItem('token') as string;
-
-	if (typeof document !== 'undefined') {
-
-		const tokenMatch = document.cookie.match(/token=[a-zA-Z0-9\.\-_]+/);
-		if (!tokenMatch)
-			return "";
-
-		return tokenMatch[0].replace(/token=/g, '');
-	}
 
 	return "";
 }

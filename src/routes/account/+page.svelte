@@ -187,6 +187,12 @@ const forceRefresh = () => {
   border-radius: .2rem;
 }
 
+.logout-container {
+  display: flex;
+  justify-content: center;
+  padding: 5rem;
+}
+
 /*
  * Mobile query
 */

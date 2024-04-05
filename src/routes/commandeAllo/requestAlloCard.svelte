@@ -1,7 +1,7 @@
 
 <script lang="ts">
-import type { AlloTask } from '$lib/allo';
-    import Allo from '$lib/allo';
+import type { AlloRequest, AlloTask } from '$lib/allo';
+import Allo from '$lib/allo';
 
 export let allo: AlloTask = {
 	taskId: -1,
@@ -11,24 +11,19 @@ export let allo: AlloTask = {
 	description: 'undefined',
 };
 
-interface alloPreRequest {
-	id: number;
-	quantity: number;
-}
 
 let quantity: string | number = "";
-let id = 0;
 
 function addAllo() {
 	if (typeof quantity !== 'number')
 		return;
 
-	const allo: alloPreRequest = {
-		id,
+	const alloRequest: AlloRequest = {
+		taskId: allo.taskId,
 		quantity
 	};
 
-	Allo.saveAlloRequest(allo);
+	Allo.saveAlloRequest(alloRequest);
 }
 
 </script>
