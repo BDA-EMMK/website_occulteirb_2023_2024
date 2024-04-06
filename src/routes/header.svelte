@@ -211,6 +211,14 @@ header {
 }
 
 .header {
+  /* Hide scrollbar */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+
   width: 100%;
   height: 100%;
   position: fixed;
