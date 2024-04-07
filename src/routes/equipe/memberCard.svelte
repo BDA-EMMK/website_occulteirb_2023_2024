@@ -49,7 +49,7 @@ export let member: Member = {
 	transition: z-index .2s ease-in-out;
 	box-sizing: border-box;
 
-  min-width: 22rem;
+  width: 22rem;
 	max-width: 70vw;
   /* min-height: 30em; */
 
