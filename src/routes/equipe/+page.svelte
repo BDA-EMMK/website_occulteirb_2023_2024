@@ -7,6 +7,12 @@ import Team from "./team.svelte";
  * It's teams declaration time !
 */
 
+/*
+  * role: role in the sect
+  * img1URL: img for name
+  * img2URL: img for role
+  * img3URL: img for aka
+  */
 const deskMembers: Member[] = [
   {
     img1URL: "/img/team/the_rock.jpg",

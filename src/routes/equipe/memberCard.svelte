@@ -24,7 +24,7 @@ export let member: Member = {
 
   <div class="face face3">
     <div class="member-details">
-      <p class="name" >Rôle secte</p>
+      <p class="name" >{ member.role }</p>
     </div>
 
     <img src="{ member.img3URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">

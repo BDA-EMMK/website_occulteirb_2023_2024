@@ -1,3 +1,9 @@
+/*
+  * role: role in the sect
+  * img1URL: img for name
+  * img2URL: img for role
+  * img3URL: img for aka
+  */
 export interface Member {
 	name: string;
 	major: string;
