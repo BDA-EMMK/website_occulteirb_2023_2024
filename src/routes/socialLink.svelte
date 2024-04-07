@@ -30,6 +30,7 @@ a {
 
   position: relative;
   padding: .2vw;
+  transition: filter ease-in-out .2s;
 
   .logo-img {
 		width: 48px;
@@ -39,24 +40,8 @@ a {
 		color: white;
   }
 
-  &::after {
-    content: "";
-
-    position: absolute;
-    padding: inherit;
-
-    width: 100%;
-    height: 100%;
-
-    opacity: 0;
-    transition: opacity ease-in-out .2s;
-    border: 3px solid $foreground;
-  }
-
   &:hover {
-    &::after {
-      opacity: 1;
-    }
+    filter: drop-shadow(0 0 0.75rem $foreground);
   }
 }
 </style>
