@@ -1,41 +1,62 @@
 
 <script lang="ts">
-const videoURL: string = "https://www.youtube-nocookie.com/embed/sscYIVx4CgY?si=lgTuHIWq101MIrxt";
+import API from "$lib/api";
+import Auth from "$lib/auth";
+    import LoginButton from "$lib/login-button.svelte";
+import { onMount } from "svelte";
 
-let isVideoShowed: boolean = false;
+let videoURL: string = "";  // 
 
-function toggleVideo() { isVideoShowed = !isVideoShowed; }
+onMount(async () => {
+  const token = Auth.getToken();
+  if (token !== '')
+    videoURL = await API.getVideoLink(token);
+});
 </script>
 
-<!-- For the video -->
-<div class="video-container" id="videoContainer" >
-  <!-- Youtube video -->
-  <!-- <iframe class={isVideoShowed ? '': 'hidden'} width="560" height="315" src="{ isVideoShowed ? videoURL: '' }" title="YouTube video player" allowfullscreen></iframe> -->
-  <iframe width="560" height="315" src="{videoURL}" title="YouTube video player" allowfullscreen></iframe>
-</div>
+<section class="video-container">
+  {#if videoURL !== ''}
+    <!-- For the video -->
+    <div class="video-container" id="videoContainer" >
+      <iframe width="560" height="315" src="{videoURL}" title="YouTube video player" allowfullscreen></iframe>
+    </div>
 
-<!-- The button that permits to display the video -->
-<!--
-<div class="button-container" >
-  <button on:click="{toggleVideo}">
-    {#if (isVideoShowed) }
-      Masquer la vidéo
-    {:else}
-      Regarder la vidéo
-    {/if}
-  </button>
-</div>
--->
+  {:else} 
+		<div class="no-auth">
+			<h2>Authentifiez vous pour voir la vidéo !</h2>
+			<LoginButton action='login' />
+		</div>
+  {/if}
+</section>
+
 
 <style lang="scss">
+.no-auth {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	height: 100svh;
+	gap: 5rem;
+
+	padding: 2rem;
+	box-sizing: border-box;
+
+	h2 {
+		font-size: 3rem;
+		text-align: center;
+	}
+}
+
 /* For the video */
 .video-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100svh;
-  width: 100vw;
 
+  height: 100svh;
+  width: 100%;
 }
 
 .video-container iframe {
