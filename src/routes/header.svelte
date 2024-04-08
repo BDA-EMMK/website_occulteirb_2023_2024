@@ -30,7 +30,7 @@ const headerNavDatas: HeaderNavData[] = [
   },
   {
     URL: '/jeu/',
-    text: 'Jeu'
+    text: 'place'
   },
   {
     URL: '/partenaires/',

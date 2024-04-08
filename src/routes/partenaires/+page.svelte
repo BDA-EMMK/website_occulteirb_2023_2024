@@ -65,7 +65,6 @@ const partners: Partner[] = [
 .partners-section {
 	background-color: $background;
 	min-height: 100svh;
-	width: 100vw;
 }
 
 

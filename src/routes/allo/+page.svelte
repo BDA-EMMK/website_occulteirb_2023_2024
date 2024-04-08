@@ -1,4 +1,3 @@
-
 <script lang="ts">
 import AlloCard from "./alloCard.svelte";
 import AlloHero from "./alloHero.svelte";
@@ -16,11 +15,8 @@ let ticket: string = "";
 onMount(async () => {
 	ticket = Auth.getToken() ;
 
-	if (Auth) {
-		console.log(allos);
+	if (Auth)
 		allos = await Allos.getAllos(ticket) || [];
-		console.log(allos);
-	}
 });
 
 </script>
@@ -56,8 +52,7 @@ onMount(async () => {
 	align-items: center;
 	justify-content: center;
 
-	width: 100%;
-	height: 100svh;
+	min-height: 100svh;
 	gap: 5rem;
 
 	padding: 2rem;
