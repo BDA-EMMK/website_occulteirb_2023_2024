@@ -47,6 +47,8 @@ let requestText: string = "";
 
 onMount(async () => {
 	allos = Allo.getSavedAlloRequests();
+  console.log("allos:")
+  console.log(allos);
 
 	data = Account.getSavedAccountData();
 });
@@ -83,6 +85,7 @@ function submit(e: SubmitEvent) {
 <section class="container">
 	<h1>Submit</h1>
 
+  {#if allos && allos.length > 0}
 	<div class="submit-container">
 		<div class="allos">
 			<h2>Résumé de la commande</h2>
@@ -130,11 +133,32 @@ function submit(e: SubmitEvent) {
 			</form>
 		{/if}
 	</div>
+  {:else}
+    <div class="command-container">
+      <p>Veuillez d'abord <a href="/commandeAllo#commandeAllo">commander des allos</a></p>
+    </div>
+  {/if}
 </section>
 
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+.command-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+	width: 100%;
+	min-height: 100svh;
+
+  p {
+    font-size: 2.5rem;
+  }
+}
 
 .container {
 	padding: 0 5rem 5rem;
