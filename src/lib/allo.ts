@@ -7,6 +7,7 @@ interface AlloTask {
 	price: number;
 	picture: {};
 	description: string;
+	state: "enabled" | "disabled";
 }
 
 interface AlloSubmit {
@@ -105,6 +106,7 @@ export async function getAvailableAllos(): Promise<AlloTask[]> {
 			price: .5,
 			picture: {},
 			description: 'lorem ipsum',
+			state: "enabled",
 		},
 		{
 			taskId: 1,
@@ -112,6 +114,7 @@ export async function getAvailableAllos(): Promise<AlloTask[]> {
 			price: 50,
 			picture: {},
 			description: 'lorem ipsum',
+			state: "enabled",
 		},
 	];
 }

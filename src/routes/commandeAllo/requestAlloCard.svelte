@@ -9,6 +9,7 @@ export let allo: AlloTask = {
 	price: -1,
 	picture: {},
 	description: 'undefined',
+	state: "enabled"
 };
 
 
