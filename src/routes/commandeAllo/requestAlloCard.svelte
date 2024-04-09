@@ -93,9 +93,10 @@ function addAllo() {
 	}
 
 	button {
-		background-color: none;
+		background-color: $foreground;
 		border: none;
 		padding: .5rem 1rem;
+		margin-top: 3rem;
 		border-radius: .2rem;
 		cursor: pointer;
 	}
