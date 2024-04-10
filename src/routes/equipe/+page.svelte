@@ -345,16 +345,16 @@ const webMembers: Member[] = [
 @keyframes floating-bee {
 	// TODO: beautify this animation
 	0% {
-		translate: 0vw 0rem;
+		translate: -100% 0rem;
 	}
 	25% {
-		translate: calc(25vw + 25%) 1rem;
+		translate: calc(25vw + -50%) 2rem;
 	}
 	50% {
-		translate: calc(50vw + 50%) 0;
+		translate: calc(50vw) 0;
 	}
 	75% {
-		translate: calc(75vw + 75%) -1rem;
+		translate: calc(75vw + 50%) -2rem;
 	}
 	100% {
 		translate: calc(100vw + 100%) 0rem;
@@ -363,16 +363,16 @@ const webMembers: Member[] = [
 
 @keyframes floating-skeleton {
 	0% {
-		translate: 0vw 0rem;
+		translate: -100% 0rem;
 	}
 	25% {
-		translate: calc(30vw + 25%) 1rem;
+		translate: calc(20vw + -50%) 2rem;
 	}
 	50% {
-		translate: calc(57vw + 50%) 0;
+		translate: calc(50vw) 0;
 	}
 	75% {
-		translate: calc(85vw + 75%) -1rem;
+		translate: calc(85vw + 50%) -2rem;
 	}
 	100% {
 		translate: calc(110vw + 100%) 0rem;
@@ -411,7 +411,7 @@ section {
 
 	/* min-height: 11rem; */
 	width: 24.2rem;
-	max-width: 100vw;
+	max-width: 100%;
 	aspect-ratio: 2.2 / 1;
 	background-image: url('/img/tour_du_lire_brasse.svg');
 	background-size: 100%;
@@ -503,7 +503,8 @@ h1 {
 		overflow-x: hidden;
 
 		.imgs-bee, .imgs-skeletton {
-			left: -20%;
+			left: 0;
+			translate: -100% 0;
 			position: absolute;
 			height: calc(100% - 2rem);
 
