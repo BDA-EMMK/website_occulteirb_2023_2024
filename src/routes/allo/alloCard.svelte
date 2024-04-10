@@ -3,24 +3,14 @@
 import type { Allo } from "$lib/api";
 
 export let allo: Allo = {
-	id: "string",
-	clientStudentId: 0,
-	clientStudent: "string",
-	assignedListeux: [],
-	creationDate: "string",
-	updatedOn: "string",
-	quantity: 12,
-	state: "string",
-	taskId: 1,
-	task: {
-		taskId: 0,
-		taskName: "string",
-		price: .5,
-		picture: {},
-		description: "string"
-	},
-	requestText: "string",
-	finishData: "string"
+  address: "string", 
+  city: "string",
+  phone: "string",
+  name: "string",
+  casId: "string",
+  requestText: "string",
+  state: "string",
+  allos: [],
 };
 
 let showdetails: boolean = false;
@@ -28,7 +18,7 @@ let showdetails: boolean = false;
 
 <div class="allo-card">
   <h3 class="title">
-    { allo.task.taskName }
+    Old title
   </h3>
 
   <p class="state text">
