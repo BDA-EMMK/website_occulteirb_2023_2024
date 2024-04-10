@@ -1,5 +1,6 @@
 
 export type HeaderNavData = {
+  href?: string;
 	URL: string;
 	text: string;
 };

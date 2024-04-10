@@ -20,8 +20,9 @@ const headerNavDatas: HeaderNavData[] = [
     text: 'Vidéo'
   },
   {
-    URL: '/jeu/',
-    text: 'Jeu'
+    href: 'https://place.nemodacremont.me/',
+    URL: '',
+    text: 'Place'
   },
   {
     URL: '/partenaires/',
@@ -40,7 +41,7 @@ const headerNavDatas: HeaderNavData[] = [
 	<ul class="footer-links">
 		{#each headerNavDatas as headerNavData}
 			<li class="footer-link">
-				<a href="{ headerNavData.URL }">
+				<a href="{ headerNavData.href ?? headerNavData.URL }">
 					{ headerNavData.text }
 				</a>
 			</li>

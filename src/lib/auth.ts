@@ -13,19 +13,12 @@ const login = () => {
 }
 
 const getToken = (): string => {
-	if (typeof document !== 'undefined') {
-		const tokenMatch = document.cookie.match(/token=[a-zA-Z0-9\.\-_]+/);
-		if (tokenMatch)
-      return tokenMatch[0].replace(/token=/g, '');
-	}
-
 	if (typeof window !== 'undefined') {
 		const url = new URL(window.location.href);
 
 		if (url.searchParams.has('token')) {
 			const token = url.searchParams.get("token") as string
 
-			sessionStorage.setItem('token', token);
 			const now = new Date();
 			now.setTime(now.getTime() + 1 * 3600 * 1000);
 			document.cookie = `token=${token}; expires=${now}; SameSite=None; Secure`;
@@ -34,6 +27,11 @@ const getToken = (): string => {
 		}
 	}
 
+	if (typeof document !== 'undefined') {
+		const tokenMatch = document.cookie.match(/token=[a-zA-Z0-9\.\-_]+/);
+		if (tokenMatch)
+      return tokenMatch[0].replace(/token=/g, '');
+	}
 	// if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token'))
 	// 	return sessionStorage.getItem('token') as string;
 

@@ -6,11 +6,10 @@ import { createEventDispatcher } from "svelte";
 
 export let headerNavData: HeaderNavData = {
 	URL: "/error_url_not_set",
-	text: "NOT SET !"
-}
+	text: "NOT SET !",
+};
 
 export let active: boolean;
-
 
 const dispatch = createEventDispatcher();
 
@@ -20,7 +19,7 @@ function forwardClick() {
 
 </script>
 
-<a href="{ headerNavData.URL }" on:click={forwardClick} class:active>
+<a href="{ headerNavData.href ?? headerNavData.URL }" on:click={forwardClick} class:active>
   <div class="hover_effect" />
   <p>{ headerNavData.text }</p>
 </a>

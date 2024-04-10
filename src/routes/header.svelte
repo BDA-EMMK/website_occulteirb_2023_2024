@@ -29,8 +29,9 @@ const headerNavDatas: HeaderNavData[] = [
     text: 'Vidéo'
   },
   {
-    URL: '/jeu/',
-    text: 'place'
+    href: 'https://place.nemodacremont.me/',
+    URL: '',
+    text: 'Place'
   },
   {
     URL: '/partenaires/',
