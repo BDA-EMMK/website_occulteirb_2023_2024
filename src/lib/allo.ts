@@ -11,7 +11,7 @@ interface AlloTask {
 }
 
 interface AlloSubmit {
-address: string; 
+  address: string; 
   city: string;
   phone: string;
   requestText: string;

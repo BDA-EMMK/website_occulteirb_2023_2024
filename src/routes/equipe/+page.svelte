@@ -438,7 +438,7 @@ section {
 
 	.imgs {
 		position: relative;
-		width: 100vw;
+		width: 100%;
 		aspect-ratio: 3 / 4;
 		max-height: 80vw;
 		overflow-x: hidden;

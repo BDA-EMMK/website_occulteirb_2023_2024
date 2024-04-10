@@ -1,4 +1,4 @@
-const API_PREFIX = 'https://nemodacremont.me:3000';
+const API_PREFIX = 'http://localhost:3000';
 
 export interface HeadQuarter {
 	name: string;
@@ -86,9 +86,7 @@ export async function getStudentData(token: string): Promise<StudentData> {
 }
 
 export async function getVideoLink(token: string): Promise<string> {
-  return 'https://www.youtube-nocookie.com/embed/sscYIVx4CgY?si=lgTuHIWq101MIrxt';
-
-	const requestURL = APIUrl('/videoLink');
+	const requestURL = APIUrl('/student/videoLink');
 	const init: RequestInit = {
 		headers: [
 			['Authorization', `Bearer ${token}`],

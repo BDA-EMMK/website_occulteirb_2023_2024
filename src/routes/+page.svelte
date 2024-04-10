@@ -84,6 +84,7 @@
 	overflow: hidden;  /* Prevent overflow-x issue on rotation on index.html */
 }
 
+
 .bee {
 	position: relative;
 
