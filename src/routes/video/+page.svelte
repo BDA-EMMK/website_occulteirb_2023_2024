@@ -7,9 +7,8 @@ import { onDestroy, onMount } from "svelte";
 
 let videoURL: string = "";  // 
 const revealDate = new Date(2024, 3, 15, 14);
-let timer: Date = new Date(revealDate.getTime() - (new Date()).getTime());;
+let timer: Date = new Date(revealDate.getTime() - new Date().getTime());;
 let intervalId: number | null = null;
-
 
 onMount(async () => {
   const token = Auth.getToken();
@@ -17,8 +16,6 @@ onMount(async () => {
     videoURL = await API.getVideoLink(token);
 
   if (videoURL === 'notyet') {
-    timer = new Date();
-
     intervalId = setInterval(() => {
       if (timer !== undefined) {
         const newTimer = new Date(revealDate.getTime() - (new Date()).getTime());
@@ -42,7 +39,7 @@ onDestroy(() => {
 		</div>
 
   {:else if videoURL === 'notyet'}
-		<h2 class="timer">{ timer?.getHours() }:{ timer?.getMinutes() }:{ timer?.getSeconds() }</h2>
+		<h2 class="timer">{ timer.getHours() }:{ timer.getMinutes() }:{ timer.getSeconds() }</h2>
 
   {:else} 
     <!-- For the video -->
