@@ -343,6 +343,7 @@ const webMembers: Member[] = [
 }
 
 @keyframes floating-bee {
+	// TODO: beautify this animation
 	0% {
 		translate: 0vw 0rem;
 	}
