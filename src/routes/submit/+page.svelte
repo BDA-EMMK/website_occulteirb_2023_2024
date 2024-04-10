@@ -6,9 +6,10 @@ import type { AccountData } from '$lib/account';
 import type { AlloRequest, AlloSubmit } from '$lib/allo';
 import Allo from '$lib/allo';
 import type { FormEventHandler } from "svelte/elements";
-    import Auth from "$lib/auth";
+import Auth from "$lib/auth";
 
 let data: AccountData | null = null;
+let submitting: boolean = false;
 
 const formatMail = (mail: string): string => {
 	const mailRegExp = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/;
@@ -53,12 +54,19 @@ onMount(async () => {
 	data = Account.getSavedAccountData();
 });
 
-function submit(e: SubmitEvent) {
+async function submit(e: SubmitEvent) {
   e.preventDefault();
   const token = Auth.getToken();
 
   if (!token)
     throw new Error('You must be auth')
+
+	if (submitting) {
+		alert("Vous êtes déjà en train d'envoyer une demande, veuillez patienter");
+		return;
+	}
+
+	submitting = true;
 
   console.log(data);
   if (data && data.city && data.tel && data.address) {
@@ -71,7 +79,13 @@ function submit(e: SubmitEvent) {
     };
     console.log(submitData);
 
-    Allo.submitAllo(token, submitData);
+    await Allo.submitAllo(token, submitData).catch(_ => {
+			alert('Il y a eu une erreur, réessayez');
+			submitting = false;
+		});
+
+		submitting = false;
+		document.location.href = document.location.origin + '/allo'
   }
   else {
     console.error("Data is missing data for submition : ")
@@ -170,7 +184,7 @@ function submit(e: SubmitEvent) {
 
 
 	h1 {
-		font-size: 5rem;
+		font-size: 4rem;
 		pointer-events: none;
 
 		z-index: 500;
@@ -251,6 +265,7 @@ function submit(e: SubmitEvent) {
 @media screen and (max-width: 899px) {
 	.container {
 		h1 {
+			font-size: 5rem;
 			z-index: 500;
 			padding: 2rem 0rem;
 			position: relative;
