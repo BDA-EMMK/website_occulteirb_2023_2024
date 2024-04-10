@@ -18,8 +18,17 @@ onMount(async () => {
 	if (fetchedData === null)
 		return;
 
+	const mail = localStorage.getItem('mail') || "";
+	const tel = localStorage.getItem('tel') || "";
+	const address = localStorage.getItem('address') || "";
+	const city = localStorage.getItem('city') || "";
+
 	data = {
-		...data,
+		...fetchedData,
+		mail: data.mail,
+		tel: data.tel,
+		address: data.address,
+		city: data.city,
 		rank: fetchedData.rank,
 		points: fetchedData.points,
 	}
