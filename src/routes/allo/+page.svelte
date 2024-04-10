@@ -7,16 +7,18 @@ import Allos from "$lib/allo";
 
 import Auth from "$lib/auth";
 import { onMount } from "svelte";
-    import LoginButton from "$lib/login-button.svelte";
+import LoginButton from "$lib/login-button.svelte";
 
 let allos: Allo[] = [];
 
-let ticket: string = "";
+let token: string = "";
 onMount(async () => {
-	ticket = Auth.getToken() ;
+	token = Auth.getToken() ;
+	if (token === '')
+		throw new Error('Need auth to get allos history');
 
-	if (Auth)
-		allos = await Allos.getAllos(ticket) || [];
+	allos = await Allos.getAllos(token) || [];
+	console.log(allos);
 });
 
 </script>
@@ -25,7 +27,7 @@ onMount(async () => {
 <AlloHero />
 
 <section id="allo">
-	{#if ticket === ""}
+	{#if token === ""}
 		<div class="no-auth">
 			<h2>Authentifiez vous pour accéder à l'historique des demandes !</h2>
 			<LoginButton />
@@ -112,4 +114,3 @@ onMount(async () => {
 }
 
 </style>
-
