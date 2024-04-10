@@ -16,25 +16,20 @@ export interface HeadQuarter {
 //   requestText: string;
 // };
 
-export interface Allo {
-	id: string;
-	clientStudentId: number;
-	clientStudent: string;
-	assignedListeux: object[];
-	creationDate: string;
-	updatedOn: string;
-	quantity: number;
-	state: string;
-	taskId: number;
-	task: {
-		taskId: number;
-		taskName: string;
-		price: number;
-		picture: {};
-		description: string
-	};
-	requestText: string;
-	finishData: string
+interface AlloRequest {
+  taskId: number;
+  quantity: number;
+}
+
+interface Allo {
+  address: string; 
+  city: string;
+  phone: string;
+  name: string;
+  casId: string;
+  requestText: string;
+  state: string;
+  allos: AlloRequest[];
 }
 
 export interface StudentData {
@@ -110,6 +105,10 @@ export async function getVideoLink(token: string): Promise<string> {
 			throw new Error("Unhandled /videoLink statusCode: " + res.status)
 	}
 }
+
+export type {
+	Allo
+};
 
 const API = {
 	getStudentData,
