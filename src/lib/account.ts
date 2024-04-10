@@ -13,7 +13,6 @@ interface AccountData {
 
 export const fetchAccountData = async (): Promise<AccountData | null> => {
 	const token = auth.getToken();
-	console.log("Toekn:", token);
 	if (!token)
 		return null;
 
@@ -55,7 +54,7 @@ export const getSavedAccountData = (): AccountData => {
 
 	const rank = parseInt(localStorage.getItem('rank') || "-1");
 	const points = parseInt(localStorage.getItem('points') || "-1");
-	const name = localStorage.getItem('points') || "";
+	const name = localStorage.getItem('name') || "";
 	const mail = localStorage.getItem('mail') || "";
 	const tel = localStorage.getItem('tel') || "";
 	const address = localStorage.getItem('address') || "";
