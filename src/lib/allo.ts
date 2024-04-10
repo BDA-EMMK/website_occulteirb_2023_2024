@@ -120,33 +120,41 @@ export async function getAvailableAllos(): Promise<AlloTask[]> {
 }
 
 
-export async function getAllos(ticket: string): Promise<Allo[]> {
-	return [
-		{
-			id: "string",
-			clientStudentId: 0,
-			clientStudent: "string",
-			assignedListeux: [],
-			creationDate: "aDate",
-			updatedOn: "string",
-			quantity: 12,
-			state: "In Progress",
-			taskId: 1,
-			task: {
-				taskId: 0,
-				taskName: "Des crèpes",
-				price: .5,
-				picture: {},
-				description: "Ceci est une longue description l kjfkeljf joifez ure oiuz"
-			},
-			requestText: "Ceci est une longue description l kjfkeljf joifez ure oiuz",
-			finishData: "string"
-		}
-	];
+export async function getAllos(token: string): Promise<Allo[]> {
+	const requestURL = API.APIUrl('/allos');
+	const options: RequestInit = {
+		headers: [
+			['Authorization', `Bearer ${token}`],
+		],
+	};
 
-	const data = await API.getStudentData(ticket);
+	const res = await (fetch(requestURL, options).catch(e => {
+			console.error(e);
+			throw new Error("GET /allos request failed; request: " + requestURL);
+		})
+	);
 
-	return data.allos;
+	switch(res.status) {
+		case 401:
+			throw new Error("Need auth: " + requestURL);
+
+		case 200:
+			const out = await res.json();
+			return out.map((el: any) => ({
+				...el,
+				address: el.address, 
+				city: el.city,
+				phone: el.phone,
+				name: el.name,
+				casId: el.CASUId,
+				requestText: el.dataValues.requestText,
+				state: el.dataValues.state,
+				allos: el.askedTasks,
+				}));
+
+		default:
+			throw new Error("Unhandled /allos statusCode: " + res.status)
+	}
 }
 
 export type {
@@ -155,7 +163,7 @@ export type {
 	AlloSubmit,
 };
 
-const Allo = {
+const AlloOut = {
 	getAllos,
 	getAvailableAllos,
 	saveAlloRequest,
@@ -163,4 +171,4 @@ const Allo = {
   submitAllo,
 };
 
-export default Allo;
+export default AlloOut;
