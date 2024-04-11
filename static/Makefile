@@ -15,8 +15,8 @@ conversion: ${NAME_PICTURES_WEBP}
 
 # To remove the files with the .jpg or .png extension
 clear${TEMP_DIR}:
-	./clearWrongExtensions.sh ${TEMP_DIR}
+	./.clearWrongExtensions.sh ${TEMP_DIR}
 
 # To move all the photos in the right directories
 move:
-	./pictures.sh ${TEMP_DIR}
+	./.pictures.sh ${TEMP_DIR}
