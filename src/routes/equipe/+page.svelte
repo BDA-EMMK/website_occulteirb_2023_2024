@@ -21,7 +21,7 @@ const deskMembers: Member[] = [
     name: "Nathanaël",
     major: "Elec",
     aka: "AAAAAAA",
-    role: "Grand",
+    role: "Grand Gourou",
   },
   {
     img1URL: "/img/team/tmonseran/tmonseran1.webp",
@@ -39,7 +39,7 @@ const deskMembers: Member[] = [
                 name: "Morgane",
     major: "SEE",
     aka: "Bassiste n°91",
-    role: "Enchantresse",
+    role: "Initiatrice",
   },
   {
     img1URL: "/img/team/fbabin/fbabin1.webp",
@@ -56,8 +56,8 @@ const deskMembers: Member[] = [
     img3URL: "/img/team/lcouteret/lcouteret3.webp",
                 name: "Louise",
     major: "Elec",
-    aka: "Louise",
-    role: "attaque",
+    aka: "Louise attaque",
+    role: "Inquisitrice",
   },
   {
     img1URL: "/img/team/groger/groger1.webp",
@@ -78,7 +78,7 @@ const trezMembers: Member[] = [
                 name: "Guillaume.C",
     major: "MMK",
     aka: "Forever Tonight",
-    role: "Le",
+    role: "Le Cadavre",
   },
   {
     img1URL: "/img/team/gmaraninchi/gmaraninchi1.webp",
@@ -98,8 +98,8 @@ const eventMembers: Member[] = [
     img3URL: "/img/team/lderamat/lderamat3.webp",
                 name: "Louis",
     major: "Elec",
-    aka: "Nikola",
-    role: "Tesla",
+    aka: "Nikola Tesla",
+    role: "Rascar Capac",
   },
   {
     img1URL: "/img/team/mdudot001/mdudot0011.webp",
@@ -318,13 +318,13 @@ const webMembers: Member[] = [
     role: "Poukaveur",
   },
   {
-    img1URL: "/img/team/tmenier/tmenier1.webp",
-    img2URL: "/img/team/tmenier/tmenier2.webp",
-    img3URL: "/img/team/tmenier/tmenier3.webp",
-                name: "Thomas Wanchai",
+    img1URL: "/img/team/thorrut/thorrut1.webp",
+    img2URL: "/img/team/thorrut/thorrut2.webp",
+    img3URL: "/img/team/thorrut/thorrut3.webp",
+                name: "Thomas",
     major: "Info",
-    aka: "Sunshine Lover",
-    role: "The Rice Guy",
+    aka: "Le Gorafi",
+    role: "Chuchoteur",
   },
   {
     img1URL: "/img/team/tmenier/tmenier1.webp",
