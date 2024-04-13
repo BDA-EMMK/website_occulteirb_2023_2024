@@ -33,7 +33,9 @@ const shouldShow = contents.map((_, i) => now.getFullYear() >= 2025 || now.getMo
 <div class="texts vertical p1 head">
 	<h1>L'énigme Occult'eirb</h1>
 
-	<p>La secte a perdu le traducteur de Beebee. Elle a donc besoin de  vous pour décoder son message. Heureusement, le traducteur à laissez ces notes derrière lui. Vous avez jusqu'à vendredi !!</p>
+	<p>
+		La secte a perdu le traducteur de Beebee. Elle a donc besoin de  vous pour décoder son message. Heureusement, le traducteur à laissez ces notes derrière lui.  Pour la solution, contacter @Little_mamaturtle sur Telegram. Vous avez jusqu'à vendredi !!
+	</p>
 
 	<p>
 		Un indice sera révélé par jour, soyez les premiers à trouver la solution !
