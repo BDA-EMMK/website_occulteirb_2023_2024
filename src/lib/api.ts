@@ -1,4 +1,4 @@
-const API_PREFIX = 'http://localhost:3000';
+const API_PREFIX = 'https://bda.nemodacremont.me';
 
 export interface HeadQuarter {
 	name: string;

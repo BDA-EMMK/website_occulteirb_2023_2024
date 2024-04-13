@@ -124,17 +124,17 @@ async function submit(e: SubmitEvent) {
 				</div>
 
 				<div class="tel">
-					<label for="tel">tel: </label>
+					<label for="tel">tel <span class="required">*</span>: </label>
 					<input type="tel" required bind:value={data.tel} on:change={ saveData } maxlength="10" name="tel" id="tel" placeholder="Ex: 0123456789">
 				</div>
 
 				<div class="place">
-					<label for="place">Adresse: </label>
+					<label for="place">Adresse <span class="required">*</span>:&emsp;</label>
 					<input type="text" required bind:value={data.address} on:change={ saveData } name="place" id="place" placeholder="Ex: 1 rue de l'enseirb">
 				</div>
 
 				<div class="city">
-					<label for="city">Ville: </label>
+					<label for="city">Ville <span class="required">*</span>: </label>
 					<input type="text" required bind:value={data.city} on:change={ saveData } name="city" id="city" placeholder="Ex: Talence">
 				</div>
 
@@ -145,6 +145,23 @@ async function submit(e: SubmitEvent) {
 
 				<input type="submit" required value="Envoyer ma demande" class="submit-button">
 			</form>
+
+			<div class="personal-info">
+				<h3>
+					Finalité du traitement de vos données à caractère personnel <span class="required">*</span>
+				</h3>
+				<p>
+					Informations personnelles recueillies pour le traitement de votre demande
+					par Occult'eirb, conservées jusqu'à la fin de la SDA. Les données sont destinées
+					à Occult'eirb. Les informations obligatoires sont mentionnées par un astérisque
+					(sans les fournir votre demande ne pourra aboutir). Vous disposez d’un droit d’accès,
+					de modification, de rectification, de limitation, d'opposition, de suppression
+					des données vous concernant auprès de Occult'eirb.
+				</p>
+			</div>
+
+			
+
 		{/if}
 	</div>
   {:else}
@@ -157,6 +174,23 @@ async function submit(e: SubmitEvent) {
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+.required {
+	color: $yellow;
+}
+
+
+.personal-info {
+	max-width: 180ch;
+
+	h3 {
+		padding: 0 0 1rem 2rem;
+	}
+
+	h3, p {
+		font-family: fanwood-master, serif;
+	}
+}
 
 .command-container {
   position: absolute;
@@ -213,7 +247,7 @@ async function submit(e: SubmitEvent) {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-	width: min(25rem, calc(90vw - 4rem));
+	width: min(28rem, calc(90vw - 4rem));
 	background-color: $alt-background;
 	border-radius: .2rem;
 	padding: 3rem 2rem;
