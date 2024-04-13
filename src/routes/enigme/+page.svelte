@@ -5,19 +5,19 @@ const START_DAY = 12;
 const contents = [
 	{
 		text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic delectus accusamus vero quos ea non. Velit, ex ipsam beatae enim nulla libero incidunt autem veritatis, dicta voluptate dolorum fuga reprehenderit.",
-		img: "/img/team/the_rock.jpg",
+		img: "/img/Illustration_bee.svg",
 		titre: "Indice 1",
 		style: "p2",
 	},
 	{
 		text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic delectus accusamus vero quos ea non. Velit, ex ipsam beatae enim nulla libero incidunt autem veritatis, dicta voluptate dolorum fuga reprehenderit.",
-		img: "/img/team/the_rock.jpg",
+		img: "/img/Illustration_bee.svg",
 		titre: "Indice 2",
 		style: "p1",
 	},
 	{
 		text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic delectus accusamus vero quos ea non. Velit, ex ipsam beatae enim nulla libero incidunt autem veritatis, dicta voluptate dolorum fuga reprehenderit.",
-		img: "/img/team/the_rock.jpg",
+		img: "/img/Illustration_bee.svg",
 		titre: "Indice 3",
 		style: "p2",
 	},
