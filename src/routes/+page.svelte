@@ -5,7 +5,7 @@
 <!-- Content -->
 
 <section class="hero">
-	<h1>Destin'eirb</h1>
+	<h1>Occult'eirb</h1>
 
 	<div class="logo-container" >
 		<div class="sun"></div>

@@ -36,7 +36,7 @@ const headerNavDatas: HeaderNavData[] = [
 </script>
 
 <footer>
-  <h3>Destin'eirb</h3>
+  <h3>Occult'eirb</h3>
 
 	<ul class="footer-links">
 		{#each headerNavDatas as headerNavData}
@@ -49,7 +49,7 @@ const headerNavDatas: HeaderNavData[] = [
 	</ul>
 
 	<p class="text copyright">
-		&copy; Destin'eirb &mdash; All rights reserved.
+		&copy; Occult'eirb &mdash; All rights reserved.
 	</p>
 </footer>
 
