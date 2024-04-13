@@ -14,8 +14,15 @@ interface AlloSubmit {
   address: string; 
   city: string;
   phone: string;
+	name: string;
   requestText: string;
-  allos: AlloRequest[];
+  allos: AlloRequestSubmit[];
+}
+
+interface AlloRequestSubmit {
+	taskName: string;
+  taskId: number;
+  quantity: number;
 }
 
 interface AlloRequest {
