@@ -4,20 +4,20 @@ const START_DAY = 12;
 
 const contents = [
 	{
-		text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic delectus accusamus vero quos ea non. Velit, ex ipsam beatae enim nulla libero incidunt autem veritatis, dicta voluptate dolorum fuga reprehenderit.",
-		img: "/img/Illustration_bee.svg",
+		text: "La première note retrouvée est sous la forme d'une charade. Trouvez la solution et vous trouverez le premier indice. ",
+		img: "/img/enigme/indice_1.png",
 		titre: "Indice 1",
 		style: "p2",
 	},
 	{
-		text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic delectus accusamus vero quos ea non. Velit, ex ipsam beatae enim nulla libero incidunt autem veritatis, dicta voluptate dolorum fuga reprehenderit.",
-		img: "/img/Illustration_bee.svg",
+		text: "Le deuxième indice est la solution de cette énigme.",
+		img: "/img/enigme/indice_2.png",
 		titre: "Indice 2",
 		style: "p1",
 	},
 	{
-		text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic delectus accusamus vero quos ea non. Velit, ex ipsam beatae enim nulla libero incidunt autem veritatis, dicta voluptate dolorum fuga reprehenderit.",
-		img: "/img/Illustration_bee.svg",
+		text: 'Beebee a laissée un message à la vue de tous. Il dit "laissez place  à occult’eirb"',
+		img: "",
 		titre: "Indice 3",
 		style: "p2",
 	},
@@ -33,9 +33,15 @@ const shouldShow = contents.map((_, i) => now.getFullYear() >= 2025 || now.getMo
 <div class="texts vertical p1 head">
 	<h1>L'énigme Occult'eirb</h1>
 
+	<p>La secte a perdu le traducteur de Beebee. Elle a donc besoin de  vous pour décoder son message. Heureusement, le traducteur à laissez ces notes derrière lui. Vous avez jusqu'à vendredi !!</p>
+
 	<p>
 		Un indice sera révélé par jour, soyez les premiers à trouver la solution !
 	</p>
+
+	<a href="/img/enigme/message_a_decoder.png" target="_blank">
+		<img src="/img/enigme/message_a_decoder.png" alt="img_message_a_decoder" class="encoded_message">
+	</a>
 </div>
 
 <div class="brasse-items">
@@ -45,7 +51,9 @@ const shouldShow = contents.map((_, i) => now.getFullYear() >= 2025 || now.getMo
 			<div class="left">
 				<h2>{ content.titre }</h2>
 
-				<img src="{ content.img }" alt="img_{ content.titre }">
+				<a href="{ content.img }" target="_blank">
+					<img src="{ content.img }" alt="img_{ content.titre }">
+				</a>
 			</div>
 
 			<div class="right">
@@ -63,6 +71,10 @@ const shouldShow = contents.map((_, i) => now.getFullYear() >= 2025 || now.getMo
 <style lang="scss">
 @import '$lib/theme.scss';
 
+.encoded_message {
+	max-width: 70vw;
+}
+
 /*
 		Sections
 */
@@ -75,13 +87,16 @@ section { background-color: $background; }
 
 	h2 {
 		font-size: 3rem;
-		padding-left: 2rem;
 	}
 }
 
 .right {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	font-size: 2rem;
-	max-width: 60ch;
+	max-width: 40ch;
 	font-family: fanwood-master, serif;
 }
 
@@ -118,11 +133,18 @@ section { background-color: $background; }
 	Responsive
 */
 @media screen and (max-width: 899px) {
+.encoded_message {
+	max-width: 90vw;
+}
 
 .texts.vertical.head {
 	padding: 10rem 2rem;
 
 	gap: 6rem;
+}
+
+.right {
+	text-align: center;
 }
 
 #brasse {
@@ -145,6 +167,10 @@ section { background-color: $background; }
 	}
 }
 
+.left h2 {
+	text-align: center;
+}
+
 }
 
 
@@ -159,16 +185,20 @@ div.texts {
   padding: 5em 10vw;
 }
 
+.left h2 {
+	padding-left: 2rem;
+}
+
 p.text {
   margin: 0;
   max-width: 60ch;
 }
 
-.left {
-	img {
-		max-width: 60ch;
-	}
 }
 
+.left {
+	img {
+		max-width: min(100ch, 90%);
+	}
 }
 </style>
