@@ -15,253 +15,334 @@ import Team from "./team.svelte";
   */
 const deskMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Nathanaël",
+    img1URL: "/img/team/narebiere/narebiere1.webp",
+    img2URL: "/img/team/narebiere/narebiere2.webp",
+    img3URL: "/img/team/narebiere/narebiere3.webp",
+    name: "Nathanaël",
     major: "Elec",
-    aka: "Nath",
-    role: "Sorcier",
+    aka: "AAAAAAA",
+    role: "Le Grand Respo",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Florian",
+    img1URL: "/img/team/tmonseran/tmonseran1.webp",
+    img2URL: "/img/team/tmonseran/tmonseran2.webp",
+    img3URL: "/img/team/tmonseran/tmonseran3.webp",
+    name: "Théo",
+    major: "Info",
+    aka: "Sandouich ?",
+    role: "L'Initiateur",
+  },
+  {
+    img1URL: "/img/team/mpetitdemang/mpetitdemang1.webp",
+    img2URL: "/img/team/mpetitdemang/mpetitdemang2.webp",
+    img3URL: "/img/team/mpetitdemang/mpetitdemang3.webp",
+    name: "Morgane",
+    major: "SEE",
+    aka: "Bassiste n°91",
+    role: "Gardienne du Culte",
+  },
+  {
+    img1URL: "/img/team/fbabin/fbabin1.webp",
+    img2URL: "/img/team/fbabin/fbabin2.webp",
+    img3URL: "/img/team/fbabin/fbabin3.webp",
+    name: "Florian",
     major: "Elec",
-    aka: "Dicaprierb",
-    role: "Acteur Studio",
+    aka: "Babinks",
+    role: "Inquisiteur",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Guënael",
-    major: "Info",
-    aka: "Gégé",
-    role: "Secrétaire",
+    img1URL: "/img/team/lcouteret/lcouteret1.webp",
+    img2URL: "/img/team/lcouteret/lcouteret2.webp",
+    img3URL: "/img/team/lcouteret/lcouteret3.webp",
+    name: "Louise",
+    major: "Elec",
+    aka: "Louise attaque",
+    role: "Inquisitrice",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Théo",
+    img1URL: "/img/team/groger/groger1.webp",
+    img2URL: "/img/team/groger/groger2.webp",
+    img3URL: "/img/team/groger/groger3.webp",
+    name: "Guénaël",
     major: "Info",
-    aka: "Théo miel",
-    role: "Bouquineirbed",
+    aka: "BigG",
+    role: "Gardien des Secrets",
   },
 ];
 
 const trezMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Guillaume",
+    img1URL: "/img/team/gconte/gconte1.webp",
+    img2URL: "/img/team/gconte/gconte2.webp",
+    img3URL: "/img/team/gconte/gconte3.webp",
+    name: "Guillaume.C",
+    major: "MMK",
+    aka: "Forever Tonight",
+    role: "Gardien du Trésor",
+  },
+  {
+    img1URL: "/img/team/gmaraninchi/gmaraninchi1.webp",
+    img2URL: "/img/team/gmaraninchi/gmaraninchi2.webp",
+    img3URL: "/img/team/gmaraninchi/gmaraninchi3.webp",
+    name: "Guillaume.M",
     major: "Elec",
-    aka: "Guil",
-    role: "C'est la Maaf",
-  },
-  {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Guillaume",
-    major: "Mmk",
-    aka: "Laume",
-    role: "Luigi",
-  },
-  {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Juluan",
-    major: "Mmk",
-    aka: "Juju",
-    role: "Joker",
+    aka: "Cristina Cordul'eirb",
+    role: "Intendant",
   },
 ];
 
 const eventMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Louis",
+    img1URL: "/img/team/lderamat/lderamat1.webp",
+    img2URL: "/img/team/lderamat/lderamat2.webp",
+    img3URL: "/img/team/lderamat/lderamat3.webp",
+    name: "Louis",
     major: "Elec",
-    aka: "Louis le petit",
-    role: "Ambianceur",
+    aka: "Nikola Tesla",
+    role: "Éclaireur",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Chloé",
-    major: "Jsp",
-    aka: "La boom",
-    role: "Ambianceuse",
+    img1URL: "/img/team/mdudot/mdudot1.webp",
+    img2URL: "/img/team/mdudot/mdudot2.webp",
+    img3URL: "/img/team/mdudot/mdudot3.webp",
+    name: "Marine",
+    major: "MMK",
+    aka: "Koala",
+    role: "Éclaireuse",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Zhaniya",
+    img1URL: "/img/team/dyan/dyan1.webp",
+    img2URL: "/img/team/dyan/dyan2.webp",
+    img3URL: "/img/team/dyan/dyan3.webp",
+    name: "David",
+    major: "Telecom",
+    aka: "Le Cycliste",
+    role: "Illuminé",
+  },
+  {
+    img1URL: "/img/team/ddelpy/ddelpy1.webp",
+    img2URL: "/img/team/ddelpy/ddelpy2.webp",
+    img3URL: "/img/team/ddelpy/ddelpy3.webp",
+    name: "Damien",
     major: "Info",
-    aka: "Demandeuse d'asile",
-    role: "Ambianceuse",
+    aka: "The Rock",
+    role: "Illuminé",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Faustine",
+    img1URL: "/img/team/znurkhanova/znurkhanova1.webp",
+    img2URL: "/img/team/znurkhanova/znurkhanova2.webp",
+    img3URL: "/img/team/znurkhanova/znurkhanova3.webp",
+    name: "Zhaniya",
     major: "Info",
-    aka: "Frosties",
-    role: "Photo",
+    aka: "Tealover",
+    role: "Illuminé",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Marine",
-    major: "Elec",
-    aka: "Joker",
-    role: "Ambianceuse",
+    img1URL: "/img/team/echampagne/echampagne1.webp",
+    img2URL: "/img/team/echampagne/echampagne2.webp",
+    img3URL: "/img/team/echampagne/echampagne3.webp",
+    name: "Enzo",
+    major: "MMK",
+    aka: "Main Charact'eirb",
+    role: "Illuminé",
+  },
+  {
+    img1URL: "/img/team/flacroix/flacroix1.webp",
+    img2URL: "/img/team/flacroix/flacroix2.webp",
+    img3URL: "/img/team/flacroix/flacroix3.webp",
+    name: "Faustine",
+    major: "Info",
+    aka: "Miel Pops",
+    role: "Illuminé",
+  },
+  {
+    img1URL: "/img/team/craynaud/craynaud1.webp",
+    img2URL: "/img/team/craynaud/craynaud2.webp",
+    img3URL: "/img/team/craynaud/craynaud3.webp",
+    name: "Camille",
+    major: "Info",
+    aka: "Lacrymo",
+    role: "Illuminé",
+  },
+  {
+    img1URL: "/img/team/tmenier/tmenier1.webp",
+    img2URL: "/img/team/tmenier/tmenier2.webp",
+    img3URL: "/img/team/tmenier/tmenier3.webp",
+    name: "Thomas Wanchai",
+    major: "Info",
+    aka: "Sunshine Lover",
+    role: "Illuminé",
   },
 ];
 
 const logMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "William",
-    major: "Mmk",
-    aka: "Wii U",
-    role: "Ninja",
+    img1URL: "/img/team/wye/wye1.webp",
+    img2URL: "/img/team/wye/wye2.webp",
+    img3URL: "/img/team/wye/wye3.webp",
+    name: "William",
+    major: "MMK",
+    aka: "Wiwi Le Taxi",
+    role: "Conducteur de Charette",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Pierre",
-    major: "Mmk",
-    aka: "Débranché",
-    role: "Musicien",
+    img1URL: "/img/team/psboucher/psboucher1.webp",
+    img2URL: "/img/team/psboucher/psboucher2.webp",
+    img3URL: "/img/team/psboucher/psboucher3.webp",
+    name: "Pierre",
+    major: "MMK",
+    aka: "Juice World",
+    role: "Compagnon",
+  },
+  {
+    img1URL: "/img/team/lmontescot/lmontescot1.webp",
+    img2URL: "/img/team/lmontescot/lmontescot2.webp",
+    img3URL: "/img/team/lmontescot/lmontescot3.webp",
+    name: "Louis",
+    major: "MMK",
+    aka: "Harry Cover",
+    role: "Compagnon",
+  },
+  {
+    img1URL: "/img/team/ndacremont/ndacremont1.webp",
+    img2URL: "/img/team/ndacremont/ndacremont2.webp",
+    img3URL: "/img/team/ndacremont/ndacremont3.webp",
+    name: "Nemo",
+    major: "Info",
+    aka: "Big Fish",
+    role: "Poukaveur",
   },
 ]
 
 const comMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Shakty",
+    img1URL: "/img/team/skerrach/skerrach1.webp",
+    img2URL: "/img/team/skerrach/skerrach2.webp",
+    img3URL: "/img/team/skerrach/skerrach3.webp",
+    name: "Shakty",
     major: "Telecom",
-    aka: "Shake tea",
-    role: "Poète",
+    aka: "TARZAN",
+    role: "L'Émissaire",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Thomas",
+    img1URL: "/img/team/thorrut/thorrut1.webp",
+    img2URL: "/img/team/thorrut/thorrut2.webp",
+    img3URL: "/img/team/thorrut/thorrut3.webp",
+                name: "Thomas",
     major: "Info",
-    aka: "Thomate",
-    role: "Partout",
+    aka: "Le Gorafi",
+    role: "Le Chuchoteur",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Théo",
-    major: "Info",
-    aka: "Théo miel",
-    role: "Bouquineirbed",
+    img1URL: "/img/team/rdebache/rdebache1.webp",
+    img2URL: "/img/team/rdebache/rdebache2.webp",
+    img3URL: "/img/team/rdebache/rdebache3.webp",
+    name: "Raphaël",
+    major: "Telecom",
+    aka: "Osef",
+    role: "Colporteur",
+  },
+  {
+    img1URL: "/img/team/amonge/amonge1.webp",
+    img2URL: "/img/team/amonge/amonge2.webp",
+    img3URL: "/img/team/amonge/amonge3.webp",
+    name: "Alexandre",
+    major: "Elec",
+    aka: "Le Mafieux",
+    role: "BOEUF",
   },
 ]
 
 const partMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Martin",
-    major: "Mmk",
-    aka: "Martine",
-    role: "Parieur",
+    img1URL: "/img/team/mveron/mveron1.webp",
+    img2URL: "/img/team/mveron/mveron2.webp",
+    img3URL: "/img/team/mveron/mveron3.webp",
+                name: "Martin",
+    major: "Elec",
+    aka: "L'ami de Franklin",
+    role: "L'Ambassadeur",
   },
 ]
 
 const videoMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Shakty",
+    img1URL: "/img/team/skerrach/skerrach1.webp",
+    img2URL: "/img/team/skerrach/skerrach2.webp",
+    img3URL: "/img/team/skerrach/skerrach3.webp",
+    name: "Shakty",
     major: "Telecom",
-    aka: "Shake Tea",
-    role: "Poète",
+    aka: "TARZAN",
+    role: "L'Émissaire",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Faustine",
+    img1URL: "/img/team/thorrut/thorrut1.webp",
+    img2URL: "/img/team/thorrut/thorrut2.webp",
+    img3URL: "/img/team/thorrut/thorrut3.webp",
+    name: "Thomas",
     major: "Info",
-    aka: "Frosties",
-    role: "Photo",
+    aka: "Le Gorafi",
+    role: "Le Chuchoteur",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Thomas",
-    major: "Info",
-    aka: "Thomate",
-    role: "Partout",
+    img1URL: "/img/team/mdudot/mdudot1.webp",
+    img2URL: "/img/team/mdudot/mdudot2.webp",
+    img3URL: "/img/team/mdudot/mdudot3.webp",
+                name: "Marine",
+    major: "MMK",
+    aka: "Koala",
+    role: "Éclaireuse",
   },
 ]
 
 const barMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Juluan",
+    img1URL: "/img/team/jvoisin/jvoisin1.webp",
+    img2URL: "/img/team/jvoisin/jvoisin2.webp",
+    img3URL: "/img/team/jvoisin/jvoisin3.webp",
+                name: "Juluan",
     major: "Elec",
-    aka: "Juju",
-    role: "Joker",
+    aka: "Jujuent",
+    role: "L'Apothicaire",
   },
 ]
 
 const webMembers: Member[] = [
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Nemo",
+    img1URL: "/img/team/ndacremont/ndacremont1.webp",
+    img2URL: "/img/team/ndacremont/ndacremont2.webp",
+    img3URL: "/img/team/ndacremont/ndacremont3.webp",
+    name: "Nemo",
     major: "Info",
-    aka: "Nems",
-    role: "fait ud web",
+    aka: "Big Fish",
+    role: "Poukaveur",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Damien",
+    img1URL: "/img/team/thorrut/thorrut1.webp",
+    img2URL: "/img/team/thorrut/thorrut2.webp",
+    img3URL: "/img/team/thorrut/thorrut3.webp",
+    name: "Thomas",
     major: "Info",
-    aka: "Dams",
-    role: "Cineirb",
+    aka: "Le Gorafi",
+    role: "Le Chuchoteur",
   },
   {
-    img1URL: "/img/team/the_rock.jpg",
-		img2URL:"/img/team/the_rock.jpg",
-		img3URL: "/img/team/the_rock.jpg",
-		name: "Théo",
+    img1URL: "/img/team/tmenier/tmenier1.webp",
+    img2URL: "/img/team/tmenier/tmenier2.webp",
+    img3URL: "/img/team/tmenier/tmenier3.webp",
+    name: "Thomas Wanchai",
     major: "Info",
-    aka: "Théo miel",
-    role: "Bouquineirbed",
+    aka: "Sunshine Lover",
+    role: "The Rice Guy",
+  },
+  {
+    img1URL: "/img/team/ddelpy/ddelpy1.webp",
+    img2URL: "/img/team/ddelpy/ddelpy2.webp",
+    img3URL: "/img/team/ddelpy/ddelpy3.webp",
+    name: "Damien",
+    major: "Info",
+    aka: "The Rock",
+    role: "Le Vrai Cadavre",
   },
 ]
 
@@ -343,18 +424,17 @@ const webMembers: Member[] = [
 }
 
 @keyframes floating-bee {
-	// TODO: beautify this animation
 	0% {
-		translate: -100% 0rem;
+		translate: 0vw 0rem;
 	}
 	25% {
-		translate: calc(25vw + -50%) 2rem;
+		translate: calc(25vw + 25%) 1rem;
 	}
 	50% {
-		translate: calc(50vw) 0;
+		translate: calc(50vw + 50%) 0;
 	}
 	75% {
-		translate: calc(75vw + 50%) -2rem;
+		translate: calc(75vw + 75%) -1rem;
 	}
 	100% {
 		translate: calc(100vw + 100%) 0rem;
@@ -363,16 +443,16 @@ const webMembers: Member[] = [
 
 @keyframes floating-skeleton {
 	0% {
-		translate: -100% 0rem;
+		translate: 0vw 0rem;
 	}
 	25% {
-		translate: calc(20vw + -50%) 2rem;
+		translate: calc(30vw + 25%) 1rem;
 	}
 	50% {
-		translate: calc(50vw) 0;
+		translate: calc(57vw + 50%) 0;
 	}
 	75% {
-		translate: calc(85vw + 50%) -2rem;
+		translate: calc(85vw + 75%) -1rem;
 	}
 	100% {
 		translate: calc(110vw + 100%) 0rem;
@@ -411,7 +491,7 @@ section {
 
 	/* min-height: 11rem; */
 	width: 24.2rem;
-	max-width: 100%;
+	max-width: 100vw;
 	aspect-ratio: 2.2 / 1;
 	background-image: url('/img/tour_du_lire_brasse.svg');
 	background-size: 100%;
@@ -490,7 +570,7 @@ h1 {
 		overflow-x: hidden;
 
 		z-index: 500;
-		font-size: 4rem;
+		font-size: 5rem;
 		text-shadow: $foreground 0 0 .2rem;
 		text-align: left;
 	}
@@ -503,8 +583,7 @@ h1 {
 		overflow-x: hidden;
 
 		.imgs-bee, .imgs-skeletton {
-			left: 0;
-			translate: -100% 0;
+			left: -20%;
 			position: absolute;
 			height: calc(100% - 2rem);
 
