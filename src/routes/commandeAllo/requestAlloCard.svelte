@@ -12,12 +12,27 @@ export let allo: AlloTask = {
 	state: "enabled"
 };
 
+const MIN_QUANTITY = 0;
+const MAX_QUANTITY = 10;
+
 
 let quantity: string | number = "";
 
 function addAllo() {
-	if (typeof quantity !== 'number')
+	if (typeof quantity !== 'number') {
+		alert("Une erreur est survenue, veuillez réessayer");
 		return;
+	}
+
+	if (quantity < MIN_QUANTITY) {
+		alert("La quantité doit être d'au moins 1 !");
+		return;
+	}
+
+	if (quantity > MAX_QUANTITY) {
+		alert("Vous ne pouvez pas commander une quantité de plus de 10.");
+		return;
+	}
 
 	const alloRequest: AlloRequest = {
 		taskId: allo.taskId,
@@ -25,8 +40,8 @@ function addAllo() {
 	};
 
 	Allo.saveAlloRequest(alloRequest);
+	alert("Allo ajouté à la commande !");
 }
-
 </script>
 
 <div class="allo-card">
@@ -43,7 +58,7 @@ function addAllo() {
 	<div class="submit">
 		<div class="quantity">
 			<label for="quantity">Quantité : </label>
-			<input type="number" step="1" min='0' max="20" placeholder="Ex: 5" bind:value={quantity}>
+			<input type="number" step="1" min='{MIN_QUANTITY}' max="{MAX_QUANTITY}" placeholder="Ex: 5" bind:value={quantity}>
 		</div>
 
 		<p class="price">Prix : { allo.price }€ / u (total: { allo.price * (typeof quantity === "number" ? quantity: 0) }€)</p>

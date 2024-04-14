@@ -3,9 +3,8 @@ import { onMount } from "svelte";
 import Account from '$lib/account';
 import type { AccountData } from '$lib/account';
 
-import type { AlloRequest, AlloSubmit } from '$lib/allo';
+import type { AlloRequest, AlloSubmit, AlloTask } from '$lib/allo';
 import Allo from '$lib/allo';
-import type { FormEventHandler } from "svelte/elements";
 import Auth from "$lib/auth";
 
 let data: AccountData | null = null;
@@ -46,17 +45,46 @@ const saveData = () => {
 let allos: AlloRequest[] = [{taskId: 1, quantity: 30}];
 let requestText: string = "";
 
+let tasks: AlloTask[] = [];
+
+interface TaskName {
+	[key: string]: string;
+};
+let tasksName: TaskName = {}
+
 onMount(async () => {
 	allos = Allo.getSavedAlloRequests();
   console.log("allos:")
   console.log(allos);
 
 	data = Account.getSavedAccountData();
+	tasks = await Allo.getAvailableAllos();
+	tasks.forEach(task => {
+		const key = task.taskId.toString();
+		tasksName[key] = task.taskName;
+
+		tasksName = {
+			...tasksName,
+		};
+	});
 });
 
 async function submit(e: SubmitEvent) {
   e.preventDefault();
+	console.log("SUBMIT!")
   const token = Auth.getToken();
+
+	if (data === null) {
+		alert("Une erreur est survenue, veuillez réessayer");
+		return;
+	}
+
+	saveData();
+
+	if (data.tel === "") {
+		alert("Téléphone invalide, veuillez réessayer");
+		return;
+	}
 
   if (!token)
     throw new Error('You must be auth')
@@ -74,24 +102,32 @@ async function submit(e: SubmitEvent) {
       city: data.city,
       phone: data.tel,
       address: data.address,
+			name: data.name,
       requestText,
-      allos,
+      allos: allos.map(allo => ({
+				...allo,
+				taskName: tasksName[allo.taskId.toString()],
+			})),
     };
     console.log(submitData);
 
-    await Allo.submitAllo(token, submitData).catch(_ => {
+    Allo.submitAllo(token, submitData)
+		.catch(_ => {
 			alert('Il y a eu une erreur, réessayez');
 			submitting = false;
+		})
+		.then(() => {
+			submitting = false;
+			Allo.cleanAlloRequest();
+			alert("Votre commande a bien été transmise");
+			document.location.href = document.location.origin + '/allo';
 		});
 
-		submitting = false;
-		document.location.href = document.location.origin + '/allo'
   }
   else {
     console.error("Data is missing data for submition : ")
     console.error(data)
   }
-
 }
 </script>
 
@@ -115,16 +151,16 @@ async function submit(e: SubmitEvent) {
 		</div>
 
 		{#if data !== null}
-			<form action="" on:submit={submit} class="submit-form">
+			<form action="" on:submit={ submit } class="submit-form">
 				<h2>Informations de livraison</h2>
 
 				<div class="mail">
-					<label for="mail">mail: </label>
+					<label for="mail">Mail: </label>
 					<input type="email" bind:value={data.mail} on:change={ saveData } name="mail" id="mail" placeholder="Ex: mail@enseirb-matmeca.fr">
 				</div>
 
 				<div class="tel">
-					<label for="tel">tel <span class="required">*</span>: </label>
+					<label for="tel">Téléphone <span class="required">*</span>: </label>
 					<input type="tel" required bind:value={data.tel} on:change={ saveData } maxlength="10" name="tel" id="tel" placeholder="Ex: 0123456789">
 				</div>
 

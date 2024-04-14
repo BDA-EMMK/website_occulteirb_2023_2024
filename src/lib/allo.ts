@@ -30,6 +30,10 @@ interface AlloRequest {
   quantity: number;
 }
 
+export function cleanAlloRequest() {
+	sessionStorage.setItem('allo_request', '{}');
+}
+
 export function saveAlloRequest(alloRequest: AlloRequest) {
 	const currentRequest = sessionStorage.getItem('allo_request') || "{}";
 	const new_request = {...JSON.parse(currentRequest)};
@@ -176,6 +180,7 @@ const AlloOut = {
 	saveAlloRequest,
 	getSavedAlloRequests,
   submitAllo,
+	cleanAlloRequest,
 };
 
 export default AlloOut;
