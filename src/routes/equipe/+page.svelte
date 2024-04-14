@@ -490,7 +490,7 @@ h1 {
 		overflow-x: hidden;
 
 		z-index: 500;
-		font-size: 5rem;
+		font-size: 4rem;
 		text-shadow: $foreground 0 0 .2rem;
 		text-align: left;
 	}

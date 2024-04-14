@@ -22,7 +22,6 @@ onMount(() => {
 <div class="message">
 	<p>Quelques demandes de notre part :</p>
 	<ul>
-		<li>Ne pas spammer les allos inutilement</li>
 		<li>Si vous pensez qu'il y a un problème avec votre commande, contacter @NemoDacremont sur télégram</li>
 	</ul>
 </div>
@@ -92,6 +91,7 @@ onMount(() => {
 		pointer-events: none;
 		width: 90%;
 
+		padding-top: 2rem;
 		font-size: 4rem;
 		text-shadow: $foreground 0 0 .2rem;
 	}

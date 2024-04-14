@@ -69,6 +69,11 @@ onMount(async () => {
 	});
 });
 
+function removeAllo(taskId: number) {
+	Allo.removeAlloRequest(taskId);
+	allos = Allo.getSavedAlloRequests();
+}
+
 async function submit(e: SubmitEvent) {
   e.preventDefault();
 	console.log("SUBMIT!")
@@ -140,11 +145,24 @@ async function submit(e: SubmitEvent) {
 		<div class="allos">
 			<h2>Résumé de la commande</h2>
 
-			<ul>
+			<ul class="summary">
 				{#each allos as allo}
 					<li>
-						<p>ID: {allo.taskId}</p>
-						<p>Quantité {allo.quantity}</p>
+						<hr>
+						<div class="content">
+							<div class="desc">
+								<p><span class="bold">Allo :</span> {tasksName[allo.taskId] }</p>
+								<p> <span class="bold">Quantité :</span> {allo.quantity}</p>
+							</div>
+
+							<div class="remove-container">
+								<button
+									class="remove-allo"
+									title="Retirer le allo"
+									on:click="{() => removeAllo(allo.taskId)}"
+								></button>
+							</div>
+						</div>
 					</li>
 				{/each}
 			</ul>
@@ -210,6 +228,61 @@ async function submit(e: SubmitEvent) {
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+.remove-allo {
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIEdlbmVyYXRvcjogU1ZHIFJlcG8gTWl4ZXIgVG9vbHMgLS0+CjxzdmcgZmlsbD0iIzAwMDAwMCIgd2lkdGg9IjgwMHB4IiBoZWlnaHQ9IjgwMHB4IiB2aWV3Qm94PSIwIDAgMzIgMzIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjx0aXRsZT50aW1lczwvdGl0bGU+DQo8cGF0aCBkPSJNMTcuMDYyIDE2bDkuMzctOS4zN2MwLjEzNi0wLjEzNiAwLjIxOS0wLjMyMyAwLjIxOS0wLjUzIDAtMC40MTUtMC4zMzYtMC43NTEtMC43NTEtMC43NTEtMC4yMDggMC0wLjM5NSAwLjA4NC0wLjUzMSAwLjIydjBsLTkuMzY5IDkuMzY5LTkuMzctOS4zNjljLTAuMTM1LTAuMTMxLTAuMzE5LTAuMjEyLTAuNTIyLTAuMjEyLTAuNDE0IDAtMC43NSAwLjMzNi0wLjc1IDAuNzUgMCAwLjIwMyAwLjA4MSAwLjM4NyAwLjIxMiAwLjUyMmw5LjM2OCA5LjM2OS05LjM2OSA5LjM2OWMtMC4xMzYgMC4xMzYtMC4yMiAwLjMyNC0wLjIyIDAuNTMxIDAgMC40MTUgMC4zMzYgMC43NTEgMC43NTEgMC43NTEgMC4yMDcgMCAwLjM5NC0wLjA4NCAwLjUzLTAuMjE5djBsOS4zNy05LjM3IDkuMzY5IDkuMzdjMC4xMzYgMC4xMzYgMC4zMjQgMC4yMiAwLjUzMSAwLjIyIDAuNDE1IDAgMC43NTEtMC4zMzYgMC43NTEtMC43NTEgMC0wLjIwNy0wLjA4NC0wLjM5NS0wLjIyLTAuNTMxdjB6Ij48L3BhdGg+DQo8L3N2Zz4=);
+	background-size: contain;
+	cursor: pointer;
+	width: 2rem;
+	aspect-ratio: 1 / 1;
+	background-color: transparent;
+	border: 0;
+}
+
+span.bold {
+	font-weight: 700;
+}
+
+hr {
+	border-color: $foreground;
+	margin: 1rem;
+}
+
+.allos {
+	background-color: $alt-background;
+	padding: 3rem 2rem;
+
+	width: 28rem;
+	box-sizing: border-box;
+	max-width: 90vw;
+
+	h2 {
+		font-size: 2rem;
+	}
+}
+
+ul.summary {
+	display: flex;
+	flex-direction: column;
+
+	gap: 2rem;
+
+	li .content {
+		display: flex;
+		justify-content: space-between;
+
+		gap: 1rem;
+	}
+
+	li .desc {
+		display: flex;
+		flex-direction: column;
+
+
+		font-family: fanwood-master, serif;
+		font-size: 1.5rem;
+	}
+}
 
 .required {
 	color: $yellow;
