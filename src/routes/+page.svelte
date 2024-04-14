@@ -66,7 +66,7 @@ La gastronomie et la boisson 🧋🍽️ jouent un rôle capital pendant les cé
   <div class="texts">
     <p class="text">
       &emsp;Alors que la Confrérie étendait son influence dans les méandres de l'école 🏫, des rumeurs alarmantes 🚨 commencèrent à circuler parmi les adeptes. Des écrits anciens 📜, découverts dans ses archives secrètes, faisaient état d'une prophétie mystérieuse 🧙‍♂️ concernant une imminente apocalypse cosmique 🌌. Selon ces écrits, seuls ceux qui seraient illuminés par les vérités cachées pourraient survivre à cette catastrophe et émerger de l'obscurité🗿 pour forger un nouvel avenir. Saisis par la peur et l'urgence 😰, les Inventeurs ⚙️, dirigés par Nemo, se réunirent en conseil secret pour discuter des moyens de préparer l'école à l'apocalypse à venir. Convaincus que seuls les initiés de la confrérie seraient prêts à affronter ce destin sombre 🔮, ils conspirèrent 🔪 pour intensifier les conversions et initier un plus grand nombre d'âmes à la lumière 💡 de leurs croyances.
-Ainsi naquit l’INPlace, un lieu de conflit 🔫 mis en place par la confrérie et orchestré pour choisir les meilleurs initiés 👥 et les préparer au grand défi à venir. Sous la supervision éclairée du Grand Respo Nathanaël et de ses fidèles conseillers, le complot put s’élaborer à travers des plans 🗺️  audacieux pour révéler les vérités cachées au plus grand nombre possible d'individus 🗣️. Des rituels occultes furent organisés dans les profondeurs des laboratoires 👩‍🔬 abandonnés de l'école, où les membres de la conspiration initièrent de nouveaux adeptes aux mystères de l'univers 🌌 et leur promirent un salut dans les ténèbres imminentes. Des symboles ésotériques furent disséminés dans les cours et les salles de classe, attirant l'attention des curieux et des chercheurs de vérité 🕵️‍♂️.
+Ainsi naquit l’INPlace, un lieu de conflit 🔫 mis en place par la confrérie et orchestré pour choisir les meilleurs initiés 👥 et les préparer au grand défi à venir. Sous la supervision éclairée du Grand Respo Nathanaël et de ses fidèles conseillers, des plans 🗺️  audacieux purent également être mis en place pour révéler les vérités cachées au plus grand nombre possible d'individus 🗣️, le principal étant d’avoir infiltré l’organisation de la Semaine Des Arts 🎨 dans son intégralité. Les profondeurs des laboratoires 👩‍🔬 abandonnés de l'école se verront alors être le lieu de rituels occultes, où les membres de la conspiration initieront de nouveaux adeptes aux mystères de l'univers 🌌 avec la promesse d’un salut dans les ténèbres imminentes. Des symboles ésotériques seront disséminés dans les cours et les salles de classe, attirant l'attention des curieux et des chercheurs de vérité 🕵️‍♂️.
 Cependant, alors que la conspiration gagnait en puissance, des forces obscures se mettent en branle pour contrecarrer ses plans 🗺️. Des factions rivales, jalouses de son influence croissante, complotent dans l'ombre pour détruire Occult’eirb et empêcher la propagation de ses enseignements 📚. Qui sera choisi ? Qui survivra à l'apocalypse ?
     </p>
 
@@ -78,10 +78,10 @@ Cependant, alors que la conspiration gagnait en puissance, des forces obscures s
 	<div class="texts end">
 		<div class="sub-dend">
 			<p class="end">
-				Vous aussi, échappez à l’Apocalypse en entrant dans le programme d’initiation d’Occult’eirb 👁️ . 
+				Échappez-y en entrant dans le programme d’initiation d’Occult’eirb 👁️.
 			</p>
 			<p class="sign">
-				OCT.
+				Vos sauveurs qui sont prêts à voir l’ENSEIRB en force pour la SDA☀️.
 			</p>
 		</div>
 
@@ -136,6 +136,7 @@ Cependant, alors que la conspiration gagnait en puissance, des forces obscures s
 
 	<div class="enigme">
 		<p>
+				OCT.
 			Bravo d'être arrivé jusqu'ici, vous pouvez maintenant essayer de trouver la solution à <a href="/enigme/">notre énigme</a> !
 		</p>
 	</div>
