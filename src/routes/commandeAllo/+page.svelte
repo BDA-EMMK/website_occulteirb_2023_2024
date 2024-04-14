@@ -23,9 +23,11 @@ onMount(async () => {
 <section id="commande-allo">
 <ul class="allos-list">
   {#each allos as allo}
-    <li>
-      <RequestAlloCard allo={allo} />
-    </li>
+		{#if allo.accessible}
+			<li>
+				<RequestAlloCard allo={allo} />
+			</li>
+		{/if}
   {/each}
 </ul>
 </section>

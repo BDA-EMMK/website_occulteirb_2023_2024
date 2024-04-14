@@ -19,7 +19,7 @@ export let member: Member = {
       <p class="name" >{ member.aka }</p>
     </div>
 
-    <img src="{ member.img2URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">
+    <img loading="lazy" src="{ member.img2URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">
   </div>
 
   <div class="face face2">
@@ -27,11 +27,11 @@ export let member: Member = {
       <p class="name" >{ member.role }</p>
     </div>
 
-    <img src="{ member.img3URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">
+    <img loading="lazy" src="{ member.img3URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">
   </div>
 
   <div class="face face1">
-    <img src="{ member.img1URL }" alt="photo - { member.name }" title="{ member.name }" id="image">
+    <img loading="lazy" src="{ member.img1URL }" alt="photo - { member.name }" title="{ member.name }" id="image">
 
     <div class="member-details">
       <p class="name" >{ member.name }</p>

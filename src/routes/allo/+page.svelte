@@ -34,19 +34,37 @@ onMount(async () => {
 		</div>
 
 	{:else}
-		<ul class="allos-list">
-			{#each allos as allo}
-				<li>
-					<AlloCard allo={allo} />
-				</li>
-			{/each}
-		</ul>
+	<div class="tmp">
+		<p>
+			L'historique marche pas, pas de chance
+		</p>
+		<p>
+			¯\_(ツ)_/¯
+		</p>
+	</div>
+		<!-- <ul class="allos-list"> -->
+		<!-- 	{#each allos as allo} -->
+		<!-- 		<li> -->
+		<!-- 			<AlloCard allo={allo} /> -->
+		<!-- 		</li> -->
+		<!-- 	{/each} -->
+		<!-- </ul> -->
 	{/if}
 </section>
 
 
 <style lang="scss">
 @import '$lib/theme.scss';
+
+.tmp {
+	font-size: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 2rem;
+	height: 100vh;
+}
 
 .no-auth {
 	display: flex;
