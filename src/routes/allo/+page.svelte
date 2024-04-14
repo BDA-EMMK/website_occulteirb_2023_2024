@@ -1,5 +1,5 @@
 <script lang="ts">
-import AlloCard from "./alloCard.svelte";
+// import AlloCard from "./alloCard.svelte";
 import AlloHero from "./alloHero.svelte";
 
 import type { Allo } from "$lib/api";
@@ -17,8 +17,12 @@ onMount(async () => {
 	if (token === '')
 		throw new Error('Need auth to get allos history');
 
-	allos = await Allos.getAllos(token) || [];
-	console.log(allos);
+	// allos = await Allos.getAllos(token) || [];
+	console.log("PTDR ALEXANDE L'INTRU");
+	console.log("PTDR ALEXANDE L'INTRU");
+	console.log("PTDR ALEXANDE L'INTRU");
+	console.log("PTDR ALEXANDE L'INTRU");
+	console.log("PTDR ALEXANDE L'INTRU");
 });
 
 </script>

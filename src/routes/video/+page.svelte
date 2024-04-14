@@ -1,4 +1,3 @@
-
 <script lang="ts">
 import API from "$lib/api";
 import Auth from "$lib/auth";
