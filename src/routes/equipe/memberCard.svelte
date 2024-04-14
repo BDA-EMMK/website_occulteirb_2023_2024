@@ -137,11 +137,13 @@ export let member: Member = {
   }
 
   .face2 {
+    z-index: 2;
     filter: opacity(1);
     transform: rotate(15deg) translate(20%, -40%);
   }
 
   .face3 {
+    z-index: 2
     filter: opacity(1);
     transform: rotate(-15deg) translate(-20%, -40%);
 		pointer-events: none;
@@ -161,11 +163,13 @@ export let member: Member = {
   }
 
   .face2 {
+    z-index: 2;
     filter: opacity(1);
     transform: rotate(55deg) translate(20%, -60%);
   }
 
   .face3 {
+    z-index: 2;
     filter: opacity(1);
     transform: rotate(-30deg) translate(-20%, -60%);
 		pointer-events: none;
