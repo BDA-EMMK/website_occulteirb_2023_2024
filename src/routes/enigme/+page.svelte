@@ -1,6 +1,6 @@
 <script lang="ts">
 
-const START_DAY = 12;
+const START_DAY = 15;
 
 const contents = [
 	{
