@@ -60,9 +60,9 @@ const deskMembers: Member[] = [
     role: "Inquisitrice",
   },
   {
-    img1URL: "/img/team/groger001/groger0011.webp",
-    img2URL: "/img/team/groger001/groger0012.webp",
-    img3URL: "/img/team/groger001/groger0013.webp",
+    img1URL: "/img/team/groger/groger1.webp",
+    img2URL: "/img/team/groger/groger2.webp",
+    img3URL: "/img/team/groger/groger3.webp",
     name: "Guénaël",
     major: "Info",
     aka: "BigG",
@@ -72,9 +72,9 @@ const deskMembers: Member[] = [
 
 const trezMembers: Member[] = [
   {
-    img1URL: "/img/team/gconte008/gconte0081.webp",
-    img2URL: "/img/team/gconte008/gconte0082.webp",
-    img3URL: "/img/team/gconte008/gconte0083.webp",
+    img1URL: "/img/team/gconte/gconte1.webp",
+    img2URL: "/img/team/gconte/gconte2.webp",
+    img3URL: "/img/team/gconte/gconte3.webp",
     name: "Guillaume.C",
     major: "MMK",
     aka: "Forever Tonight",
@@ -102,18 +102,18 @@ const eventMembers: Member[] = [
     role: "Éclaireur",
   },
   {
-    img1URL: "/img/team/mdudot001/mdudot0011.webp",
-    img2URL: "/img/team/mdudot001/mdudot0012.webp",
-    img3URL: "/img/team/mdudot001/mdudot0013.webp",
+    img1URL: "/img/team/mdudot/mdudot1.webp",
+    img2URL: "/img/team/mdudot/mdudot2.webp",
+    img3URL: "/img/team/mdudot/mdudot3.webp",
     name: "Marine",
     major: "MMK",
     aka: "Koala",
     role: "Éclaireuse",
   },
   {
-    img1URL: "/img/team/dyan2/dyan21.webp",
-    img2URL: "/img/team/dyan2/dyan22.webp",
-    img3URL: "/img/team/dyan2/dyan23.webp",
+    img1URL: "/img/team/dyan/dyan1.webp",
+    img2URL: "/img/team/dyan/dyan2.webp",
+    img3URL: "/img/team/dyan/dyan3.webp",
     name: "David",
     major: "Telecom",
     aka: "Le Cycliste",
@@ -147,9 +147,9 @@ const eventMembers: Member[] = [
     role: "Illuminé",
   },
   {
-    img1URL: "/img/team/flacroix002/flacroix0021.webp",
-    img2URL: "/img/team/flacroix002/flacroix0022.webp",
-    img3URL: "/img/team/flacroix002/flacroix0023.webp",
+    img1URL: "/img/team/flacroix/flacroix1.webp",
+    img2URL: "/img/team/flacroix/flacroix2.webp",
+    img3URL: "/img/team/flacroix/flacroix3.webp",
     name: "Faustine",
     major: "Info",
     aka: "Miel Pops",
@@ -177,18 +177,18 @@ const eventMembers: Member[] = [
 
 const logMembers: Member[] = [
   {
-    img1URL: "/img/team/wye001/wye0011.webp",
-    img2URL: "/img/team/wye001/wye0012.webp",
-    img3URL: "/img/team/wye001/wye0013.webp",
+    img1URL: "/img/team/wye/wye1.webp",
+    img2URL: "/img/team/wye/wye2.webp",
+    img3URL: "/img/team/wye/wye3.webp",
     name: "William",
     major: "MMK",
     aka: "Wiwi Le Taxi",
     role: "Conducteur de Charette",
   },
   {
-    img1URL: "/img/team/psboucher001/psboucher0011.webp",
-    img2URL: "/img/team/psboucher001/psboucher0012.webp",
-    img3URL: "/img/team/psboucher001/psboucher0013.webp",
+    img1URL: "/img/team/psboucher/psboucher1.webp",
+    img2URL: "/img/team/psboucher/psboucher2.webp",
+    img3URL: "/img/team/psboucher/psboucher3.webp",
     name: "Pierre",
     major: "MMK",
     aka: "Juice World",
@@ -255,9 +255,9 @@ const comMembers: Member[] = [
 
 const partMembers: Member[] = [
   {
-    img1URL: "/img/team/mveron001/mveron0011.webp",
-    img2URL: "/img/team/mveron001/mveron0012.webp",
-    img3URL: "/img/team/mveron001/mveron0013.webp",
+    img1URL: "/img/team/mveron/mveron1.webp",
+    img2URL: "/img/team/mveron/mveron2.webp",
+    img3URL: "/img/team/mveron/mveron3.webp",
                 name: "Martin",
     major: "Elec",
     aka: "L'ami de Franklin",
@@ -285,9 +285,9 @@ const videoMembers: Member[] = [
     role: "Le Chuchoteur",
   },
   {
-    img1URL: "/img/team/mdudot001/mdudot0011.webp",
-    img2URL: "/img/team/mdudot001/mdudot0012.webp",
-    img3URL: "/img/team/mdudot001/mdudot0013.webp",
+    img1URL: "/img/team/mdudot/mdudot1.webp",
+    img2URL: "/img/team/mdudot/mdudot2.webp",
+    img3URL: "/img/team/mdudot/mdudot3.webp",
                 name: "Marine",
     major: "MMK",
     aka: "Koala",
@@ -297,9 +297,9 @@ const videoMembers: Member[] = [
 
 const barMembers: Member[] = [
   {
-    img1URL: "/img/team/jvoisin004/jvoisin0041.webp",
-    img2URL: "/img/team/jvoisin004/jvoisin0042.webp",
-    img3URL: "/img/team/jvoisin004/jvoisin0043.webp",
+    img1URL: "/img/team/jvoisin/jvoisin1.webp",
+    img2URL: "/img/team/jvoisin/jvoisin2.webp",
+    img3URL: "/img/team/jvoisin/jvoisin3.webp",
                 name: "Juluan",
     major: "Elec",
     aka: "Jujuent",
