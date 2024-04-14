@@ -14,7 +14,7 @@ export let member: Member = {
 </script>
 
 <div class="team-member" tabindex="-1" >
-  <div class="face face2">
+  <div class="face face3">
     <div class="member-details">
       <p class="name" >{ member.aka }</p>
     </div>
@@ -22,7 +22,7 @@ export let member: Member = {
     <img src="{ member.img2URL }" alt="photo - { member.aka }" title="{ member.name }" id="image">
   </div>
 
-  <div class="face face3">
+  <div class="face face2">
     <div class="member-details">
       <p class="name" >{ member.role }</p>
     </div>
