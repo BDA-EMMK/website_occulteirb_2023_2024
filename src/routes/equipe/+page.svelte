@@ -173,6 +173,16 @@ const eventMembers: Member[] = [
     aka: "Sunshine Lover",
     role: "Illuminé",
   },
+  {
+    img1URL: "/img/team/neeko/neeko1.webp",
+    img2URL: "/img/team/neeko/neeko2.webp",
+    img3URL: "/img/team/neeko/neeko3.webp",
+    name: "Axel",
+    major: "Info",
+    aka: "Reine des Nekominis",
+    role: "Illuminé",
+  },
+
 ];
 
 const logMembers: Member[] = [
