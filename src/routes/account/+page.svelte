@@ -6,6 +6,37 @@ import { onMount } from 'svelte';
 import Account from '$lib/account';
 import type { AccountData } from '$lib/account';
 
+const ranksData = [
+	{
+		name: "Œuf Runique",
+		req: -9999999,
+	},
+	{
+		name: "Larve Initiée",
+		req: 1000,
+	},
+	{
+		name: "Chrysalide Illuminée",
+		req: 5000,
+	},
+	{
+		name: "Ouvrière Nécromancienne",
+		req: 20000,
+	},
+	{
+		name: "Reine des Ombres",
+		req: 100000,
+	},
+];
+
+const findRank = (score: number): string => {
+	for (let i = 0 ; i < ranksData.length - 1 ; ++i)
+		if (ranksData[i + 1].req > score)
+			return ranksData[i].name;
+
+	return ranksData[ranksData.length - 1].name;
+}
+
 let data: AccountData | null = null;
 let token: string | null = null;
 
@@ -120,7 +151,7 @@ const forceRefresh = () => {
 
 					<div class="rank">
 						<p>Rank</p>
-						<p>#{ data.rank }</p>
+						<p>{ findRank(data.points) }</p>
 					</div>
 				</div>
 			</div>
