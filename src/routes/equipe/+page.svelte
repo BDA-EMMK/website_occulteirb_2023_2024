@@ -173,6 +173,16 @@ const eventMembers: Member[] = [
     aka: "Sunshine Lover",
     role: "Illuminé",
   },
+  {
+    img1URL: "/img/team/neeko/neeko1.webp",
+    img2URL: "/img/team/neeko/neeko2.webp",
+    img3URL: "/img/team/neeko/neeko3.webp",
+    name: "Axel",
+    major: "Info",
+    aka: "Reine des Nekominis",
+    role: "Illuminé",
+  },
+
 ];
 
 const logMembers: Member[] = [
@@ -255,9 +265,9 @@ const comMembers: Member[] = [
 
 const partMembers: Member[] = [
   {
-    img1URL: "/img/team/mveron/mveron1.webp",
-    img2URL: "/img/team/mveron/mveron2.webp",
-    img3URL: "/img/team/mveron/mveron3.webp",
+    img1URL: "/img/team/movaere/movaere1.webp",
+    img2URL: "/img/team/movaere/movaere2.webp",
+    img3URL: "/img/team/movaere/movaere3.webp",
                 name: "Martin",
     major: "Elec",
     aka: "L'ami de Franklin",
